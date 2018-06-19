@@ -30,7 +30,7 @@ NAT网关实例是一个运行的NAT网关服务。在使用SNAT和DNAT功能前
 
 5.  单击立即购买，并完成支付。NAT网关的创建过程一般需要1-5分钟。
 
-    NAT网关的创建过程一般需要1-5分钟。
+
 
 
 ## 更改NAT网关规格 {#section_jml_hbz_ydb .section}
