@@ -1,24 +1,49 @@
-# Limits {#concept_un3_rky_ydb .concept}
+# Limits
 
-This topic describes limits related to the usage of NAT Gateway and EIPs.
+This topic describes the limits on Network Address Translation \(NAT\) gateways and the limits on associating elastic IP addresses \(EIPs\) with NAT gateways.
 
-## Limits on NAT Gateway {#section_kq2_5ky_ydb .section}
+## Limits on NAT gateways
 
--   Only one NAT Gateway can be configured for a VPC.
--   A public IP address cannot be used as an SNAT entry and a DNAT entry at the same time.
--   Up to 100 DNAT entries can be added to a DNAT table. If you want to increase the quota, open a ticket.
--   Up to 40 SNAT entries can be added to an SNAT table. If you want to increase the quota, open a ticket.
--   If a VPC contains a custom route entry whose the destination CIDR block is 0.0.0.0/0, you must delete the CIDR block before you can create a NAT Gateway.
--   If a VSwitch is associated with an SNAT entry, it is limited by the peak bandwidth of the selected EIP.
+|Item|Limit|Adjustable|
+|----|-----|----------|
+|The number of standard NAT gateways that can be configured for a Virtual Private Cloud \(VPC\) network|1|N/A|
+|The number of enhanced NAT gateways that can be configured for a VPC network|5|To increase the quota, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).|
+|The number of DNAT entries that can be configured for a NAT gateway|100|Go to the [Quota Management](https://vpc.console.aliyun.com/quota) page and request a quota increase. For more information, see [Manage quotas](/intl.en-US/Common Configurations/Manage quotas.md). |
+|The number of SNAT entries that can be configured for a NAT gateway|40|
+|Using an EIP for both SNAT and DNAT|Not supported|N/A|
+|The number of EIPs that can be configured for a SNAT entry|64|
+|Creating a NAT gateway for a VPC network that contains a custom route entry whose destination CIDR block is 0.0.0.0/0|Not supported **Note:** You must delete the custom route entry with 0.0.0.0/0 as the destination CIDR block before you can create a NAT gateway for the VPC network. |
+|Whether VSwitch bandwidth is limited by the maximum bandwidth of the associated EIPs after a SNAT entry is added to the VSwitch|Yes **Note:** If the EIPs are added to an EIP bandwidth plan, the VSwitch bandwidth is limited by the maximum bandwidth of the EIP bandwidth plan. |
 
-    If the EIP is added to an Internet Shared Bandwidth, the VSwitch is limited by the peak bandwidth of the Internet Shared Bandwidth.
+## Limits on associating EIPs with NAT gateways
 
+|Item|Limit|Adjustable|
+|----|-----|----------|
+|The number of EIPs that can be associated with a NAT gateway|20|Go to the [Quota Management](https://vpc.console.aliyun.com/quota) page to increase the quota. For more information, see [Manage quotas](/intl.en-US/Common Configurations/Manage quotas.md). |
+|The number of pay-by-data-transfer EIPs that can be associated with a NAT gateway|10|
+|The maximum bandwidth supported by a pay-by-data-transfer EIP that is associated with a NAT gateway|200Mbps|N/A|
 
-## Limits on associating EIPs {#section_wcw_yky_ydb .section}
+## Additional limits
 
--   You can associate up to 20 EIPs with a NAT Gateway. If you want to increase the quota, open a ticket.
--   You can associate up to 10 EIPs billed based on traffic with a NAT Gateway, and the peak bandwidth of each EIP billed based on traffic cannot be larger than 200 Mbps.
--   For the same destination IP address and port, the number of EIPs set for a NAT Gateway limits the Max Connections for the NAT Gateway. The Max Connections for a NAT Gateway associated with only one EIP is 55,000, and the Max Connections for a NAT Gateway associated with multiple EIPs is N\*55,000.
--   ECS instances in a VPC that are not associated with any public IP addresses can access the Internet through a NAT Gateway. If the bandwidth at which the ECS instances access the same public IP address and port is greater than 2 Gbit/s, packets may be discarded due to limited ports. To resolve this issue, we recommend that you associate four to eight EIPs with the NAT Gateway and create an SNAT IP address pool.
--   If your account includes a NAT bandwidth package purchased before January 26, 2018, you still need to use the bandwidth package to provide public IP addresses. To associate an EIP with the NAT Gateway, open a ticket.
+The following limits also apply to NAT gateways:
+
+-   When multiple ECS instances in a VPC network access the same destination IP address and port on the Internet through a NAT gateway and the ECS instances are not assigned static public IP addresses or EIPs, the maximum number of concurrent connections supported by the NAT gateway is limited by the number of EIPs specified in the corresponding SNAT entry.
+    -   If only one EIP is specified, the maximum number of concurrent connections supported by the NAT gateway is 55,000.
+    -   If multiple EIPs are specified, the maximum number of concurrent connections supported by the NAT gateway is n × 55,000 \(n refers to the number of EIPs\).
+-   The maximum bandwidth supported by each EIP in a SNAT address pool is 200 Mbit/s. To make full use of your EIP bandwidth plan and avoid port conflicts caused by insufficient EIPs, we recommend that you add EIPs to the SNAT address pool based on the following considerations:
+    -   If the maximum bandwidth of the EIP bandwidth plan is 1,024 Mbit/s, configure at least five EIPs for each SNAT entry.
+    -   If the maximum bandwidth of the EIP bandwidth plan is greater than 1,024 Mbit/s, configure another EIP for each SNAT entry for each additional 200 Mbit/s.
+-   If you have purchased a NAT service plan for a NAT gateway before 23:59 January 26, 2018, you must associate static public IP addresses in the NAT service plan with the NAT gateway to provide the Internet access service. For more information about how to associate an EIP with a NAT gateway, see the [Why am I unable to associate an EIP with a NAT gateway in the NAT Gateway console](/intl.en-US/FAQ/EIP association FAQ.md) section in the FAQ topic.
+-   If you use the SNAT feature and have added the EIPs in the SNAT address pool to an EIP service plan, your workloads may be interrupted intermittently when you make the following changes to the maximum bandwidth of the EIP bandwidth plan:
+
+    -   Change the maximum bandwidth from a value lower than 1 Gbit/s to a value higher than 1 Gbit/s.
+    -   Change the maximum bandwidth from a value higher than 1 Gbit/s to a value lower than 1 Gbit/s.
+    We recommend that you implement automatic reconnection to minimize the impact of network disconnections on your business.
+
+-   You cannot create DNAT entries for ECS instances that are associated with EIPs.
+
+    To create DNAT entries for such ECS instances, you must disassociate the EIPs from the ECS instances first. After you delete the association, you can create DNAT entries for the ECS instances. For more information, see [Disassociate an EIP from a cloud resource](/intl.en-US/User Guide/Disassociate an EIP from a cloud resource.md) and [Create a DNAT entry](/intl.en-US/DNAT/Create a DNAT entry.md).
+
+    **Note:** If you have added DNAT entries to an ECS instance that is associated with an EIP, the EIP prevails when the ECS instance communicates with the Internet.
+
 
