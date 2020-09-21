@@ -1,6 +1,6 @@
 # CreateNatGateway
 
-调用CreateNatGateway接口创建NAT网关。
+调用CreateNatGateway接口创建一个NAT网关。
 
 ## API描述
 
@@ -29,19 +29,19 @@
 |VpcId|String|是|vpc-bp1di7uewzmtvfuq8\*\*\*\*|需要创建NAT网关的VPC的ID。 |
 |Name|String|否|fortest|NAT网关的名称。
 
- 名称长度为2~128个字符之间，必须以英文字母或中文开头，不能以`http://`和`https://`开头，可包含数字、点号（.）、下划线（\_）或短横线（-）。
+ 名称在2~128个字符之间，必须以英文字母或中文开头，不能以`http://`和`https://`开头，可包含数字、点号（.）、下划线（\_）或短横线（-）。
 
  如果没有指定该参数，默认使用网关ID作为名称。 |
 |Description|String|否|testnat|NAT网关的描述。
 
- 描述长度为2~256个字符之间，不能以`http://`和`https://`开头。 |
+ 描述在2~256个字符之间，不能以`http://`和`https://`开头。 |
 |ClientToken|String|否|shefffxxddjehfh123|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字符，且不能超过64个字符。 |
 |Spec|String|否|Small|NAT网关的规格，取值：
 
  -   **Small**（默认值）：小型。
 -   **Middle**：中型。
 -   **Large**：大型。
--   **XLarge.1**：超大型-1。 |
+-   **XLarge.1**：超大型。 |
 |BandwidthPackage.N.IpCount|Integer|否|5|NAT带宽包中的公网IP数量，取值范围：1~50。
 
  N是第几个NAT带宽包，取值范围：1~4。
@@ -55,16 +55,16 @@
  NAT带宽包的IP与后端ECS不处于同一个可用区，并不影响其连通性；但是位于相同可用区时，可减小延迟。
 
  本参数仅支持在2017年11月3日之前账号下存在NAT带宽包的用户指定。2017年11月3日之前账号下不存在NAT带宽包的用户，请绑定EIP。 |
-|BandwidthPackage.N.ISP|String|否|BGP|第N个NAT带宽包中的线路ISP类型，默认为**BGP**（多线）。
+|BandwidthPackage.N.ISP|String|否|BGP|第N个NAT带宽包中的线路ISP类型，默认为BGP（多线）。
 
  本参数仅支持在2017年11月3日之前账号下存在NAT带宽包的用户指定。2017年11月3日之前账号下不存在NAT带宽包的用户，请绑定EIP。 |
-|InstanceChargeType|String|否|PostPaid|NAT网关的付费模式，取值：
-
- **PostPaid**（默认值）：按量付费。
+|InstanceChargeType|String|否|PostPaid|计费方式，取值：
 
  **PrePaid**：包年包月。
 
- 包年包月和按量付费的详细信息，请参见[包年包月](~~88657~~)和[按量付费](~~88658~~)。 |
+ **PostPaid**（默认值）：按量计费。
+
+ 包年包月和按量计费的详细信息，请参见[包年包月](~~88657~~)和[按量计费](~~88658~~)。 |
 |PricingCycle|String|否|Month|包年包月的计费周期，取值：
 
  **Month**（默认值）：按月付费。
@@ -88,34 +88,24 @@
  当**InstanceChargeType**参数的值为**PrePaid**时，该参数必选；当**InstanceChargeType**参数的值为**PostPaid**时，该参数不填。 |
 |VSwitchId|String|否|vsw-bp1e3se98n9fq8hle\*\*\*\*|NAT网关所属的交换机的ID。
 
- 创建增强型NAT网关时，您必须指定NAT网关所属的交换机，系统会为增强型NAT网关分配一个交换机内的空闲私网IP地址。
-
- -   如果您要在存量交换机中创建增强型NAT网关，请确保交换机所属的可用区支持创建增强型NAT网关，且交换机有可用的IP。
--   如果您还未创建交换机，请先在支持创建增强型NAT网关的可用区创建交换机，然后再指定增强型NAT网关所属的交换机。
-
- 您可以通过[ListEnhanhcedNatGatewayAvailableZones](~~182292~~)接口查询增强型NAT网关的资源可用区，通过[DescribeVSwitches](~~35748~~)接口查询交换机中的可用IP数。 |
-|NatType|String|否|Enhanced|NAT网关的类型，取值：
+ 仅**NatType**取值为**Enhanced**时，才支持配置此参数。 |
+|NatType|String|否|Normal|NAT网关的类型，取值：
 
  -   **Normal**：普通型NAT网关。
 -   **Enhanced**：增强型NAT网关。增强型NAT网关详情，请参见[增强型NAT网关发布公告](~~163610~~)。
 
- **说明：** 目前，仅在西南1（成都）、英国（伦敦）、德国（法兰克福）、马来西亚（吉隆坡）和印度（孟买）地域创建NAT网关，NAT网关类型默认为**Enhanced**。 |
-|InternetChargeType|String|否|PayBySpec|NAT网关的计费类型，取值：
-
- -   **PayBySpec**：按固定规格计费。
--   **PayByLcu**：按使用量计费。
-
- **说明：** 目前，仅在德国（法兰克福）和英国（伦敦）地域下，且仅**NatType**取值为**Enhanced**时，**InternetChargeType**才支持取值为**PayByLcu**。 |
+ **说明：** 目前，在华北3（张家口）、华北5（呼和浩特）、西南1（成都）、华南2（河源）、英国（伦敦）、德国（法兰克福）、马来西亚（吉隆坡）和印度（孟买）地域创建NAT网关，NAT网关类型默认为**Enhanced**。 |
+|InternetChargeType|String|否|PayBySpec|NAT网关的计量方式，取值：**PayBySpec**（按固定规格计费）。 |
 
 ## 返回数据
 
 |名称|类型|示例值|描述|
 |--|--|---|--|
 |NatGatewayId|String|ngw-112za33e4\*\*\*\*|创建的NAT网关的实例ID。 |
-|ForwardTableIds|List|ftb-11tc6xgmv\*\*\*\*|DNAT列表。 |
+|ForwardTableIds|List|ftb-11tc6xgmv\*\*\*\*|转发条目列表。 |
 |BandwidthPackageIds|List|bwp-11odxu2k7\*\*\*\*|NAT带宽包列表。 |
 |RequestId|String|2315DEB7-5E92-423A-91F7-4C1EC9AD97C3|请求ID。 |
-|SnatTableIds|List|stb-SnatTableIds\*\*\*\*|SNAT列表。 |
+|SnatTableIds|List|stb-SnatTableIds\*\*\*\*|SNAT表的ID。 |
 
 ## 示例
 
