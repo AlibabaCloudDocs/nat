@@ -14,6 +14,9 @@ NAT网关提供如下API供您使用。NAT网关的API服务地址为vpc.aliyunc
 |[GetNatGatewayConvertStatus](/cn.zh-CN/API参考/NAT网关/GetNatGatewayConvertStatus.md)|查看NAT网关转换状态列表。|
 |[t2534.md\#](/cn.zh-CN/API参考/NAT网关/DescribeNatGateways.md)|查询已创建的NAT网关。|
 |[t2537.md\#](/cn.zh-CN/API参考/NAT网关/DeleteNatGateway.md)|删除NAT网关。|
+|[EnableNatGatewayEcsMetric](/cn.zh-CN/API参考/NAT网关/EnableNatGatewayEcsMetric.md)|开启ECS流量监控。|
+|[ListNatGatewayEcsMetric](/cn.zh-CN/API参考/NAT网关/ListNatGatewayEcsMetric.md)|查看NAT网关的流量监控数据。|
+|[DisableNatGatewayEcsMetric](/cn.zh-CN/API参考/NAT网关/DisableNatGatewayEcsMetric.md)|关闭ECS流量监控。|
 
 ## DNAT表
 
