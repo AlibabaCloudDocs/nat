@@ -38,17 +38,15 @@ http(s)://vpc.aliyuncs.com/?Action=ListEnhanhcedNatGatewayAvailableZones
 
 ```
 <ListEnhanhcedNatGatewayAvailableZonesResponse>
-      <RequestId>6FEA0CF3-D3B9-43E5-A304-D217037876A8</RequestId>
-      <Zones>
-            <Zone>
-                  <ZoneId>cn-qingdao-a</ZoneId>
-                  <LocalName>华北 1 可用区 A</LocalName>
-            </Zone>
-            <Zone>
-                  <ZoneId>cn-qingdao-b</ZoneId>
-                  <LocalName>华北 1 可用区 B</LocalName>
-            </Zone>
-      </Zones>
+  <RequestId>9AD606B4-5DE0-4868-AF98-EEC00C14304C</RequestId>
+  <Zones>
+        <ZoneId>cn-hangzhou-h</ZoneId>
+        <LocalName>华东 1 可用区 H</LocalName>
+  </Zones>
+  <Zones>
+        <ZoneId>cn-hangzhou-i</ZoneId>
+        <LocalName>华东 1 可用区 I</LocalName>
+  </Zones>
 </ListEnhanhcedNatGatewayAvailableZonesResponse>
 ```
 
@@ -56,19 +54,17 @@ http(s)://vpc.aliyuncs.com/?Action=ListEnhanhcedNatGatewayAvailableZones
 
 ```
 {
-	"RequestId":"6FEA0CF3-D3B9-43E5-A304-D217037876A8",
-	"Zones":{
-		"Zone":[		
-			{
-				"ZoneId":"cn-qingdao-a",
-				"LocalName":"华北 1 可用区 A"
-			},
-			{
-				"ZoneId":"cn-qingdao-b",
-				"LocalName":"华北 1 可用区 B"
-			}
-              ]
-            }
+	"RequestId": "9AD606B4-5DE0-4868-AF98-EEC00C14304C",
+	"Zones": [
+		{
+			"ZoneId": "cn-hangzhou-h",
+			"LocalName": "华东 1 可用区 H"
+		},
+		{
+			"ZoneId": "cn-hangzhou-i",
+			"LocalName": "华东 1 可用区 I"
+		}
+	]
 }
 ```
 
