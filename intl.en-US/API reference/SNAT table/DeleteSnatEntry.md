@@ -1,83 +1,74 @@
-# DeleteSnatEntry {#reference_4i4w_xmt_ndb .reference}
+# DeleteSnatEntry
 
-Deletes an SNAT entry.
+Deletes a specified Source Network Address Translation \(SNAT\) entry.
 
-**Note:** You cannot delete an SNAT entry if the SNAT entry in the Pending or Modifying state.
+## Description
 
-## Debug {#apiExplorer .section}
+DeleteSnatEntry is an asynchronous operation. After you make a request, the ID of the request is returned but the specified SNAT entry is not deleted. The system deletes the SNAT entry in the background. You can call the DescribeNatGateways operation to query the state of the SNAT entry:
 
-By using [API Explorer](https://api.aliyun.com/#product=Vpc&api=DescribeVpcAttribute), you can easily debug APIs, automatically generate SDK code examples, and quickly search for APIs.
+-   **Deleting**: specifies that the system is deleting the SNAT entry. You can only query the state of the SNAT entry, but cannot perform other operations.
+-   If no SNAT entry is returned in the response, the SNAT entry is deleted.
 
-## Request parameters {#section_cch_pjg_mdb .section}
+**Note:** If a SNAT table contains SNAT entries in the **Pending** state, you cannot delete any SNAT entries in the SNAT table.
 
-|Parameter|Type|Required?|Example value|Description|
-|:--------|:---|:--------|-------------|:----------|
-|Action|String|Yes|DeleteSnatEntry| The name of this action. Value: 
+## Debugging
 
- DeleteSnatEntry
+[OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Vpc&api=DeleteSnatEntry&type=RPC&version=2016-04-28)
 
- |
-|RegionId|String|Yes|cn-hangzhou| The region ID of the NAT Gateway where the SNAT entry is to be deleted.
+## Request parameters
 
- To query the region ID, call DescribeRegions.
+|Parameter|Type|Required|Example|Description|
+|---------|----|--------|-------|-----------|
+|Action|String|Yes|DeleteSnatEntry|The operation that you want to perform. Set the value to **DeleteSnatEntry**. |
+|RegionId|String|Yes|cn-hangzhou|The ID of the region where the NAT gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query region IDs. |
+|SnatEntryId|String|Yes|snat-bp1vcgcf8tm0plqcg\*\*\*\*|The ID of the SNAT entry. |
+|SnatTableId|String|Yes|stb-bp190wu8io1vgev80\*\*\*\*|The ID of the SNAT table to which the SNAT entry belongs. |
 
- |
-|SnatEntryId|String|Yes|snat-bp1vcgcf8tm0plqcgfl04| The ID of the SNAT entry to be deleted.
+## Response parameters
 
- |
-|SnatTableId|String|Yes|stb-bp190wu8io1vgev80kec7| The ID of the SNAT table from which the SNAT entry is to be deleted.
+|Parameter|Type|Example|Description|
+|---------|----|-------|-----------|
+|RequestId|String|47B80B6A-759A-479C-A565-76D04BDA29F3|The ID of the request. |
 
- |
+## Examples
 
-## Response parameters {#section_ugs_f1g_cz .section}
-
-|Parameter|Type|Example value|Description|
-|:--------|:---|:------------|:----------|
-|RequestId|String|47B80B6A-759A-479C-A565-76D04BDA29F3|The ID of the request.|
-
-## Examples {#section_ix5_h1g_cz .section}
-
-**Request example**
-
-``` {#createVPCpub}
-
-https://vpc.aliyuncs.com/?Action=DeleteSnatEntry
-&RegionId=cn-hangzhou
-&SnatEntryId=snat-bp1vcgcf8tm0plqcgfl04
-&SnatTableId=stb-bp190wu8io1vgev80kec7
-&<CommonParameters>
+Sample requests
 
 ```
+https://vpc.aliyuncs.com/?Action=DeleteSnatEntry
+&RegionId=cn-hangzhou
+&SnatEntryId=snat-bp1vcgcf8tm0plqcg****
+&SnatTableId=stb-bp190wu8io1vgev80****
+&<Common request parameters>
+```
 
-**Response example**
+Sample success responses
 
--   XML format
+`XML` format
 
-    ```
-    <DeleteSnatEntryResponse>
+```
+<DeleteSnatEntryResponse>
       <RequestId>0ED8D006-F706-4D23-88ED-E11ED28DCAC0</RequestId>
-    </DeleteSnatEntryResponse>
-    
-    ```
+</DeleteSnatEntryResponse>
+```
 
--   JSON format
+`JSON` format
 
-    ```
-    {
-    	"RequestId":"0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
-    }
-    ```
+```
+{ 
+    "RequestId": "0ED8D006-F706-4D23-88ED-E11ED28DCAC0"
+}
+```
 
+## Error codes
 
-## Error codes {#section_ejy_dwc_wgb .section}
+|HttpCode|Error code|Error message|Description|
+|--------|----------|-------------|-----------|
+|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|The error message returned because the specified region ID does not exist. Check whether the region ID is valid.|
+|400|IncorretSnatEntryStatus|Some Snat entry status blocked this operation..|The error message returned because you are unauthorized to perform the specified operation. The error message returned because one or more SNAT entries in the SNAT table are in the Pending or Modifying state.|
+|404|InvalidSnatEntryId.NotFound|Specified Snat entry ID does not exist|The error message returned because the specified SNAT entry does not exist. Check whether the SNAT entry is valid.|
+|404|InvalidSnatTableId.NotFound|Specified SNAT table does not exist.|The error message returned because the specified SNAT table does not exist. Check whether the parameter is valid.|
+|404|InvalidSnatEntryId.NotFound|Specified SNAT entry does not exist.|The error message returned because the specified SNAT entry does not exist. Check whether the SNAT entry is valid.|
 
-|HTTP status code|Error code|Error message|Description|
-|----------------|----------|-------------|-----------|
-|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|The specified region ID does not exist.|
-|400|IncorretSnatEntryStatus|Some Snat entry status blocked this operation..|You cannot perform this operation because one or more SNAT entries are in the Pending or Modifying state.|
-|404|InvalidSnatEntryId.NotFound|Specified Snat entry ID does not exist|The specified SNAT entry does not exist.|
-|404|InvalidSnatTableId.NotFound|Specified SNAT table does not exist.|The specified SNAT table does not exist.|
-|404|InvalidSnatEntryId.NotFound|Specified SNAT entry does not exist.|The specified SNAT entry does not exist.|
-
-[View common error codes](https://error-center.aliyun.com/status/product/Vpc)
+For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Vpc).
 
