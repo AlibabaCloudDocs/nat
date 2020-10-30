@@ -16,7 +16,7 @@
 
         申请后等待10秒，系统会自动完成审批。
 
-    4.  调用ConvertBandwidthPackage接口将NAT带宽包转换为共享带宽。详细信息，请参见[ConvertBandwidthPackage](/cn.zh-CN/API参考/NAT网关/ConvertBandwidthPackage.md)。
+    4.  调用ConvertBandwidthPackage接口将NAT带宽包转换为共享带宽。详细信息，请参见[ConvertBandwidthPackage](/intl.zh-CN/API参考/NAT网关/ConvertBandwidthPackage.md)。
     5.  在专有网络管理控制台的**配额管理**页面，申请**（高级功能）NAT控制台允许绑定EIP**权限。
 
         申请后等待10秒，系统会自动完成审批。
@@ -26,14 +26,14 @@
 
 ## EIP支持创建SNAT IP地址池吗？
 
-支持。目前仅支持通过API创建SNAT IP地址池。详细信息，请参见[创建SNAT IP地址池](/cn.zh-CN/最佳实践/创建SNAT IP地址池.md)。
+支持。目前仅支持通过API创建SNAT IP地址池。详细信息，请参见[创建SNAT IP地址池](/intl.zh-CN/最佳实践/创建SNAT IP地址池.md)。
 
 ## 一个NAT网关可以绑定多少个EIP？
 
 |描述|配额|升级配额|
 |--|--|----|
-|每个NAT网关可绑定的EIP数量|20个|可通过配额管理自助调整。详细信息，请参见[管理配额](/cn.zh-CN/用户指南/通用配置/管理配额.md)。|
-|每个NAT网关可绑定按流量计费的EIP数量|10个|可通过配额管理自助调整。详细信息，请参见[管理配额](/cn.zh-CN/用户指南/通用配置/管理配额.md)。|
+|每个NAT网关可绑定的EIP数量|20个|可通过配额管理自助调整。详细信息，请参见[管理配额]()。|
+|每个NAT网关可绑定按流量计费的EIP数量|10个|可通过配额管理自助调整。详细信息，请参见[管理配额]()。|
 
 ## NAT网关绑定EIP，为什么流量达不到带宽峰值？
 
