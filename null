@@ -1,41 +1,41 @@
-# EIP绑定NAT网关相关问题
+# EIP association FAQ
 
--   [为什么在NAT网关控制台不能绑定EIP？](#section_hp1_eoj_3e0)
--   [EIP支持创建SNAT IP地址池吗？](#section_hij_hvv_z0w)
--   [一个NAT网关可以绑定多少个EIP？](#section_t0q_127_wm6)
--   [NAT网关绑定EIP，为什么流量达不到带宽峰值？](#section_ye9_coy_lky)
+-   [Why am I unable to associate an EIP with a NAT Gateway in the NAT Gateway console?](#section_hp1_eoj_3e0)
+-   [Can I create an SNAT IP address pool for an EIP?](#section_hij_hvv_z0w)
+-   [How many EIPs can I associate with a NAT Gateway?](#section_t0q_127_wm6)
+-   [Why am I unable to reach peak bandwidth after I associate an EIP with a NAT Gateway?](#section_ye9_coy_lky)
 
-## 为什么在NAT网关控制台不能绑定EIP？
+## Why am I unable to associate an EIP with a NAT Gateway in the NAT Gateway console?
 
-对于2017年11月3日23：59分之前账号下存在NAT带宽包的全部用户，您仍需使用NAT带宽包为该NAT网关提供公网IP。如需使用EIP绑定NAT网关功能，请根据NAT带宽包的计费方式选择操作。对于2018年1月26日23：59分之前账号下存在NAT带宽包的全部用户，您仍需使用NAT带宽包为该NAT网关提供公网IP。如需使用EIP绑定NAT网关功能，请根据NAT带宽包的计费方式选择操作。对于2018年1月26日23：59分之前账号下存在NAT带宽包的全部用户，您仍需使用NAT带宽包为该NAT网关提供公网IP。如需使用EIP绑定NAT网关的功能，请根据NAT带宽包的计费方式选择操作。
+If you have created a NAT bandwidth package for a NAT Gateway before 23:59 November 3, 2017, you still need to use the bandwidth package to associate public IP addresses with the NAT Gateway. To associate an EIP with a NAT Gateway, choose one of the following operations based on the billing method of the NAT bandwidth package.If you have created a NAT bandwidth package for a NAT Gateway before 23:59 January 26, 2018, you still need to use the bandwidth package to associate public IP addresses with the NAT Gateway. To associate an EIP with a NAT Gateway, choose one of the following operations based on the billing method of the NAT bandwidth package.If you have created a NAT bandwidth package for a NAT Gateway before 23:59 January 26, 2018, you still need to use the bandwidth package to associate public IP addresses with the NAT Gateway. To associate an EIP with a NAT Gateway, choose one of the following operations based on the billing method of the NAT bandwidth package.
 
--   如果您的NAT带宽包是按固定带宽计费的，请直接按照如下步骤进行操作：
-    1.  登录[专有网络管理控制台](https://vpcnext.console.aliyun.com/nat/)[专有网络管理控制台](https://partners-intl.aliyun.com/login-required#/vpc)。
-    2.  在左侧导航栏，单击**配额管理**。
-    3.  在配额管理页面，单击**NAT网关**页签，然后申请**（高级功能）NAT带宽包允许转换成共享带宽**权限。
+-   If the NAT bandwidth package is billed by fixed bandwidth, follow these steps:
+    1.  Log on to the [VPC console](https://vpcnext.console.aliyun.com/nat/)[VPC console](https://partners-intl.aliyun.com/login-required#/vpc).
+    2.  In the left-side navigation pane, click **Quota Management**.
+    3.  On the Quota Management page, click the **NAT Gateway** tab, and then apply for the **bandwidth package allows covert to common package** privilege.
 
-        申请后等待10秒，系统会自动完成审批。
+        The system automatically approves the application after 10 seconds.
 
-    4.  调用ConvertBandwidthPackage接口将NAT带宽包转换为共享带宽。详细信息，请参见[ConvertBandwidthPackage](/intl.zh-CN/API参考/NAT网关/ConvertBandwidthPackage.md)。
-    5.  在专有网络管理控制台的**配额管理**页面，申请**（高级功能）NAT控制台允许绑定EIP**权限。
+    4.  Call the ConvertBandwidthPackage action to convert the NAT bandwidth package to an Internet Shared Bandwidth instance. For more information, see [ConvertBandwidthPackage](/intl.en-US/API reference/NAT Gateway/ConvertBandwidthPackage.md).
+    5.  On the **Quota Management** page in the VPC console, apply for the **nat console allows bind EIP** privilege.
 
-        申请后等待10秒，系统会自动完成审批。
+        The system automatically approves the application after 10 seconds.
 
-    6.  退出并重新登录专有网络管理控制台，您可以在NAT网关页面查看绑定的EIP。
--   如果您的NAT带宽包是按使用流量计费的，请先[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)[提交工单](https://workorder-intl.console.aliyun.com/#/ticket/createIndex)提交工单开通白名单后再按照上述步骤进行操作。
+    6.  Sign out and then log on to the VPC console. You can view the associated EIP on the NAT Gateways page.
+-   If your NAT bandwidth package is billed by traffic, [open a ticket](https://selfservice.console.aliyun.com/ticket/category/natgw/today)[open a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex)open a ticket to apply for whitelist authorization and then repeat the preceding steps.
 
-## EIP支持创建SNAT IP地址池吗？
+## Can I create an SNAT IP address pool for an EIP?
 
-支持。目前仅支持通过API创建SNAT IP地址池。详细信息，请参见[创建SNAT IP地址池](/intl.zh-CN/最佳实践/创建SNAT IP地址池.md)。
+Yes. You can create an SNAT IP address pool by calling API actions. For more information, see [Create a SNAT IP address pool](/intl.en-US/Best Practices/Create a SNAT IP address pool.md).
 
-## 一个NAT网关可以绑定多少个EIP？
+## How many EIPs can I associate with a NAT Gateway?
 
-|描述|配额|升级配额|
-|--|--|----|
-|每个NAT网关可绑定的EIP数量|20个|可通过配额管理自助调整。详细信息，请参见[管理配额]()。|
-|每个NAT网关可绑定按流量计费的EIP数量|10个|可通过配额管理自助调整。详细信息，请参见[管理配额]()。|
+|Item|Limit|Quota increase supported?|
+|----|-----|-------------------------|
+|The number of EIPs that can be associated with a NAT Gateway|20|Yes. For more information, see [Quota management]().|
+|The number of pay-by-traffic EIPs that can be associated with a NAT Gateway|10|Yes. For more information, see [Quota management]().|
 
-## NAT网关绑定EIP，为什么流量达不到带宽峰值？
+## Why am I unable to reach peak bandwidth after I associate an EIP with a NAT Gateway?
 
-NAT网关绑定的EIP数限制NAT网关的最大并发数，绑定单个EIP最大连接数为55000，当ECS通过NAT网关访问公网上同一个目的IP和端口的带宽大于2Gbps时，建议您为NAT网关绑定4~8个EIP并构建SNAT IP地址池，避免单个EIP的端口数量限制可能产生的丢包。
+The number of EIPs associated with a NAT Gateway limits the Max Connections of the NAT Gateway. The Max Connections of a NAT Gateway associated with only one EIP is 55,000. If the bandwidth at which the ECS instances access the same public IP address and port is greater than 2 Gbit/s, packets may be discarded due to limited ports. To resolve this issue, we recommend that you associate four to eight EIPs with the NAT Gateway and create an SNAT pool.
 
