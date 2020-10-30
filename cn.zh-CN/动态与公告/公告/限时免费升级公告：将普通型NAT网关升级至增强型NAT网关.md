@@ -14,7 +14,7 @@
 
 将普通型NAT网关升级至增强型NAT网关前，您需要了解下图中的升级说明。
 
-**说明：** 目前，仅西南1（成都）、华北1（青岛）、华北5（呼和浩特）、华南2（河源）、新加坡、英国（伦敦）、德国（法兰克福）、马来西亚（吉隆坡）、美国（弗吉尼亚）、印度尼西亚（雅加达）和印度（孟买）地域支持将普通型NAT网关升级为增强型NAT网关，且需申请白名单。如需使用，请[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)。
+**说明：** 目前，仅华北2（北京）、华东1（杭州）、华东2（上海）和华南1（深圳）不支持将普通型NAT网关升级为增强型NAT网关。
 
 ![了解事项](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6333659951/p147943.png)
 
