@@ -10,6 +10,7 @@ keyword: [NAT网关, 常见问题, FAQ]
 -   [一个VPC支持创建多少个NAT网关实例？](#section_8l9_cwy_02b)
 -   [一个NAT网关实例支持绑定多少个EIP？](#section_9hb_4u4_f2e)
 -   [一个EIP可以同时用于DNAT和SNAT条目吗？](#section_9qf_el8_09i)
+-   [ECS实例可以通过增强型NAT实例中的SNAT访问同一个NAT实例上的DNAT服务么？](#section_wdq_wze_1yj)
 -   [\#section\_vrx\_7la\_ch1](#section_vrx_7la_ch1)
 -   [\#section\_hm7\_2wq\_l9y](#section_hm7_2wq_l9y)
 -   [NAT网关绑定EIP后，为什么访问公网的流量达不到EIP的带宽峰值？](#section_i0c_yb8_sw1)
@@ -37,6 +38,14 @@ keyword: [NAT网关, 常见问题, FAQ]
 
 -   普通型NAT网关不支持将一个EIP同时用于DNAT条目和SNAT条目。
 -   增强型NAT网关白名单支持将一个公网IP同时用于DNAT条目和SNAT条目。如需申请白名单，请[提交工单](https://workorder-intl.console.aliyun.com/#/ticket/createIndex)。
+
+## ECS实例可以通过增强型NAT实例中的SNAT访问同一个NAT实例上的DNAT服务么？
+
+不可以。
+
+当您在增强型NAT实例上同时创建了SNAT和DNAT，VPC内的ECS实例通过该增强型NAT实例的SNAT能力去访问同NAT实例内的DNAT服务时无法联通。
+
+如果您需要ECS实例去访问同一个VPC内的DNAT服务，建议您新建一个增强型NAT网关，然后将DNAT和SNAT分别创建在不同的NAT网关实例上。
 
 ## NAT网关绑定EIP后，为什么访问公网的流量达不到EIP的带宽峰值？
 
