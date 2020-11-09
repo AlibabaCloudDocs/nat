@@ -14,9 +14,9 @@ Enhanced NAT gateways are upgraded from the technical architecture of standard N
 
 Before you upgrade standard NAT gateways to enhanced NAT gateways, pay attention to the upgrade instructions in the following figure.
 
-**Note:** Only selected users in the following regions can upgrade standard NAT gateways to enhanced NAT gateways: China \(Chengdu\), China \(Qingdao\), China \(Hohhot\), China \(Heyuan\), Singapore, UK \(London\), Germany \(Frankfurt\), Malaysia \(Kuala Lumpur\), US \(Virginia\), Indonesia \(Jakarta\), and India \(Mumbai\). If you are not a selected user, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.11182172.nav-right.dticket.1e874882kUYyPy#/ticket/createIndex).
+**Note:** Only selected users in the following regions can not upgrade standard NAT gateways to enhanced NAT gateways: China \(Beijing\), China \(Hangzhou\), China \(Shanghai\) and China \(Shenzhen\).
 
 ![Upgrade instructions](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/0082659951/p147943.png)
 
-For more information about how to upgrade to enhanced NAT gateways, see [Upgrade a standard NAT gateway to an enhanced NAT gateway](/intl.en-US/NAT Gateway Instance/Upgrade a standard NAT gateway to an enhanced NAT gateway.md).
+For more information about how to upgrade to enhanced NAT gateways, see [Upgrade a standard NAT gateway to an enhanced NAT gateway]().
 
