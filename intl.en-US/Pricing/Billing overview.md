@@ -25,5 +25,5 @@ NAT gateways support the subscription and pay-as-you-go billing methods.
 
 After you create a NAT gateway, you must associate an EIP with the NAT gateway. This enables the NAT gateway to access the Internet. You are charged for the EIPs that are associated with NAT gateways. For more information, see [Subscription](/intl.en-US/Pricing/Subscription.md) and [Pay-as-you-go](/intl.en-US/Pricing/Pay-as-you-go.md).
 
-If an EIP is associated with an EIP bandwidth plan, the predefined billing method of the EIP becomes invalid. The NAT gateway with which the EIP is associated is charged an Internet data transfer fee based on the billing method of the EIP bandwidth plan. For more information, see[Billing](/intl.en-US/Pricing/Billing.md).
+If an EIP is associated with an EIP bandwidth plan, the predefined billing method of the EIP becomes invalid. The NAT gateway with which the EIP is associated is charged an Internet data transfer fee based on the billing method of the EIP bandwidth plan. For more information, see [Billing](/intl.en-US/Pricing/Billing.md).
 
