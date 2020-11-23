@@ -58,9 +58,11 @@
 
     您可以通过查看共享带宽实例ID判断是否转换成功。实例ID的转换规则为`${cbwpId}='c'+${bwpId}`。例如，转换的NAT网关带宽包实例ID是`${bwpId}=bwp-e8caejcj`，则转换后的共享带宽实例ID为`cbwp-e8caejcj`。
 
-3.  完成所有NAT网关带宽包转换后，在NAT网关的配额申请页面，申请**natgw\_privilege\_allow\_bind\_eip**权限，将转换后的EIP绑定到NAT网关上。详细说明，请参见[绑定EIP](/cn.zh-CN/用户指南/NAT网关实例/绑定与解绑EIP/绑定EIP.md)。
+3.  完成所有NAT网关带宽包转换后，在NAT网关的配额申请页面，申请**natgw\_privilege\_allow\_bind\_eip**权限。
 
     该权限也是自动审批，一分钟后刷新页面查看申请状态。
+
+    **说明：** **natgw\_privilege\_allow\_bind\_eip**权限申请成功后，如果您要将其他EIP绑定到NAT网关，请先退出账号，重新登录NAT网关控制台，再将EIP绑定到NAT网关上。具体操作，请参见[绑定EIP](/cn.zh-CN/用户指南/NAT网关实例/绑定与解绑EIP/绑定EIP.md)。
 
     ![绑定eip权限](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6951400951/p96400.png)
 
