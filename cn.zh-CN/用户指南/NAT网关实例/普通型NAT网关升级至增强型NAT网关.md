@@ -8,11 +8,9 @@ keyword: [NAT网关, 升级, 访问公网, 提供公网服务]
 
 2020年10月01日起至2020年12月31日止，您可以免费在NAT网关管理控制台自助将普通型NAT网关升级为增强型NAT网关。
 
-**说明：** 目前，仅华北2（北京）、华东1（杭州）、华东2（上海）和华南1（深圳）不支持将普通型NAT网关升级为增强型NAT网关。
-
 将普通型NAT网关升级至增强型NAT网关前，您需要了解下图中的升级说明。
 
-![了解事项](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6333659951/p147943.png)
+![了解事项](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6333659951/p147943.png)
 
 ## 升级至增强型NAT网关
 
@@ -24,11 +22,11 @@ keyword: [NAT网关, 升级, 访问公网, 提供公网服务]
 
     如果您不是首次升级，请单击**继续升级**。
 
-    ![立即切换](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7856431061/p146934.png)
+    ![立即切换](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7856431061/p146934.png)
 
 4.  在**升级至增强型NAT网关**对话框，选中**我已知晓上述内容，确认进行升级**，完成以下配置以升级NAT网关的网关类型，然后单击**确定**。
 
-    ![切换页面](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4307431061/p148992.png)
+    ![切换页面](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4307431061/p148992.png)
 
     |配置|说明|
     |--|--|
@@ -41,7 +39,7 @@ keyword: [NAT网关, 升级, 访问公网, 提供公网服务]
 
     每个资源升级过程可能会持续5分钟，升级过程中会出现1~2次秒级闪断，业务重连即可恢复。
 
-    ![查看进度](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/4677431061/p147358.png)
+    ![查看进度](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4677431061/p147358.png)
 
 
 **相关文档**  
