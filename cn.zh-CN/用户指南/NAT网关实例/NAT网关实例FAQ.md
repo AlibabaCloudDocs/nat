@@ -6,6 +6,8 @@ keyword: [NAT网关, 常见问题, FAQ]
 
 本文介绍NAT网关实例相关的常见问题。
 
+-   [为什么NAT网关控制台不能绑定EIP？](#section_dxn_v29_z2k)
+-   [为什么NAT网关控制台不能购买NAT带宽包？](#section_g17_xi3_lt0)
 -   [一个阿里云账号支持创建多少个NAT网关实例？](#section_ch5_lda_osh)
 -   [一个VPC支持创建多少个NAT网关实例？](#section_8l9_cwy_02b)
 -   [一个NAT网关实例支持绑定多少个EIP？](#section_9hb_4u4_f2e)
@@ -14,6 +16,17 @@ keyword: [NAT网关, 常见问题, FAQ]
 -   [NAT网关实例支持从包年包月转换为按量付费吗？](#section_vrx_7la_ch1)
 -   [NAT网关实例支持从按量付费转换为包年包月吗？](#section_hm7_2wq_l9y)
 -   [NAT网关绑定EIP后，为什么访问公网的流量达不到EIP的带宽峰值？](#section_i0c_yb8_sw1)
+
+## 为什么NAT网关控制台不能绑定EIP？
+
+如果您的账号在2017年11月03日之前存在NAT带宽包，您仍需使用NAT带宽包为该NAT网关提供公网IP。如需使用EIP绑定NAT网关功能，请根据以下信息操作。
+
+-   如果您的NAT带宽包的计费方式为按固定带宽计费，您可以将NAT带宽包中的公网IP转换为EIP。具体操作，请参见[NAT网关带宽包转换为共享带宽](/cn.zh-CN/NAT网关带宽包 （停止新购）/NAT网关带宽包转换为共享带宽.md)。
+-   如果您的NAT带宽包的计费方式为按使用流量计费，请先提交工单申请将NAT带宽包中的公网IP转换为EIP的白名单，然后再将NAT带宽包中的公网IP会转换为EIP。具体操作，请参见[NAT网关带宽包转换为共享带宽](/cn.zh-CN/NAT网关带宽包 （停止新购）/NAT网关带宽包转换为共享带宽.md)。如需提交工单，请单击[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)。
+
+## 为什么NAT网关控制台不能购买NAT带宽包？
+
+如果您的账号在2017年11月03日之前不存在NAT带宽包，您需要为NAT网关绑定EIP使其具备访问公网的能力。具体操作，请参见[绑定EIP](/cn.zh-CN/用户指南/NAT网关实例/绑定与解绑EIP/绑定EIP.md)。
 
 ## 一个阿里云账号支持创建多少个NAT网关实例？
 
@@ -46,7 +59,7 @@ keyword: [NAT网关, 常见问题, FAQ]
 
 不可以。
 
-当您在增强型NAT实例上同时创建了SNAT和DNAT，VPC内的ECS实例通过该增强型NAT实例的SNAT能力去访问同NAT实例内的DNAT服务时无法联通。
+当您在增强型NAT实例上同时创建了SNAT和DNAT，VPC内的ECS实例通过该增强型NAT实例的SNAT能力去访问同NAT网关实例内的DNAT服务时无法联通。
 
 如果您需要ECS实例去访问同一个VPC内的DNAT服务，建议您新建一个增强型NAT网关，然后将DNAT和SNAT分别创建在不同的NAT网关实例上。
 
