@@ -6,8 +6,6 @@ keyword: [NAT网关, 增强型, NAT2.0]
 
 阿里云发布增强型NAT网关，增强型NAT网关在普通型NAT网关的技术架构上作了升级，具有更优的弹性和更强的稳定性，帮助您更好的管理公网访问流量。
 
-**说明：** 目前，除澳大利亚（悉尼）地域外的其他所有地域都已支持创建增强型NAT网关实例。
-
 ## 增强型NAT网关简介
 
 增强型NAT网关与普通型NAT网关都支持DNAT（提供公网服务）和SNAT（访问公网服务）等基础功能。增强型NAT网关在普通型NAT网关的基础上新增了部分功能。新增功能如下：
@@ -29,9 +27,7 @@ keyword: [NAT网关, 增强型, NAT2.0]
 -   按使用量计费
     -   按使用量计费相比于按固定规格计费，使用费用更低。
 
-        **说明：** 目前，仅以下地域的增强型NAT网关支持按使用量计费：华东2（上海）、华北2（北京）、华北3（张家口）、华北5（呼和浩特）、华北6（乌兰察布）、华南2（河源）、西南1（成都）、新加坡、马来西亚（吉隆坡）、印度（孟买）、印度尼西亚（雅加达）、德国（法兰克福）和英国（伦敦）地域。
-
-        ![费用对比](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/7633359951/p161421.png)
+        ![费用对比](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7633359951/p161421.png)
 
     -   按使用量计费的NAT网关具有更强的突发性能，性能对比如下：
 
@@ -97,9 +93,9 @@ keyword: [NAT网关, 增强型, NAT2.0]
 
 **说明：** 如果您使用子账号创建增强型NAT网关，请先使用主账号进行授权。[授权入口](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunNATAccessingNetworkInterfaceRole%22,%20%22TemplateId%22:%20%22ENIRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fvpc.console.aliyun.com%2Fnat%22,%20%22Service%22:%20%22NAT%22%7D)。
 
-![创建增强型NAT网关](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/3408560061/p101531.png)
+![创建增强型NAT网关](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3408560061/p101531.png)
 
 增强型NAT网关的使用流程如下。
 
-![NAT2.0流程](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/8633359951/p101647.png)
+![NAT2.0流程](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8633359951/p101647.png)
 
