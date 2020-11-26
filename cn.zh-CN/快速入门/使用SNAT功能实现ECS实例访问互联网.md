@@ -1,26 +1,30 @@
+---
+keyword: [NAT网关, 访问公网, SNAT]
+---
+
 # 使用SNAT功能实现ECS实例访问互联网
 
 本教程指导您配置NAT网关的SNAT功能，实现无公网IP的ECS实例访问互联网。
 
 ## 配置场景
 
-本教程以下图场景为例。某公司在阿里云创建了VPC和交换机，交换机中创建了多个ECS实例。ECS实例均未分配固定公网IP，也未绑定弹性公网IP（EIP）。因公司业务发展，需要每台ECS实例都需要访问互联网。
+本教程以下图场景为例。某公司在阿里云创建了VPC和交换机，交换机中创建了多个ECS实例。ECS实例均未分配固定公网IP，也未绑定弹性公网IP。因公司业务发展，需要每台ECS实例都需要访问互联网。
 
 您可以通过NAT网关的SNAT功能，为VPC内无公网IP的ECS实例提供访问互联网的代理服务。
 
-![SNAT配置场景](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1371359951/p149166.png)
+![SNAT配置场景](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1371359951/p149166.png)
 
 ## 前提条件
 
 开始前，请确保满足以下条件：
 
 -   您已经注册了阿里云账号。如未注册，请先完成[账号注册](https://account.aliyun.com/register/register.htm)。
--   您已经创建了专有网络（VPC）和交换机。详细信息，请参见[创建专有网络](/cn.zh-CN/专有网络和交换机/管理专有网络/创建专有网络.md)。
--   您已经创建了EIP，且EIP的地域与要绑定的NAT网关的地域相同。详细信息，请参见[申请新EIP](/cn.zh-CN/用户指南/申请EIP/申请新EIP.md)。
+-   您已经创建了专有网络（VPC）和交换机。具体操作，请参见[创建专有网络](/cn.zh-CN/专有网络和交换机/管理专有网络/创建专有网络.md)。
+-   您已经创建了EIP，且EIP的地域与要绑定的NAT网关的地域相同。具体操作，请参见[申请新EIP](/cn.zh-CN/用户指南/申请EIP/申请新EIP.md)。
 
 ## 配置步骤
 
-![配置步骤](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1371359951/p149588.png)
+![配置步骤](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1371359951/p149588.png)
 
 ## 步骤一：创建NAT网关
 
@@ -36,14 +40,11 @@ NAT网关是一款企业级的公网网关，提供NAT代理功能。在配置SN
 
     -   **付费模式**：选择NAT网关实例的付费模式。
 
-        -   **包年包月**：包年包月是一种先付费后使用的付费模式。详细信息，请参见[包年包月](/cn.zh-CN/产品定价/包年包月.md)。
-        -   **按量付费**：按量付费是一种先使用后付费的付费模式。详细信息，请参见[按量付费](/cn.zh-CN/产品定价/按量付费.md)。
+        -   **包年包月**：包年包月是一种先付费后使用的付费模式。更多信息，请参见[包年包月](/cn.zh-CN/产品定价/包年包月.md)。
+        -   **按量付费**：按量付费是一种先使用后付费的付费模式。更多信息，请参见[按量付费](/cn.zh-CN/产品定价/按量付费.md)。
         本教程选择**包年包月**。
 
     -   **地域和可用区**：选择需要创建NAT网关的地域。
-
-        **说明：** 目前，除澳大利亚（悉尼）地域外的其他所有地域都已支持创建增强型NAT网关实例。
-
     -   **VPC ID**：选择NAT网关所属的VPC。创建NAT网关后，不能修改NAT网关所属的VPC。
 
         **说明：** 如果在VPC列表中，找不到目标VPC，请从以下方面进行排查：
@@ -64,7 +65,7 @@ NAT网关是一款企业级的公网网关，提供NAT代理功能。在配置SN
 
     -   **名称**：设置NAT网关实例的名称。
 
-        名称长度为2~128个字符，以英文字母或中文开头，可包含数字、下划线（\_）和短横线（-）。
+        名称长度为2~128个字符，以英文字母或中文开头，可包含数字、下划线（\_）和短划线（-）。
 
     -   **规格**：选择NAT网关的规格。
 
@@ -72,7 +73,7 @@ NAT网关是一款企业级的公网网关，提供NAT代理功能。在配置SN
         -   **中型**
         -   **大型**
         -   **超大型-1**
-        NAT网关的规格会影响SNAT功能的最大连接数和每秒新建连接数，但不会影响DNAT性能。详细信息，请参见[实例规格](/cn.zh-CN/NAT网关实例/NAT网关实例概述.md)。
+        NAT网关的规格会影响SNAT功能的最大连接数和每秒新建连接数，但不会影响DNAT性能。更多信息，请参见[实例规格](/cn.zh-CN/用户指南/NAT网关实例/NAT网关实例概述.md)。
 
         本教程选择**小型**。
 
@@ -81,7 +82,7 @@ NAT网关是一款企业级的公网网关，提供NAT代理功能。在配置SN
 
 创建成功后，您可以在**NAT网关**页面查看已创建的NAT网关实例。
 
-![创建NAT网关](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/2371359951/p149224.png)
+![创建NAT网关](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2371359951/p149224.png)
 
 ## 步骤二：绑定EIP
 
@@ -89,7 +90,7 @@ NAT网关作为一个网关设备，需要绑定公网IP才能正常工作。创
 
 完成以下操作，为NAT网关绑定EIP。
 
-1.  在**NAT网关**页面，找到步骤一创建的NAT网关实例，单击其**操作**列下的**![更多操作](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/2081359951/p103337.png)** \> **绑定弹性公网IP**。
+1.  在**NAT网关**页面，找到步骤一创建的NAT网关实例，在其**操作**列下，选择**![更多操作](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2081359951/p103337.png)** \> **绑定弹性公网IP**。
 
 2.  在绑定弹性公网IP对话框，根据以下信息绑定EIP，然后单击**确定**。
 
@@ -127,7 +128,7 @@ NAT网关的SNAT功能可以为VPC中无公网IP的ECS实例提供访问互联�
         -   增强型NAT网关白名单支持将一个公网IP同时用于DNAT条目和SNAT条目。如需使用，请[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)。
     -   **条目名称**：SNAT条目的名称。
 
-        名称长度为2~128个字符，以大小写字母或中文开头， 可包含数字、下划线（\_）和短横线（-）。
+        名称长度为2~128个字符，以大小写字母或中文开头， 可包含数字、下划线（\_）和短划线（-）。
 
 4.  单击**确定**。
 
@@ -146,6 +147,6 @@ SNAT条目配置成功后，您可以测试ECS实例的网络连通性。
 
     经测试，ECS实例可以访问互联网。
 
-    ![测试连通性](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1371359951/p149291.png)
+    ![测试连通性](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1371359951/p149291.png)
 
 
