@@ -1,19 +1,18 @@
 # UpdateNatGatewayNatType
 
-调用UpdateNatGatewayNatType接口将普通型NAT网关切换为增强型NAT网关。
+调用UpdateNatGatewayNatType接口将普通型NAT网关升级为增强型NAT网关。
 
 ## API描述
 
 调用UpdateNatGatewayNatType接口前，请先了解：
 
--   UpdateNatGatewayNatType接口属于异步接口，即系统会先返回一个请求ID，但NAT网关的网关类型并未切换完成，系统后台的切换任务仍在进行。您可以调用[GetNatGatewayConvertStatus](~~184744~~)查询NAT网关的切换状态：
-    -   当NAT网关的切换状态处于**processing**时，表示正在切换中，在该状态下，您只能执行查询操作，不能执行其他操作。
-    -   当NAT网关的切换状态处于**successful**时，表示NAT网关的网关类型切换完成。
-    -   当NAT网关的切换状态处于**failed**时，表示NAT网关的网关类型切换失败。
--   目前，仅西南1（成都）、华北1（青岛）、华北5（呼和浩特）、华南2（河源）、新加坡、英国（伦敦）、德国（法兰克福）、马来西亚（吉隆坡）、美国（弗吉尼亚）、印度尼西亚（雅加达）和印度（孟买）地域支持将普通型NAT网关升级为增强型NAT网关，且需申请白名单。如需使用，请提交工单。
--   增强型NAT网关与普通型NAT网关的计费相同，切换过程和切换后不会产生新的计费。
--   每个资源切换过程可能会持续5分钟，切换过程中会出现1~2次秒级闪断，业务重连即可恢复。
--   仅支持将普通型NAT网关切换至增强型NAT网关，不支持将增强型NAT网关切换至普通型NAT网关。
+-   UpdateNatGatewayNatType接口属于异步接口，即系统会先返回一个请求ID，但NAT网关的网关类型并未升级完成，系统后台的升级任务仍在进行。您可以调用GetNatGatewayConvertStatus查询NAT网关的升级状态，更多信息，请参见[GetNatGatewayConvertStatus](~~184744~~)。
+    -   当NAT网关的升级状态处于**processing**时，表示正在升级中，在该状态下，您只能执行查询操作，不能执行其他操作。
+    -   当NAT网关的升级状态处于**successful**时，表示NAT网关的网关类型升级完成。
+    -   当NAT网关的升级状态处于**failed**时，表示NAT网关的网关类型升级失败。
+-   增强型NAT网关与普通型NAT网关的计费相同，升级过程和升级后不会产生新的计费。
+-   每个资源升级过程可能会持续5分钟，升级过程中会出现1~2次秒级闪断，业务重连即可恢复。
+-   仅支持将普通型NAT网关升级至增强型NAT网关，不支持将增强型NAT网关降级至普通型NAT网关。
 
 ## 调试
 
@@ -24,20 +23,18 @@
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
 |Action|String|是|UpdateNatGatewayNatType|要执行的操作，取值：**UpdateNatGatewayNatType**。 |
-|NatGatewayId|String|是|ngw-bp1b0lic8uz4r6vf2\*\*\*\*|要切换网关类型的NAT网关实例ID。 |
+|NatGatewayId|String|是|ngw-bp1b0lic8uz4r6vf2\*\*\*\*|要升级网关类型的NAT网关实例ID。 |
 |NatType|String|是|Enhanced|NAT网关类型，仅可取值：**Enhanced**（增强型NAT网关）。 |
-|RegionId|String|是|cn-qingdao|要切换的NAT网关所属的地域ID。 |
+|RegionId|String|是|cn-qingdao|要升级的NAT网关所属的地域ID。 |
 |VSwitchId|String|是|vsw-bp17nszybg8epodke\*\*\*\*|增强型NAT网关所属的交换机。
 
  **说明：** 如果不传该参数，系统会随机将增强型NAT网关创建在VPC内的任意一台交换机。 |
 |DryRun|Boolean|否|false|是否只预检此次请求，取值：
 
- **true**：发送请求，不会切换NAT网关类型。检查项包括AccessKey是否有效、RAM用户的授权情况和是否填写了必需参数。如果检查不通过，则返回对应错误。如果检查通过，会返回错误码`DryRunOperation`。
+ **true**：发送请求，不会升级NAT网关类型。检查项包括AccessKey是否有效、RAM用户的授权情况和是否填写了必需参数。如果检查不通过，则返回对应错误。如果检查通过，会返回错误码`DryRunOperation`。
 
- **false**（默认值）：发送正常请求，通过检查后返回2XX HTTP状态码并直接切换NAT网关类型。 |
-|ClientToken|String|否|0c593ea1-3bea-11e9-b96b-88e9fe637760|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字
-
- 符，且不能超过64个字符。 |
+ **false**（默认值）：发送正常请求，通过检查后返回2XX HTTP状态码并直接升级NAT网关类型。 |
+|ClientToken|String|否|0c593ea1-3bea-11e9-b96b-88e9fe637760|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字符，且不能超过64个字符。 |
 
 ## 返回数据
 
