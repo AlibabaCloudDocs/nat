@@ -6,7 +6,7 @@
 
 在调用本接口创建NAT网关时，请注意：
 
--   首次创建增强型NAT网关时，系统会自动创建一个名称为AliyunServiceRoleForNatgw的服务关联角色，并且为该角色添加名称为AliyunServiceRolePolicyForNatgw的权限策略，授予NAT网关拥有访问其他云资源的权限。详细信息，请参见[服务关联角色](~~174251~~)。
+-   首次创建增强型NAT网关时，系统会自动创建一个名称为AliyunServiceRoleForNatgw的服务关联角色，并且为该角色添加名称为AliyunServiceRolePolicyForNatgw的权限策略，授予NAT网关拥有访问其他云资源的权限。更多信息，请参见[服务关联角色](~~174251~~)。
 
 **说明：** 如果您要创建的NAT网关类型为普通型NAT网关，系统不会自动创建名称为AliyunServiceRoleForNatgw的服务关联角色，也能成功创建NAT网关。
 
@@ -87,15 +87,11 @@
 |NatType|String|否|Enhanced|NAT网关的类型，取值：
 
  -   **Normal**：普通型NAT网关。
--   **Enhanced**：增强型NAT网关。增强型NAT网关详情，请参见[增强型NAT网关发布公告](~~163610~~)。
-
- **说明：** 目前，除澳大利亚（悉尼）地域外的其他所有地域都已支持创建增强型NAT网关实例。 |
+-   **Enhanced**：增强型NAT网关。增强型NAT网关详情，请参见[增强型NAT网关发布公告](~~163610~~)。 |
 |InternetChargeType|String|否|PayBySpec|NAT网关的计费类型，取值：
 
  -   **PayBySpec**：按固定规格计费。
--   **PayByLcu**：按使用量计费。
-
- **说明：** 目前，仅在华东2（上海）、华北2（北京）、华北3（张家口）、华北5（呼和浩特）、华北6（乌兰察布）、华南2（河源）、西南1（成都）、新加坡、马来西亚（吉隆坡）、印度（孟买）、印度尼西亚（雅加达）、德国（法兰克福）和英国（伦敦）地域下，且仅**NatType**取值为**Enhanced**时，**InternetChargeType**才支持取值为**PayByLcu**。 |
+-   **PayByLcu**：按使用量计费。 |
 
 ## 返回数据
 
