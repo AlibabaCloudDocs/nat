@@ -12,20 +12,20 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 |---|--------|--------|----|
 |同VPC多NAT网关|支持|不支持|[创建NAT网关]()|
 |NAT网关关联交换机|支持|不支持|
-|按使用量计费|支持|不支持|[按使用量计费](/cn.zh-CN/购买指南/按量付费.mdsection_v5g_sue_5bj)|
-|按小时计费周期|支持|不支持|[按量付费](/cn.zh-CN/购买指南/按量付费.md)|
+|按使用量计费|支持|不支持|[t16029.md\#section\_v5g\_sue\_5bj](/cn.zh-CN/购买指南/按量付费.mdsection_v5g_sue_5bj)|
+|按小时计费周期|支持|不支持|[t16029.md\#section\_v5g\_sue\_5bj](/cn.zh-CN/购买指南/按量付费.mdsection_v5g_sue_5bj)|
 |处理TCP、UDP和ICMP分片包|支持|不支持|无|
 |监控指标|22个|4个|[使用云监控来监控NAT网关](/cn.zh-CN/用户指南/使用云监控来监控NAT网关.md)|
-|网关流量监控（TOP ECS）|支持|不支持|[查看网关流量监控]()|
-|NAT网关绑定多EIP|支持|支持|[绑定EIP]()|
-|SNAT功能|支持|支持|[SNAT概述](/cn.zh-CN/用户指南/SNAT（访问公网服务）/SNAT概述.md)|
-|一个SNAT列表创建多条SNAT条目|支持|支持|[创建SNAT条目](/cn.zh-CN/用户指南/SNAT（访问公网服务）/创建SNAT条目.md)|
+|网关流量监控（TOP ECS）|支持|不支持|[查看网关流量监控](/cn.zh-CN/用户指南/使用云监控来监控NAT网关.mdsection_l14_d8f_gsa)|
+|NAT网关绑定多EIP|支持|支持|[绑定弹性公网IP](/cn.zh-CN/用户指南/NAT网关实例/使用NAT网关.md)|
+|SNAT功能|支持|支持|[创建SNAT实现访问公网服务](/cn.zh-CN/用户指南/SNAT（访问公网服务）/创建SNAT实现访问公网服务.md)|
+|一个SNAT列表创建多条SNAT条目|支持|支持|[创建SNAT实现访问公网服务](/cn.zh-CN/用户指南/SNAT（访问公网服务）/创建SNAT实现访问公网服务.md)|
 |一个SNAT列表绑定多个EIP|支持|支持|
-|DNAT功能|支持|支持|[DNAT概述](/cn.zh-CN/用户指南/DNAT（提供公网服务）/DNAT概述.md)|
+|DNAT功能|支持|支持|[创建DNAT提供公网服务](/cn.zh-CN/用户指南/DNAT（提供公网服务）/创建DNAT提供公网服务.md)|
 |DNAT支持端口映射|支持|支持|[创建DNAT提供公网服务](/cn.zh-CN/用户指南/DNAT（提供公网服务）/创建DNAT提供公网服务.md)|
 |DNAT支持IP映射|支持|支持|
 |包年包月计费|支持|支持|[包年包月](/cn.zh-CN/购买指南/包年包月.md)|
-|按天的计费周期|不支持|支持|[按量付费](/cn.zh-CN/购买指南/按量付费.md)|
+|按天的计费周期|不支持|支持|[t16029.md\#](/cn.zh-CN/购买指南/按量付费.md)|
 |ECS实例通过SNAT访问同一个NAT实例上的DNAT服务|不支持|支持|[ECS实例通过增强型NAT网关的SNAT功能访问同一VPC下的DNAT服务](/cn.zh-CN/最佳实践/ECS实例通过增强型NAT网关的SNAT功能访问同一VPC下的DNAT服务.md)|
 
 ## 限制对比
