@@ -16,7 +16,7 @@
 
 ![了解事项](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6333659951/p147943.png)
 
-升级操作，请参见[普通型NAT网关升级至增强型NAT网关](/cn.zh-CN/用户指南/NAT网关实例/普通型NAT网关升级至增强型NAT网关.md)。
+升级操作，请参见[如何升级普通型NAT实例为增强型NAT实例](/cn.zh-CN/网关类型/如何升级普通型NAT实例为增强型NAT实例.md)。
 
 ## 联系我们
 
