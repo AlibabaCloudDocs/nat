@@ -36,9 +36,8 @@
 |PageSize|Integer|否|1|分页查询时每页的行数，最大值为**50**，默认值为**10**。 |
 |DryRun|Boolean|否|true|是否只预检此次请求，取值：
 
- **true**：发送检查请求，不会查询资源状况。检查项包括AccessKey是否有效、RAM用户的授权情况和是否填写了必需参数。如果检查不通过，则返回对应错误。如果检查通过，会返回错误码`DryRunOperation`。
-
- **false**（默认值）：发送正常请求，通过检查后返回2XX HTTP状态码并直接查询资源状况。 |
+ -   **true**：发送检查请求，不会查询资源状况。检查项包括AccessKey是否有效、RAM用户的授权情况和是否填写了必需参数。如果检查不通过，则返回对应错误。如果检查通过，会返回错误码`DryRunOperation`。
+-   **false**（默认值）：发送正常请求，通过检查后返回2XX HTTP状态码并直接查询资源状况。 |
 
 ## 返回数据
 
@@ -50,7 +49,7 @@
 
  -   **Normal**：正常。
 -   **FinancialLocked**：欠费锁定状态。 |
-|CreationTime|String|2017-06-08T12:20:55|创建时间。按照ISO8601标准表示，并需要使用UTC时间。格式为：YYYY-MM-DDThh:mmZ。 |
+|CreationTime|String|2017-06-08T12:20Z|创建时间。按照ISO8601标准表示，并需要使用UTC时间。格式为：YYYY-MM-DDThh:mmZ。 |
 |DeletionProtection|Boolean|true|是否开启了删除保护功能。
 
  -   **true**：已开启。
@@ -87,7 +86,7 @@
 |EniInstanceId|String|10|弹性网卡实例ID。 |
 |IzNo|String|cn-hangzhou-b|NAT网关所属的可用区。 |
 |MaxBandwidth|Integer|5120|最大带宽值，单位为Mbps。 |
-|PrivateIpAddress|String|192.168.1.xx|私网IP地址。 |
+|PrivateIpAddress|String|192.168.xx.xx|私网IP地址。 |
 |VswitchId|String|vsw-bp1s2laxhdf9ayjbo\*\*\*\*|NAT网关所属的交换机ID。 |
 |NatType|String|Normal|NAT网关的类型。
 
@@ -102,17 +101,13 @@
 -   **Middle**：中型。
 -   **Large**：大型。
 -   **XLarge.1**：超大型-1。 |
-|Status|String|Initiating|NAT网关的状态。
+|Status|String|Creating|NAT网关的状态。
 
- **Creating**：创建NAT网关是异步操作，在创建完成之前是Creating状态。
-
- **Available**：NAT网关创建完成后的状态，是稳定状态。
-
- **Modifying**：变配NAT网关是异步操作，在变配的过程中是Modifying状态。
-
- **Deleting**：删除NAT网关是异步操作，在删除的过程中是Deleting状态。
-
- **Converting**：普通型NAT网关转换到增强型NAT网关是异步操作，在转换过程中是Converting状态。 |
+ -   **Creating**：创建NAT网关是异步操作，在创建完成之前是Creating状态。
+-   **Available**：NAT网关创建完成后的状态，是稳定状态。
+-   **Modifying**：变配NAT网关是异步操作，在变配的过程中是Modifying状态。
+-   **Deleting**：删除NAT网关是异步操作，在删除的过程中是Deleting状态。
+-   **Converting**：普通型NAT网关转换到增强型NAT网关是异步操作，在转换过程中是Converting状态。 |
 |VpcId|String|vpc-bp15zckdt37pq72z\*\*\*\*|NAT网关所属的VPC的ID。 |
 |PageNumber|Integer|10|当前页码。 |
 |PageSize|Integer|10|每页包含的条目数。 |
@@ -135,42 +130,55 @@ http(s)://vpc.aliyuncs.com/?Action=DescribeNatGateways
 
 ```
 <DescribeNatGatewaysResponse>
-    <PageNumber>1</PageNumber>
-    <TotalCount>1</TotalCount>
-    <PageSize>10</PageSize>
-    <RequestId>1207C80C-7CAB-4874-A9A0-D19EC9F35490</RequestId>
-    <NatGateways>
-            <NatGateway>
-                    <Description></Description>
-                    <Spec>Small</Spec>
-                    <IpLists>
-                            <IpList>
-                                    <IpAddress>118.xx.xx.181</IpAddress>
-                                    <AllocationId>eip-bp1xyg5ipmh3nledx****</AllocationId>
-                                    <UsingStatus>UsedBySnatTable</UsingStatus>
-                            </IpList>
-                            <IpList>
-                                    <IpAddress>47.xx.xx.34</IpAddress>
-                                    <AllocationId>eip-bp19eue77u20cffjc****</AllocationId>
-                                    <UsingStatus>UsedByForwardTable</UsingStatus>
-                            </IpList>
-                    </IpLists>
-                    <ForwardTableIds>
-                            <ForwardTableId>ftb-bp15o9aylj19vfvgt****</ForwardTableId>
-                    </ForwardTableIds>
-                    <VpcId>vpc-bp15k6sx6fhdz2jw4****</VpcId>
-                    <NatGatewayId>ngw-bp1047e2d4z7kf2ki****</NatGatewayId>
-                    <CreationTime>2018-01-10T09:48:29Z</CreationTime>
-                    <Name></Name>
-                    <Status>Available</Status>
-                    <BusinessStatus>Normal</BusinessStatus>
-                    <RegionId>cn-hangzhou</RegionId>
-                    <SnatTableIds>
-                            <SnatTableId>stb-bp1tyr0o48w6wymur****</SnatTableId>
-                    </SnatTableIds>
-                    <InstanceChargeType>PostPaid</InstanceChargeType>
-            </NatGateway>
-    </NatGateways>
+  <TotalCount>10</TotalCount>
+  <PageSize>10</PageSize>
+  <RequestId>4EC47282-1B74-4534-BD0E-403F3EE64CAF	</RequestId>
+  <PageNumber>10</PageNumber>
+  <NatGateways>
+        <NatGateway>
+              <Status>Initiating</Status>
+              <Description>NAT</Description>
+              <ResourceGroupId>rg-bp67acfmxazb4ph****</ResourceGroupId>
+              <InstanceChargeType>PostPaid</InstanceChargeType>
+              <DeletionProtection>true</DeletionProtection>
+              <NatType>Normal</NatType>
+              <BusinessStatus>Normal</BusinessStatus>
+              <InternetChargeType>PayBySpec</InternetChargeType>
+              <Name>abc</Name>
+              <EcsMetricEnabled>true</EcsMetricEnabled>
+              <VpcId>vpc-bp15zckdt37pq72z****</VpcId>
+              <ExpiredTime>2017-08-26T16:00Z</ExpiredTime>
+              <CreationTime>2017-06-08T12:20Z</CreationTime>
+              <RegionId>cn-hangzhou</RegionId>
+              <Spec>Small</Spec>
+              <NatGatewayId>ngw-bp1047e2d4z7kf2ki****</NatGatewayId>
+        </NatGateway>
+        <NatGateway>
+              <IpLists>
+                    <IpList>
+                          <SnatEntryEnabled>false</SnatEntryEnabled>
+                          <IpAddress>116.62.222.xx</IpAddress>
+                    </IpList>
+              </IpLists>
+        </NatGateway>
+        <NatGateway>
+              <SnatTableIds>
+                    <SnatTableId>stb-uf6dalcdu0krz423p****</SnatTableId>
+              </SnatTableIds>
+              <ForwardTableIds>
+                    <ForwardTableId>ftb-uf6gj3mhsg94qsqst****</ForwardTableId>
+              </ForwardTableIds>
+        </NatGateway>
+        <NatGateway>
+              <NatGatewayPrivateInfo>
+                    <IzNo>cn-hangzhou-b</IzNo>
+                    <PrivateIpAddress>192.168.xx.xx</PrivateIpAddress>
+                    <MaxBandwidth>5120</MaxBandwidth>
+                    <EniInstanceId>10</EniInstanceId>
+                    <VswitchId>vsw-bp1s2laxhdf9ayjbo****</VswitchId>
+              </NatGatewayPrivateInfo>
+        </NatGateway>
+  </NatGateways>
 </DescribeNatGatewaysResponse>
 ```
 
@@ -178,47 +186,54 @@ http(s)://vpc.aliyuncs.com/?Action=DescribeNatGateways
 
 ```
 {
-    "PageNumber": 1, 
-    "TotalCount": 1, 
-    "PageSize": 10, 
-    "RequestId": "1207C80C-7CAB-4874-A9A0-D19EC9F35490", 
+    "TotalCount": 10,
+    "PageSize": 10,
+    "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF",
+    "PageNumber": 10,
     "NatGateways": {
-        "NatGateway": [ 
+        "NatGateway": [
             {
-                "Description": "", 
-                "Spec": "Small", 
+                "Status": "Initiating",
+                "Description": "NAT",
+                "ResourceGroupId": "rg-bp67acfmxazb4ph****",
+                "InstanceChargeType": "PostPaid",
+                "DeletionProtection": true,
+                "NatType": "Normal",
+                "BusinessStatus": "Normal",
+                "InternetChargeType": "PayBySpec",
+                "Name": "abc",
+                "EcsMetricEnabled": true,
+                "VpcId": "vpc-bp15zckdt37pq72z****",
+                "ExpiredTime": "2017-08-26T16:00Z",
+                "CreationTime": "2017-06-08T12:20Z",
+                "RegionId": "cn-hangzhou",
+                "Spec": "Small",
+                "NatGatewayId": "ngw-bp1047e2d4z7kf2ki****"
+            },
+            {
                 "IpLists": {
-                    "IpList": [
-                        {
-                            "IpAddress": "118.xx.xx.181", 
-                            "AllocationId": "eip-bp1xyg5ipmh3nledx****", 
-                            "UsingStatus": "UsedBySnatTable"
-                        }, 
-                        {
-                            "IpAddress": "47.xx.xx.34", 
-                            "AllocationId": "eip-bp19eue77u20cffjc****", 
-                            "UsingStatus": "UsedByForwardTable"
-                        }
-                    ]
-                }, 
-                "ForwardTableIds": {
-                    "ForwardTableId": [
-                        "ftb-bp15o9aylj19vfvgt****"
-                    ]
-                }, 
-                "VpcId": "vpc-bp15k6sx6fhdz2jw4****", 
-                "NatGatewayId": "ngw-bp1047e2d4z7kf2ki****", 
-                "CreationTime": "2018-01-10T09:48:29Z", 
-                "Name": "", 
-                "Status": "Available", 
-                "BusinessStatus": "Normal", 
-                "RegionId": "cn-hangzhou", 
+                    "IpList": {
+                        "SnatEntryEnabled": false,
+                        "IpAddress": "116.62.222.xx"
+                    }
+                }
+            },
+            {
                 "SnatTableIds": {
-                    "SnatTableId": [
-                        "stb-bp1tyr0o48w6wymur****"
-                    ]
-                }, 
-                "InstanceChargeType": "PostPaid"
+                    "SnatTableId": "stb-uf6dalcdu0krz423p****"
+                },
+                "ForwardTableIds": {
+                    "ForwardTableId": "ftb-uf6gj3mhsg94qsqst****"
+                }
+            },
+            {
+                "NatGatewayPrivateInfo": {
+                    "IzNo": "cn-hangzhou-b",
+                    "PrivateIpAddress": "192.168.xx.xx",
+                    "MaxBandwidth": 5120,
+                    "EniInstanceId": 10,
+                    "VswitchId": "vsw-bp1s2laxhdf9ayjbo****"
+                }
             }
         ]
     }
