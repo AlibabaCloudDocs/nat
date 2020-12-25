@@ -51,11 +51,15 @@ NAT网关提供不同的规格。NAT网关的规格会影响SNAT功能的最大�
 |RegionId|String|是|cn-hangzhou|NAT网关所属的地域。 |
 |Spec|String|是|Small|NAT网关的规格，取值：
 
- -   Small：小型。
--   Middle：中型。
--   Large：大型。
--   XLarge.1：超大型-1。 |
-|ClientToken|String|否|SHA234js121223xxxxx|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字符，且不能超过64个字符。 |
+ -   **Small**：小型。
+-   **Middle**：中型。
+-   **Large**：大型。
+-   **XLarge.1**：超大型-1。 |
+|AutoPay|Boolean|否|false|是否自动付费。
+
+ -   **true**：开启自动付费。
+-   **false**（默认值）：不开启自动付费。 |
+|ClientToken|String|否|SHA234js121223\*\*\*\*|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字符，且不能超过64个字符。 |
 
 ## 返回数据
 
@@ -81,7 +85,7 @@ https://vpc.aliyuncs.com/?Action=ModifyNatGatewaySpec
 
 ```
 <ModifyNatGatewaySpecResponse>
-      <RequestId>DBD4E4A2-786E-4BD2-8EB6-107FFC2B5B7D</RequestId>
+  <RequestId>DBD4E4A2-786E-4BD2-8EB6-107FFC2B5B7D</RequestId>
 </ModifyNatGatewaySpecResponse>
 ```
 
@@ -89,7 +93,7 @@ https://vpc.aliyuncs.com/?Action=ModifyNatGatewaySpec
 
 ```
 {
-    "RequestId":"DBD4E4A2-786E-4BD2-8EB6-107FFC2B5B7D"
+    "RequestId": "DBD4E4A2-786E-4BD2-8EB6-107FFC2B5B7D"
 }
 ```
 
