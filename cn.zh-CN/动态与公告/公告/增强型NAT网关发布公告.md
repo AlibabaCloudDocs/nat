@@ -1,5 +1,5 @@
 ---
-keyword: [NAT网关, 增强型, NAT2.0]
+keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问公网]
 ---
 
 # 增强型NAT网关发布公告
@@ -8,7 +8,7 @@ keyword: [NAT网关, 增强型, NAT2.0]
 
 ## 增强型NAT网关简介
 
-增强型NAT网关与普通型NAT网关都支持DNAT（提供公网服务）和SNAT（访问公网服务）等基础功能。增强型NAT网关在普通型NAT网关的基础上新增了部分功能。新增功能如下：
+增强型NAT网关与普通型NAT网关都支持DNAT（提供公网服务）和SNAT（访问公网服务）等基础功能。增强型NAT网关在普通型NAT网关的基础上新增了部分功能。
 
 -   更加丰富的监控指标
 
@@ -54,6 +54,8 @@ keyword: [NAT网关, 增强型, NAT2.0]
 |NAT网关关联交换机|支持|不支持|
 |按使用量计费|支持|不支持|[按使用量计费](/cn.zh-CN/购买指南/按量付费.mdsection_v5g_sue_5bj)|
 |按小时计费周期|支持|不支持|[按使用量计费](/cn.zh-CN/购买指南/按量付费.mdsection_v5g_sue_5bj)|
+|包年包月计费|支持|支持|[包年包月](/cn.zh-CN/购买指南/包年包月.md)|
+|按天的计费周期|不支持|支持|[按量付费](/cn.zh-CN/购买指南/按量付费.md)|
 |处理TCP、UDP和ICMP分片包|支持|不支持|无|
 |监控指标|22个|4个|[使用云监控来监控NAT网关](/cn.zh-CN/用户指南/使用云监控来监控NAT网关.md)|
 |网关流量监控（TOP ECS）|支持|不支持|[查看网关流量监控](/cn.zh-CN/用户指南/使用云监控来监控NAT网关.mdsection_l14_d8f_gsa)|
@@ -64,8 +66,6 @@ keyword: [NAT网关, 增强型, NAT2.0]
 |DNAT功能|支持|支持|[创建DNAT提供公网服务](/cn.zh-CN/用户指南/DNAT（提供公网服务）/创建DNAT提供公网服务.md)|
 |DNAT支持端口映射|支持|支持|[创建DNAT提供公网服务](/cn.zh-CN/用户指南/DNAT（提供公网服务）/创建DNAT提供公网服务.md)|
 |DNAT支持IP映射|支持|支持|
-|包年包月计费|支持|支持|[包年包月](/cn.zh-CN/购买指南/包年包月.md)|
-|按天的计费周期|不支持|支持|[按量付费](/cn.zh-CN/购买指南/按量付费.md)|
 |ECS实例通过SNAT访问同一个NAT实例上的DNAT服务|不支持|支持|[ECS实例通过增强型NAT网关的SNAT功能访问同一VPC下的DNAT服务](/cn.zh-CN/最佳实践/ECS实例通过增强型NAT网关的SNAT功能访问同一VPC下的DNAT服务.md)|
 
 |限制项|增强型NAT网关|普通型NAT网关|
@@ -79,7 +79,7 @@ keyword: [NAT网关, 增强型, NAT2.0]
 |交换机添加SNAT条目后，是否会受到EIP带宽峰值的限制|是（如果EIP已加入到共享带宽中，则交换机会受到共享带宽的带宽峰值的限制）|是（如果EIP已加入到共享带宽中，则交换机会受到共享带宽的带宽峰值的限制）|
 |一个NAT网关支持绑定的EIP的数量|20个（可自助提升配额。具体操作，请参见[管理配额](/cn.zh-CN/用户指南/通用配置/管理配额.md)）|20个（可自助提升配额。具体操作，请参见[管理配额](/cn.zh-CN/用户指南/通用配置/管理配额.md)）|
 |一个NAT网关支持绑定的按流量计费EIP的数量|10个（可自助提升配额。具体操作，请参见[管理配额](/cn.zh-CN/用户指南/通用配置/管理配额.md)）|10个（可自助提升配额。具体操作，请参见[管理配额](/cn.zh-CN/用户指南/通用配置/管理配额.md)）|
-|NAT网关绑定的按流量计费EIP的最大带宽峰值|200 Mbps（无法调整）|200 Mbps（无法调整）|
+|NAT网关绑定的按流量计费EIP的最大带宽峰值|无|200 Mbps（无法调整）|
 |一个NAT网关实例的最大带宽限制|5 Gbps（如果绑定的EIP或者共享带宽的总带宽大于5 Gbps，请[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)提升配额）|NAT网关实例本身没有带宽限制，带宽限制取决于绑定到SNAT或DNAT规则中的EIP及EIP加入的共享带宽的带宽限制 例如：一个NAT网关创建了一个SNAT规则，SNAT规则绑定了5个按流量计费的EIP和2个500 Mbps的按带宽计费EIP，则该NAT网关的带宽限制为5\*200 Mbps+2\*500 Mbps=2000 Mbps，如果这7个EIP加入到同一个共享带宽，共享带宽的带宽限制为1000 Mbps，则NAT网关的带宽限制为1000 Mbps。 |
 |一个EIP的最大并发数为55000|是|是|
 |共享带宽中的单个EIP的峰值限制为200 Mbps|否|是|
@@ -90,9 +90,9 @@ keyword: [NAT网关, 增强型, NAT2.0]
 
 ## 使用流程
 
-增强型NAT网关的使用流程与普通型NAT网关的使用流程一致。但在创建NAT网关时需要选择增强型NAT网关，并指定增强型NAT网关要关联的VPC和交换机。增强型NAT网关创建成功后，系统会为增强型NAT网关分配一个交换机内的空闲私网IP地址。
+增强型NAT网关的使用流程与普通型NAT网关的使用流程一致，但在创建NAT网关时需要选择增强型NAT网关，并指定增强型NAT网关要关联的VPC和交换机。增强型NAT网关创建成功后，系统会为增强型NAT网关分配一个交换机内的空闲私网IP地址。
 
-**说明：** 如果您使用子账号创建增强型NAT网关，请先使用主账号进行授权。[授权入口](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunNATAccessingNetworkInterfaceRole%22,%20%22TemplateId%22:%20%22ENIRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fvpc.console.aliyun.com%2Fnat%22,%20%22Service%22:%20%22NAT%22%7D)。
+**说明：** 如果您使用子账号创建增强型NAT网关，请先使用阿里云账号进行授权。[授权入口](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunNATAccessingNetworkInterfaceRole%22,%20%22TemplateId%22:%20%22ENIRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fvpc.console.aliyun.com%2Fnat%22,%20%22Service%22:%20%22NAT%22%7D)。
 
 ![创建增强型NAT网关](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3408560061/p101531.png)
 
