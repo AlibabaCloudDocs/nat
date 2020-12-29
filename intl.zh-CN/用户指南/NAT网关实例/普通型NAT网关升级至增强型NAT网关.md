@@ -26,7 +26,7 @@ keyword: [NAT网关, 升级, 访问公网, 提供公网服务]
 
 4.  在**升级至增强型NAT网关**对话框，选中**我已知晓上述内容，确认进行升级**，完成以下配置以升级NAT网关的网关类型，然后单击**确定**。
 
-    ![切换页面](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4307431061/p148992.png)
+    ![切换页面](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9273057061/p148992.png)
 
     |配置|说明|
     |--|--|
