@@ -1,6 +1,6 @@
 # Free upgrades to enhanced NAT gateways for a limited time
 
-Starting from October 1, 2020 until March 31, 2021, you can upgrade standard NAT gateways to enhanced NAT gateways free of charge.
+Starting from October 1, 2020 until March 30, 2021, you can upgrade standard NAT gateways to enhanced NAT gateways free of charge.
 
 ## Features of enhanced NAT gateways
 
