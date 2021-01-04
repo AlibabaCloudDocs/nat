@@ -6,15 +6,15 @@ NAT网关支持DNAT功能，将NAT网关上的公网IP映射给ECS实例使用�
 
 如果您的ECS实例已经绑定了EIP，则不支持为该ECS实例添加DNAT条目。
 
-如需为该ECS实例添加DNAT条目，请先将ECS实例与EIP解绑。解绑后，再为该ECS实例添加DNAT条目。解绑的具体操作，请参见[解绑EIP](/cn.zh-CN/用户指南/解绑EIP.md)。
+如需为该ECS实例添加DNAT条目，请先将ECS实例与EIP解绑。解绑后，再为该ECS实例添加DNAT条目。解绑的具体操作，请参见[解绑EIP](/intl.zh-CN/用户指南/解绑EIP.md)。
 
 **说明：** 如果存量ECS实例绑定了EIP，且处于NAT网关的DNAT条目中，则ECS实例优先通过绑定的EIP进行公网通信。
 
 ## 前提条件
 
-您已经创建了NAT网关并绑定了弹性公网IP（EIP）。具体操作，请参见[创建NAT网关](/cn.zh-CN/购买指南/购买NAT网关.md)和[绑定弹性公网IP]()。
+您已经创建了NAT网关并绑定了弹性公网IP（EIP）。具体操作，请参见[创建NAT网关]()和[绑定弹性公网IP]()。
 
-**说明：** 如果您在2017年11月3日之前购买过NAT带宽包，请确保NAT带宽包中有可用的公网IP。
+**说明：** 如果您在2018年1月26日之前购买过NAT带宽包，请确保NAT带宽包中有可用的公网IP。
 
 ## 创建DNAT条目
 
@@ -30,7 +30,7 @@ NAT网关支持DNAT功能，将NAT网关上的公网IP映射给ECS实例使用�
 
     |配置|说明|
     |:-|:-|
-    |**选择公网IP地址**|选择要提供互联网通信的公网IP。 **说明：** 增强型NAT网关白名单支持将一个公网IP同时用于DNAT条目和SNAT条目。如需使用，请[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)。 |
+    |**选择公网IP地址**|选择要提供互联网通信的公网IP。 **说明：** 增强型NAT网关白名单支持将一个公网IP同时用于DNAT条目和SNAT条目。如需使用，请[提交工单](https://workorder-intl.console.aliyun.com/#/ticket/createIndex)。 |
     |**选择私网IP地址**|选择要通过DNAT规则进行公网通信的ECS实例。您可以通过以下两种方式指定目标ECS实例的私网IP：     -   **从ECS或弹性网卡对应IP进行选择**：从ECS实例或弹性网卡列表中选择ECS实例。
     -   **通过手动输入**：输入目标ECS实例的私网IP。
 
@@ -79,9 +79,9 @@ NAT网关支持DNAT功能，将NAT网关上的公网IP映射给ECS实例使用�
 **相关文档**  
 
 
-[CreateForwardEntry](/cn.zh-CN/API参考/NAT网关/CreateForwardEntry.md)
+[CreateForwardEntry](/intl.zh-CN/API参考/NAT网关/CreateForwardEntry.md)
 
-[ModifyForwardEntry](/cn.zh-CN/API参考/NAT网关/ModifyForwardEntry.md)
+[ModifyForwardEntry](/intl.zh-CN/API参考/NAT网关/ModifyForwardEntry.md)
 
-[DeleteForwardEntry](/cn.zh-CN/API参考/NAT网关/DeleteForwardEntry.md)
+[DeleteForwardEntry](/intl.zh-CN/API参考/NAT网关/DeleteForwardEntry.md)
 
