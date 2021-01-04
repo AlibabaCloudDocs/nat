@@ -1,87 +1,87 @@
-# 创建DNAT提供公网服务
+# Create a DNAT entry to provide Internet-facing services
 
-NAT网关支持DNAT功能，将NAT网关上的公网IP映射给ECS实例使用，使ECS实例能够提供互联网服务。DNAT支持端口映射和IP映射。
+This topic describes how to create a Destination Network Address Translation \(DNAT\) entry. DNAT is used to map elastic IP addresses \(EIPs\) to Elastic Compute Service \(ECS\) instances in a virtual private cloud \(VPC\). This way, the ECS instances can receive requests sent over the Internet. DNAT supports port mapping and IP mapping.
 
-## 背景信息
+## Background information
 
-如果您的ECS实例已经绑定了EIP，则不支持为该ECS实例添加DNAT条目。
+You cannot create DNAT entries for ECS instances that are assigned EIPs.
 
-如需为该ECS实例添加DNAT条目，请先将ECS实例与EIP解绑。解绑后，再为该ECS实例添加DNAT条目。解绑的具体操作，请参见[解绑EIP](/intl.zh-CN/用户指南/解绑EIP.md)。
+Before you can create DNAT entries for the ECS instances, you must dissociate the EIPs from the ECS instances. Then, you can create DNAT entries for the ECS instances. For more information about how to disassociate an EIP from an ECS instance, see [.](/intl.en-US/User Guide/Disassociate an EIP from a cloud resource.md)
 
-**说明：** 如果存量ECS实例绑定了EIP，且处于NAT网关的DNAT条目中，则ECS实例优先通过绑定的EIP进行公网通信。
+**Note:** If DNAT entries are added for an ECS instance that is assigned an EIP, the ECS instance preferably uses the EIP to communicate with the Internet.
 
-## 前提条件
+## Prerequisites
 
-您已经创建了NAT网关并绑定了弹性公网IP（EIP）。具体操作，请参见[创建NAT网关]()和[绑定弹性公网IP]()。
+A NAT gateway is created and assigned an EIP. For more information, see [Manage NAT gateways]() and [Associate an EIP with a NAT gateway](section_0q9_2z1_g7q).
 
-**说明：** 如果您在2018年1月26日之前购买过NAT带宽包，请确保NAT带宽包中有可用的公网IP。
+**Note:** If you purchased a NAT service plan before January 26, 2018, make sure that the NAT service plan has idle public IP addresses.
 
-## 创建DNAT条目
+## Create a DNAT entry
 
-1.  登录[NAT网关管理控制台](https://vpc.console.aliyun.com/nat)。
+1.  Log on to the [NAT Gateway console](https://vpc.console.aliyun.com/nat).
 
-2.  在顶部菜单栏处，选择NAT网关的地域。
+2.  In the top navigation bar, select the region where the NAT gateway is deployed.
 
-3.  在**NAT网关**页面，找到目标NAT网关实例，单击**操作**列下的**设置DNAT**。
+3.  On the **NAT Gateway** page, find the NAT gateway that you want to manage and click **Configure DNAT** in the **Actions** column.
 
-4.  在**DNAT管理**页签，单击**创建DNAT条目**。
+4.  On the **DNAT Management** tab, click **Create DNAT Entry**.
 
-5.  在**创建DNAT条目**页面，配置以下参数，然后单击**确定创建**。
+5.  On the **Create DNAT Entry** page, set the parameters that are described in the following table and click **Confirm**.
 
-    |配置|说明|
-    |:-|:-|
-    |**选择公网IP地址**|选择要提供互联网通信的公网IP。 **说明：** 增强型NAT网关白名单支持将一个公网IP同时用于DNAT条目和SNAT条目。如需使用，请[提交工单](https://workorder-intl.console.aliyun.com/#/ticket/createIndex)。 |
-    |**选择私网IP地址**|选择要通过DNAT规则进行公网通信的ECS实例。您可以通过以下两种方式指定目标ECS实例的私网IP：     -   **从ECS或弹性网卡对应IP进行选择**：从ECS实例或弹性网卡列表中选择ECS实例。
-    -   **通过手动输入**：输入目标ECS实例的私网IP。
+    |Parameter|Description|
+    |:--------|:----------|
+    |**Select Public IP Address**|Select an EIP. The EIP is used to communicate with the Internet. **Note:** For enhanced NAT gateways, you can specify an EIP in both a SNAT entry and a DNAT entry when your account is included in the whitelist. To apply to be added to a whitelist, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex). |
+    |**Select Private IP Address**|Select the ECS instance that uses the DNAT entry to receive requests from the Internet. You can use one of the following methods to specify the private IP address of the ECS instance that receives requests from the Internet:     -   **Select by ECS or ENI**: Select an ECS instance from the ECS instance list or Elastic Network Interface \(ENI\) list.
+    -   **Manual Input**: Enter the private IP address of the selected ECS instance.
 
-**说明：** 自填的私网IP必须属于本VPC的CIDR范围，也可直接输入一个已有的ECS实例的私网IP。 |
-    |**端口设置**|选择DNAT映射的方式：     -   **任意端口**：该方式属于IP映射，任何访问该公网IP的请求都将转发到目标ECS实例上。
-    -   **具体端口**：该方式属于端口映射，NAT网关会将以指定协议和端口访问该公网IP的请求转发到目标ECS实例的指定端口上。
+**Note:** The private IP address that you enter must be within the CIDR block of the VPC. You can also enter the private IP address of an ECS instance that exists in the VPC. |
+    |**Port Settings**|Select a DNAT mapping method:     -   **Any Port**: This method uses IP mapping. The requests destined for the EIP are forwarded to the selected ECS instance.
+    -   **Specific Port**: This method uses port mapping. The NAT gateway forwards requests from the specified port over the specified protocol to the specified port of the selected ECS instance.
 
-选择具体端口后，请根据业务需求设置以下参数：
+After you specify a port, set the following parameters based on your business requirements:
 
-        -   **公网端口**：进行端口转发的外部端口。
-        -   **私网端口**：进行端口转发的内部端口。
-        -   **协议类型**：转发端口的协议类型。 |
-    |**条目名称**|输入DNAT条目的名称。 名称长度为2~128个字符，以大小写字母或中文开头， 可包含数字、下划线（\_）和短横线（-）。 |
-
-
-## 编辑DNAT条目
-
-创建DNAT条目后，您可以修改DNAT条目的公网IP、私网IP、端口和名称。
-
-1.  登录[NAT网关管理控制台](https://vpc.console.aliyun.com/nat)。
-
-2.  在顶部菜单栏处，选择NAT网关的地域。
-
-3.  在**NAT网关**页面，找到目标NAT网关实例，单击**操作**列下的**设置DNAT**。
-
-4.  在**DNAT条目列表**区域，找到目标DNAT条目，单击**操作**列下的**编辑**。
-
-5.  在**编辑DNAT条目**页面，修改DNAT条目的公网IP、私网IP、端口和名称，然后单击**确定修改**。
+        -   **Public Port**: the external port where requests from the Internet are received.
+        -   **Private Port**: the internal port to which the requests received on the external port are forwarded.
+        -   **Protocol Type**: the protocol that is used by the ports. |
+    |**Entry Name**|Enter a name for the DNAT entry. The name must be 2 to 128 characters in length, and can contain digits, underscores \(\_\), and hyphens \(-\). It must start with a letter. |
 
 
-## 删除DNAT条目
+## Modify a DNAT entry
 
-如果您不需要ECS实例面向互联网提供服务，您可以删除DNAT条目。
+After you create a DNAT entry, you can modify the public IP address, private IP address, ports, and name of the DNAT entry.
 
-1.  登录[NAT网关管理控制台](https://vpc.console.aliyun.com/nat)。
+1.  Log on to the [NAT Gateway console](https://vpc.console.aliyun.com/nat).
 
-2.  在顶部菜单栏处，选择NAT网关的地域。
+2.  In the top navigation bar, select the region where the NAT gateway is deployed.
 
-3.  在**NAT网关**页面，找到目标NAT网关实例，单击**操作**列下的**设置DNAT**。
+3.  On the **NAT Gateway** page, find the NAT gateway that you want to manage and click **Configure DNAT** in the **Actions** column.
 
-4.  在DNAT条目列表区域，找到目标DNAT条目，单击**操作**列下的**删除**。
+4.  In the **DNAT Entry List** section, find the DNAT entry that you want to manage and click **Edit** in the **Actions** column.
 
-5.  在弹出的对话框中，单击**确定**。
-
-
-**相关文档**  
+5.  On the **Edit DNAT Entry** page, change the public IP address, private IP address, port settings, and name of the DNAT entry. Then, click **Confirm**.
 
 
-[CreateForwardEntry](/intl.zh-CN/API参考/NAT网关/CreateForwardEntry.md)
+## Delete a DNAT entry
 
-[ModifyForwardEntry](/intl.zh-CN/API参考/NAT网关/ModifyForwardEntry.md)
+If you no longer need an ECS instance to provide Internet-facing services, you can delete the DNAT entry of the ECS instance.
 
-[DeleteForwardEntry](/intl.zh-CN/API参考/NAT网关/DeleteForwardEntry.md)
+1.  Log on to the [NAT Gateway console](https://vpc.console.aliyun.com/nat).
+
+2.  In the top navigation bar, select the region where the NAT gateway is deployed.
+
+3.  On the **NAT Gateway** page, find the NAT gateway that you want to manage and click **Configure DNAT** in the **Actions** column.
+
+4.  In the DNAT Entry List section, find the DNAT entry that you want to manage and click **Delete** in the **Actions** column.
+
+5.  In the message that appears, click **OK**.
+
+
+**Related topics**  
+
+
+[CreateForwardEntry](/intl.en-US/API reference/NAT Gateway/CreateForwardEntry.md)
+
+[ModifyForwardEntry](/intl.en-US/API reference/NAT Gateway/ModifyForwardEntry.md)
+
+[DeleteForwardEntry](/intl.en-US/API reference/NAT Gateway/DeleteForwardEntry.md)
 
