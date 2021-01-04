@@ -4,7 +4,7 @@
 
 ## 前提条件
 
-您已经创建了专有网络VPC和交换机。具体操作，请参见[创建专有网络](/cn.zh-CN/专有网络和交换机/管理专有网络/创建专有网络.md)。
+您已经创建了专有网络VPC和交换机。具体操作，请参见[创建专有网络](/intl.zh-CN/专有网络和交换机/管理专有网络/创建专有网络.md)。
 
 ## 云资源访问授权
 
@@ -27,9 +27,6 @@
 
 3.  在**创建NAT网关**页面，配置以下购买信息，然后单击**立即购买**。
 
-    -   **付费模式**：
-        -   **包年包月**：包年包月是一种先付费后使用的付费模式。更多信息，请参见[t16028.md\#](/cn.zh-CN/购买指南/包年包月.md)。
-        -   **按量付费**：按量付费是一种先使用后付费的付费模式。更多信息，请参见[t16029.md\#](/cn.zh-CN/购买指南/按量付费.md)。
     -   **地域和可用区**：选择需要创建NAT网关的地域。
     -   **可用区**：选择NAT网关实例所属的可用区。
     -   **VPC ID**：选择NAT网关所属的VPC。创建NAT网关后，不能修改NAT网关所属的VPC。
@@ -44,18 +41,17 @@
 
         增强型NAT网关在普通型NAT网关的技术架构上作了升级，具有更优的弹性和更强的稳定性，帮助您更好的管理公网访问流量。
 
-    -   **名称**：设置NAT网关实例的名称。
-
-        名称长度为2~128个字符，以英文字母或中文开头，可包含数字、下划线（\_）和短划线（-）。
-
     -   **计费类型**
-        -   **按使用量计费**：按NAT网关实际使用量收费，详情请参见[t16029.md\#section\_v5g\_sue\_5bj](/cn.zh-CN/购买指南/按量付费.mdsection_v5g_sue_5bj)。
+        -   **按使用量计费**：按NAT网关实际使用量收费，详情请参见[t16029.md\#section\_v5g\_sue\_5bj](/intl.zh-CN/购买指南/按量付费.md)。
         -   **按固定规格计费**：每个计费周期的费用固定，不会因NAT网关的处理量发生变化。选择该计费类型后，需要选择**规格**。
 
             NAT网关的规格会影响SNAT功能的最大连接数和每秒新建连接数，但不会影响DNAT性能。更多信息，请参见[实例规格]()。
 
-    -   **购买数量**：当选择**包年包月**付费模式时，请设置要购买NAT网关实例的数量。
-    -   **计费周期**：选择NAT网关实例的计费周期。
+    -   **计费类型**：选择NAT网关实例的计费类型。
+
+        目前，仅支持按固定规格计费。更多信息，请参见[t16029.md\#section\_dzk\_6u6\_9e9](/intl.zh-CN/购买指南/按量付费.md)。
+
+    -   **计费周期**：显示NAT网关实例的计费周期。
 4.  在支付订单页面确认支付金额，然后单击**支付**完成购买。
 
     当出现**恭喜，支付成功！**的提示后，说明您购买成功。
@@ -67,10 +63,10 @@ NAT网关需要绑定公网IP才能正常工作。一个NAT网关最多可绑定
 
 
 
--   您已经创建了NAT网关和EIP。具体操作，请参见[购买NAT网关](/cn.zh-CN/购买指南/购买NAT网关.md)和[申请新EIP](/cn.zh-CN/用户指南/申请EIP/申请新EIP.md)。
--   您的账号在2017年11月3日23:59分之前没有NAT带宽包。
+-   您已经创建了NAT网关和EIP。具体操作，请参见[购买NAT网关]()和[申请新EIP](/intl.zh-CN/用户指南/申请EIP/申请新EIP.md)。
+-   您的账号在2018年1月26日23:59分之前没有NAT带宽包。
 
-    2017年11月3日23:59分前，如果您的账号存在NAT带宽包，则仍需使用NAT带宽包为NAT网关提供公网IP。如需使用EIP绑定NAT网关，具体操作，请参见[为什么在NAT网关控制台不能绑定EIP]()。
+    2018年1月26日23:59分前，如果您的账号存在NAT带宽包，则仍需使用NAT带宽包为NAT网关提供公网IP。如需使用EIP绑定NAT网关，具体操作，请参见[为什么在NAT网关控制台不能绑定EIP]()。
 
 
 1.  登录[NAT网关管理控制台](https://vpc.console.aliyun.com/nat)。
@@ -178,10 +174,10 @@ NAT网关需要绑定公网IP才能正常工作。一个NAT网关最多可绑定
 
 ## 相关文档
 
--   创建NAT网关实例：[CreateNatGateway](/cn.zh-CN/API参考/NAT网关/CreateNatGateway.md)。
--   绑定弹性公网IP：[AssociateEipAddress](/cn.zh-CN/API参考/弹性公网IP/AssociateEipAddress.md)。
--   解绑弹性公网IP：[UnassociateEipAddress](/cn.zh-CN/API参考/弹性公网IP/UnassociateEipAddress.md)。
--   为NAT网关添加标签：[TagResources](/cn.zh-CN/API参考/标签/TagResources.md)。
--   编辑NAT网关的基本信息：[ModifyNatGatewayAttribute](/cn.zh-CN/API参考/NAT网关/ModifyNatGatewayAttribute.md)。
--   删除NAT网关：[DeleteNatGateway](/cn.zh-CN/API参考/NAT网关/DeleteNatGateway.md)
+-   创建NAT网关实例：[CreateNatGateway](/intl.zh-CN/API参考/NAT网关/CreateNatGateway.md)。
+-   绑定弹性公网IP：[AssociateEipAddress](/intl.zh-CN/API参考/弹性公网IP/AssociateEipAddress.md)。
+-   解绑弹性公网IP：[UnassociateEipAddress](/intl.zh-CN/API参考/弹性公网IP/UnassociateEipAddress.md)。
+-   为NAT网关添加标签：[TagResources](/intl.zh-CN/API参考/标签/TagResources.md)。
+-   编辑NAT网关的基本信息：[ModifyNatGatewayAttribute](/intl.zh-CN/API参考/NAT网关/ModifyNatGatewayAttribute.md)。
+-   删除NAT网关：[DeleteNatGateway](/intl.zh-CN/API参考/NAT网关/DeleteNatGateway.md)
 
