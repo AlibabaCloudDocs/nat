@@ -79,50 +79,11 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
     |网络流出带宽利用率|从ECS实例发往公网的带宽的利用率。|
 
 
-## 查看网关流量监控
-
-异常的ECS实例流量会影响其他ECS实例的SNAT公网访问。开启网关流量监控功能，您可以查看SNAT转发流量监控数据，快速定位流量消耗最大的ECS实例，然后您可以对该ECS实例进行流量管控，实现快速收敛故障，提高业务的稳定性。
-
-
-
--   您已经创建了增强型NAT网关实例，具体操作，请参见[购买NAT网关](/cn.zh-CN/购买指南/购买NAT网关.md)。
-
-    **说明：** 目前创建在华北1（青岛）、中国（香港）、美国（弗吉尼亚）和美国（硅谷）的NAT网关暂不支持网关流量监控功能。
-
--   您已经提交了查看网关流量监控的工单申请。如需使用，请[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)。
-
-1.  登录[NAT网关管理控制台](https://vpc.console.aliyun.com/nat)。
-
-2.  在顶部菜单栏处，选择NAT网关的地域。
-
-3.  在**NAT网关**页面，找到目标NAT网关实例，单击**操作**列下的**管理**。
-
-4.  在**基本信息**页面，单击**监控**页签。
-
-5.  单击**网关流量情况**页签，然后打开**开启网关流量监控**开关。
-
-    您可以在时间栏中设置要查看流量监控数据的时间，时间为分钟级。例如，您设置要查看的时间为2020年12月15日16:00，则您可以查看2020年12月15日16:00:00~2020年12月15日16:01:00的流量监控数据。
-
-    **说明：**
-
-    -   开启网关流量监控后，您需要等待15分钟，才能查看网关流量监控数据。
-    -   网关流量监控功能展示的监控数据可能存在3~5分钟的延迟。例如，您只能在2020年12月15日16:30查看2020年12月15日16:25时间点之前的流量监控数据，而不能查看2020年10月14日16:25时间点之后的流量监控数据。
-    -   网关流量监控功能可以展示流量消耗最大的前1000个ECS实例的流量信息，如需更多配额，请[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)。
-    |监控数据|单位|说明|
-    |----|--|--|
-    |并发连接数|个|ECS实例通过NAT网关访问公网的活跃连接数量。|
-    |新建连接数|个/秒|ECS实例通过NAT网关每秒发起的新建连接数量。|
-    |入方向流量|Kbps|从公网进入ECS实例的流量。|
-    |出方向流量|Kbps|从ECS实例发往公网的流量。|
-    |入方向包|个/秒|从公网进入ECS实例的包数量。|
-    |出方向包|个/秒|从ECS实例发往公网的包数量。|
-
-
 ## 创建阈值报警规则
 
 如果您需要监控NAT网关实例的使用和运行情况，您可以通过创建阈值报警规则，实时监控NAT网关实例运行情况，保证业务的稳定。
 
-1.  登录[云监控控制台](https://cloudmonitor.console.aliyun.com)。
+1.  登录[云监控控制台](https://cms-intl.console.aliyun.com)。
 
 2.  在左侧导航栏，选择**报警服务** \> **报警规则**。
 
@@ -140,11 +101,10 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
     |**通道沉默周期**|指报警发生后如果未恢复正常，间隔多久重复发送一次报警通知。|
     |**生效时间**|报警规则的生效时间，报警规则只在生效时间内才会检查监控数据是否需要报警。|
     |**通知对象**|发送报警的联系人组。|
-    |**报警级别**|    -   短信+邮件+钉钉机器人
-    -   邮件+钉钉机器人 |
-    |**弹性伸缩**|如果您选中**弹性伸缩**，当报警发生时，会触发相应的伸缩规则。您需要设置弹性伸缩的**地域**、**弹性伸缩组**和**弹性伸缩规则**。    -   创建弹性伸缩组的操作方法，请参见[创建伸缩组](/cn.zh-CN/伸缩组/伸缩组/创建伸缩组.md)。
-    -   创建弹性伸缩规则的操作方法，请参见[创建伸缩规则](/cn.zh-CN/伸缩组/伸缩规则/创建伸缩规则.md)。 |
-    |**日志服务**|如果您选中**日志服务**，当报警发生时，会将报警信息写入日志服务。您需要设置日志服务的**地域**、**Project**和**Logstore**。创建Project和Logstore的操作方法，请参见[快速入门](/cn.zh-CN/快速入门/快速入门.md)。 |
+    |**报警级别**|邮件+钉钉机器人 |
+    |**弹性伸缩**|如果您选中**弹性伸缩**，当报警发生时，会触发相应的伸缩规则。您需要设置弹性伸缩的**地域**、**弹性伸缩组**和**弹性伸缩规则**。    -   创建弹性伸缩组的操作方法，请参见[创建伸缩组](/intl.zh-CN/伸缩组/伸缩组/创建伸缩组.md)。
+    -   创建弹性伸缩规则的操作方法，请参见[创建伸缩规则](/intl.zh-CN/伸缩组/伸缩规则/创建伸缩规则.md)。 |
+    |**日志服务**|如果您选中**日志服务**，当报警发生时，会将报警信息写入日志服务。您需要设置日志服务的**地域**、**Project**和**Logstore**。创建Project和Logstore的操作方法，请参见[快速入门](/intl.zh-CN/快速入门/快速入门.md)。 |
     |**邮件备注**|自定义报警邮件补充信息。填写邮件备注后，发送报警的邮件通知中会附带您的备注。|
     |**报警回调**|填写公网可访问的URL，云监控会将报警信息通过POST请求推送到该地址，目前仅支持HTTP协议。|
 
@@ -154,13 +114,13 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 **相关文档**  
 
 
-[EnableNatGatewayEcsMetric](/cn.zh-CN/API参考/NAT网关/EnableNatGatewayEcsMetric.md)
+[EnableNatGatewayEcsMetric](/intl.zh-CN/API参考/NAT网关/EnableNatGatewayEcsMetric.md)
 
-[ListNatGatewayEcsMetric](/cn.zh-CN/API参考/NAT网关/ListNatGatewayEcsMetric.md)
+[ListNatGatewayEcsMetric](/intl.zh-CN/API参考/NAT网关/ListNatGatewayEcsMetric.md)
 
-[DisableNatGatewayEcsMetric](/cn.zh-CN/API参考/NAT网关/DisableNatGatewayEcsMetric.md)
+[DisableNatGatewayEcsMetric](/intl.zh-CN/API参考/NAT网关/DisableNatGatewayEcsMetric.md)
 
-[PutResourceMetricRule](/cn.zh-CN/API参考/时序指标报警规则/PutResourceMetricRule.md)
+[PutResourceMetricRule](/intl.zh-CN/API参考/时序指标报警规则/PutResourceMetricRule.md)
 
-[CreateGroupMetricRules](/cn.zh-CN/API参考/时序指标报警规则/CreateGroupMetricRules.md)
+[CreateGroupMetricRules](/intl.zh-CN/API参考/时序指标报警规则/CreateGroupMetricRules.md)
 
