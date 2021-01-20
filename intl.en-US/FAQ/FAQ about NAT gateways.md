@@ -24,7 +24,7 @@ If you have purchased a NAT service plan beforeJanuary 26, 2018, you can only as
 
 ## Why are NAT service plans unavailable in the NAT Gateway console?
 
-If you did not purchase a NAT service plan beforeJanuary 26, 2018, you must associate an EIP with the NAT gateway before the NAT gateway can access the Internet. For more information, see [Associate an EIP with a NAT gateway](/intl.en-US/User Guide/NAT Gateway Instance/Manage EIPs/Associate an EIP with a NAT gateway.md).
+If you did not purchase a NAT service plan beforeJanuary 26, 2018, you must associate an EIP with the NAT gateway before the NAT gateway can access the Internet. For more information, see [Associate an EIP with a NAT gateway]().
 
 ## How many NAT gateways can I create with an Alibaba Cloud account?
 
@@ -41,7 +41,7 @@ The number of NAT gateways that can be created in a VPC depends on the type of N
 
 By default, you can associate up to 20 EIPs with a NAT gateway. You can associate up to 10 pay-by-data-transfer EIPs with a NAT gateway.
 
-If you want to increase the quota, go to the [Quota Management](https://vpc.console.aliyun.com/quota) page. For more information, see [Quota management](/intl.en-US/User Guide/Common Configurations/Quota management.md).
+If you want to increase the quota, go to the [Quota Management](https://vpc.console.aliyun.com/quota) page. For more information, see [Quota management](/intl.en-US/Common Configurations/Quota management.md).
 
 ## Can I specify the same EIP in both a Source Network Address Translation \(SNAT\) entry and a Destination Network Address Translation \(DNAT\) entry?
 
@@ -52,9 +52,9 @@ Whether you can specify an EIP in both a SNAT entry and a DNAT entry depends on 
 
 ## Can Elastic Compute Service \(ECS\) instances use SNAT to access services that use DNAT to provide external access when the same enhanced NAT gateway is used for SNAT and DNAT?
 
-No.
+No, the ECS instances cannot access the services in this case.
 
-If you created both SNAT and DNAT entries on the enhanced NAT gateway, the ECS instances cannot use SNAT to access services that use DNAT to provide external access in the same VPC.
+If you created both SNAT and DNAT entries on the enhanced NAT gateway, the ECS instances cannot use SNAT to access services that use DNAT of the same enhanced NAT gateway to provide external access in the same VPC.
 
 If you want the ECS instances to access the services that use DNAT to provide external access in the same VPC, we recommend that you create another enhanced NAT gateway. Then, create DNAT entries and SNAT entries on the two NAT gateways separately.
 
