@@ -1,33 +1,41 @@
 # API overview
 
-This topic describes API actions that are available for NAT Gateways. The endpoint of NAT Gateway API actions is vpc.aliyuncs.com. For information about how to call NAT Gateway API actions, see the corresponding VPC API documentation.
+The following tables list the API operations available for use in NAT Gateway.
 
-## NAT Gateway
+**Note:** The endpoint of the NAT Gateway API is vpc.aliyuncs.com. For more information, see the Make API calls topic in API Reference for Virtual Private Cloud \(VPC\).
 
-|API|Description|
-|---|-----------|
-|[t2533.md\#](/intl.en-US/API reference/NAT Gateway/CreateNatGateway.md)|Creates a NAT Gateway.|
-|[ModifyNatGatewayAttribute](/intl.en-US/API reference/NAT Gateway/ModifyNatGatewayAttribute.md)|Modifies the name and description of a NAT Gateway.|
-|[t2535.md\#](/intl.en-US/API reference/NAT Gateway/ModifyNatGatewaySpec.md)|Modifies the specifications of a NAT Gateway.|
-|[t2534.md\#](/intl.en-US/API reference/NAT Gateway/DescribeNatGateways.md)|Queries created NAT Gateways.|
-|[t2537.md\#](/intl.en-US/API reference/NAT Gateway/DeleteNatGateway.md)|Deletes a NAT Gateway.|
-|[ConvertBandwidthPackage](/intl.en-US/API reference/NAT Gateway/ConvertBandwidthPackage.md)|Converts a NAT bandwidth package.|
-
-## DNAT table
+## NAT gateways
 
 |API|Description|
 |---|-----------|
-|[CreateForwardEntry](/intl.en-US/API reference/NAT Gateway/CreateForwardEntry.md)|Adds a DNAT entry.|
+|[t2533.md\#](/intl.en-US/API reference/NAT Gateway/CreateNatGateway.md)|Creates a NAT gateway.|
+|[ModifyNatGatewayAttribute](/intl.en-US/API reference/NAT Gateway/ModifyNatGatewayAttribute.md)|Modifies the name and description of a NAT gateway.|
+|[t2535.md\#](/intl.en-US/API reference/NAT Gateway/ModifyNatGatewaySpec.md)|Changes the size of a NAT gateway.|
+|[ListEnhanhcedNatGatewayAvailableZones](/intl.en-US/API reference/NAT Gateway/ListEnhanhcedNatGatewayAvailableZones.md)|Queries the zones that support enhanced NAT gateways in a specified region.|
+|[UpdateNatGatewayNatType](/intl.en-US/API reference/NAT Gateway/UpdateNatGatewayNatType.md)|Upgrades a standard NAT gateway to an enhanced NAT gateway.|
+|[GetNatGatewayConvertStatus](/intl.en-US/API reference/NAT Gateway/GetNatGatewayConvertStatus.md)|Queries the upgrade state of a NAT gateway.|
+|[t2534.md\#](/intl.en-US/API reference/NAT Gateway/DescribeNatGateways.md)|Queries NAT gateways.|
+|[t2537.md\#](/intl.en-US/API reference/NAT Gateway/DeleteNatGateway.md)|Deletes a NAT gateway.|
+|[EnableNatGatewayEcsMetric](/intl.en-US/API reference/NAT Gateway/EnableNatGatewayEcsMetric.md)|Enables the traffic monitoring feature for a NAT gateway.|
+|[ListNatGatewayEcsMetric](/intl.en-US/API reference/NAT Gateway/ListNatGatewayEcsMetric.md)|Views the traffic monitoring data that is collected by a NAT gateway.|
+|[DisableNatGatewayEcsMetric](/intl.en-US/API reference/NAT Gateway/DisableNatGatewayEcsMetric.md)|Disables the traffic monitoring feature for a NAT gateway.|
+|[ConvertBandwidthPackage](/intl.en-US/API reference/NAT Gateway/ConvertBandwidthPackage.md)|Converts a NAT service plan to an EIP bandwidth plan.|
+
+## DNAT tables
+
+|API|Description|
+|---|-----------|
+|[CreateForwardEntry](/intl.en-US/API reference/NAT Gateway/CreateForwardEntry.md)|Creates a Destination Network Address Translation \(DNAT\) entry.|
 |[t2549.md\#](/intl.en-US/API reference/NAT Gateway/ModifyForwardEntry.md)|Modifies a DNAT entry.|
-|[t2548.md\#](/intl.en-US/API reference/NAT Gateway/DescribeForwardTableEntries.md)|Queries created DNAT entries.|
+|[t2548.md\#](/intl.en-US/API reference/NAT Gateway/DescribeForwardTableEntries.md)|Queries DNAT entries in a DNAT table.|
 |[t2550.md\#](/intl.en-US/API reference/NAT Gateway/DeleteForwardEntry.md)|Deletes a DNAT entry.|
 
-## SNAT table
+## SNAT tables
 
 |API|Description|
 |---|-----------|
-|[CreateSnatEntry](/intl.en-US/API reference/NAT Gateway/CreateSnatEntry.md)|Creates a SNAT entry.|
+|[CreateSnatEntry](/intl.en-US/API reference/NAT Gateway/CreateSnatEntry.md)|Creates a Source Network Address Translation \(SNAT\) entry.|
 |[t2553.md\#](/intl.en-US/API reference/NAT Gateway/ModifySnatEntry.md)|Modifies a SNAT entry.|
-|[t2552.md\#](/intl.en-US/API reference/NAT Gateway/DescribeSnatTableEntries.md)|Queries created SNAT entries.|
+|[t2552.md\#](/intl.en-US/API reference/NAT Gateway/DescribeSnatTableEntries.md)|Queries SNAT entries in a SNAT table.|
 |[t2554.md\#](/intl.en-US/API reference/NAT Gateway/DeleteSnatEntry.md)|Deletes a SNAT entry.|
 
