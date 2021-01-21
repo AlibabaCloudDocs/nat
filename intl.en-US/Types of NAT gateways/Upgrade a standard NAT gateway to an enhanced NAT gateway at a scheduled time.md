@@ -62,8 +62,6 @@ Before you start, take note of the following information:
     |**Select a VSwitch for the enhanced NAT gateway**|Select a zone and a vSwitch for the enhanced NAT gateway.**Note:** You must specify a vSwitch for the enhanced NAT gateway. After you specify a vSwitch, the system automatically selects an IP address from the CIDR block of the vSwitch to transmit data. Make sure that the CIDR block of the vSwitch has sufficient idle IP addresses. |
     |**Note on Creating Service-associated Roles**|To perform a scheduled upgrade, the system automatically creates the service-linked role `AliyunServiceRoleForNatgw`.|
 
-    After you submit the application, click **OK** in the **Reserved** message.
-
 5.  In the **Reserved** message, click **OK**.
 
     If the upgrade is scheduled, **Reserved** is displayed in the **Status** column.
