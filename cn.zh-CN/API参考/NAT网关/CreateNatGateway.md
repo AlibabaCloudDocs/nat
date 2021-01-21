@@ -1,15 +1,12 @@
 # CreateNatGateway
 
-调用CreateNatGateway接口创建NAT网关。
+调用CreateNatGateway接口创建增强型NAT网关。
 
 ## API描述
 
 在调用本接口创建NAT网关时，请注意：
 
 -   首次创建增强型NAT网关时，系统会自动创建一个名称为AliyunServiceRoleForNatgw的服务关联角色，并且为该角色添加名称为AliyunServiceRolePolicyForNatgw的权限策略，授予NAT网关拥有访问其他云资源的权限。更多信息，请参见[服务关联角色](~~174251~~)。
-
-**说明：** 如果您要创建的NAT网关类型为普通型NAT网关，系统不会自动创建名称为AliyunServiceRoleForNatgw的服务关联角色，也能成功创建NAT网关。
-
 -   CreateNatGateway接口属于异步接口，即系统会先返回一个NAT网关实例ID，但该NAT网关实例并未创建完成，系统后台的创建任务仍在进行。您可以调用[DescribeNatGateways](~~36054~~)查询NAT网关的状态：
     -   当NAT网关处于**Creating**状态时，表示NAT网关正在创建中，在该状态下，您只能执行查询操作，不能执行其他操作。
     -   当NAT网关处于**Available**状态时，表示NAT网关创建完成。
@@ -30,12 +27,19 @@
 |RegionId|String|是|cn-hangzhou|NAT网关所在的地域。
 
  您可以通过调用[DescribeRegions](~~36063~~)接口获取地域ID。 |
-|VpcId|String|是|vpc-bp1di7uewzmtvfuq8\*\*\*\*|需要创建NAT网关的VPC的ID。指定VPC时，请注意：
+|VpcId|String|是|vpc-bp1di7uewzmtvfuq8\*\*\*\*|需要创建NAT网关的VPC的ID。 |
+|VSwitchId|String|是|vsw-bp1e3se98n9fq8hle\*\*\*\*|NAT网关所属的交换机的ID。
 
- 如果您要创建的NAT网关类型为普通型NAT网关，请确保VPC路由表中没有目标网段为0.0.0.0/0的路由条目。如有，请先删除该路由条目。如果您创建的NAT网关类型是增强型NAT网关，则无此限制。 |
+ 创建增强型NAT网关时，您必须指定NAT网关所属的交换机，系统会为增强型NAT网关分配一个交换机内的空闲私网IP地址。
+
+ -   如果您要在存量交换机中创建增强型NAT网关，请确保交换机所属的可用区支持创建增强型NAT网关，且交换机有可用的IP。
+-   如果您还未创建交换机，请先在支持创建增强型NAT网关的可用区创建交换机，然后再指定增强型NAT网关所属的交换机。
+
+ 您可以通过[ListEnhanhcedNatGatewayAvailableZones](~~182292~~)接口查询增强型NAT网关的资源可用区，通过[DescribeVSwitches](~~35748~~)接口查询交换机中的可用IP数。 |
+|NatType|String|是|Enhanced|NAT网关的类型，取值：**Enhanced**，增强型NAT网关。增强型NAT网关详情，请参见[增强型NAT网关发布公告](~~163610~~)。 |
 |Name|String|否|fortest|NAT网关的名称。
 
- 名称长度为2~128个字符之间，必须以英文字母或中文开头，不能以`http://`和`https://`开头，可包含数字、点号（.）、下划线（\_）或短横线（-）。
+ 名称长度为2~128个字符之间，必须以英文字母或中文开头，不能以`http://`和`https://`开头，可包含数字、点号（.）、下划线（\_）或短划线（-）。
 
  如果没有指定该参数，默认使用网关ID作为名称。 |
 |Description|String|否|testnat|NAT网关的描述。
@@ -76,18 +80,6 @@
  **true**：开启自动付费，自动支付订单。
 
  当**InstanceChargeType**参数的值为**PrePaid**时，该参数必选；当**InstanceChargeType**参数的值为**PostPaid**时，该参数不填。 |
-|VSwitchId|String|否|vsw-bp1e3se98n9fq8hle\*\*\*\*|NAT网关所属的交换机的ID。
-
- 创建增强型NAT网关时，您必须指定NAT网关所属的交换机，系统会为增强型NAT网关分配一个交换机内的空闲私网IP地址。
-
- -   如果您要在存量交换机中创建增强型NAT网关，请确保交换机所属的可用区支持创建增强型NAT网关，且交换机有可用的IP。
--   如果您还未创建交换机，请先在支持创建增强型NAT网关的可用区创建交换机，然后再指定增强型NAT网关所属的交换机。
-
- 您可以通过[ListEnhanhcedNatGatewayAvailableZones](~~182292~~)接口查询增强型NAT网关的资源可用区，通过[DescribeVSwitches](~~35748~~)接口查询交换机中的可用IP数。 |
-|NatType|String|否|Enhanced|NAT网关的类型，取值：
-
- -   **Normal**：普通型NAT网关。
--   **Enhanced**：增强型NAT网关。增强型NAT网关详情，请参见[增强型NAT网关发布公告](~~163610~~)。 |
 |InternetChargeType|String|否|PayBySpec|NAT网关的计费类型，取值：
 
  -   **PayBySpec**：按固定规格计费。
@@ -174,6 +166,9 @@ https://vpc.aliyuncs.com/?Action=CreateNatGateway
 |400|Forbidden.CheckEntryRuleQuota|Route entry quota rule check error.|检查路由条目配额时发生了错误。|
 |400|NoPermission.CreateServiceLinkedRole|You are not authorized to create service linked role|你没有权限创建SLR|
 |400|OperationFailed.VswNotBelongToVpc|Operation failed because the specified VSwitch is not bound to the same VPC with NAT gateway.|操作失败因为VSW和NATGW不属于同一个VPC。|
+|400|OperationFailed.EnhancedUserIsUnAuthorized|Operation failed because the user is not authorized to create an enhanced NAT gateway.|操作失败因为用户未授权创建增强型NAT网关。|
+|400|OperationUnsupported.PrePaidPyByLcu|The operation failed because the subscription NAT gateway does not support the pay-by-LCU billing method.|预付费的NAT网关实例不支持PayByLcu的计费方式。|
+|400|OperationFailed.NormalInventoryNotEnough|Operation failed because the inventory of standard NAT gateway is insufficient.|操作失败因为普通型NAT网关的库存不足。|
 
 访问[错误中心](https://error-center.aliyun.com/status/product/Vpc)查看更多错误码。
 
