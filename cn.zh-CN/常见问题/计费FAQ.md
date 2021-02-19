@@ -38,7 +38,7 @@ NAT网关不具备访问公网的能力，需要组合弹性公网IP（Elastic I
 
 ## EIP与NAT网关实例解绑后，为什么EIP和NAT网关仍在计费？
 
-EIP与NAT网关实例解绑仅是取消EIP与NAT网关的关联，并没有释放EIP和删除NAT网关，所以EIP和NAT网关仍在计费。如需停止计费，请释放EIP和删除NAT网关。具体操作，请参见[t474488.md\#](/cn.zh-CN/用户指南/管理按量计费实例/释放EIP.md)和[删除NAT网关](/cn.zh-CN/基本功能操作/创建NAT网关实例.md)。
+EIP与NAT网关实例解绑仅是取消EIP与NAT网关的关联，并没有释放EIP和删除NAT网关，所以EIP和NAT网关仍在计费。如需停止计费，请释放EIP和删除NAT网关。具体操作，请参见[释放EIP](/cn.zh-CN/用户指南/管理按量计费实例/释放EIP.md)和[删除NAT网关](/cn.zh-CN/基本功能操作/创建NAT网关实例.md)。
 
 **说明：** 仅按量付费EIP和按量付费NAT网关支持删除操作，包年包月EIP和包年包月NAT网关到期后自动停止服务。
 
