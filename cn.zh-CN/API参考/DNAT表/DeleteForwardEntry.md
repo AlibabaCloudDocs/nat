@@ -22,7 +22,7 @@ DeleteForwardEntry接口属于异步接口，即系统会先返回一个请求ID
 |Action|String|是|DeleteForwardEntry|要执行的操作，取值：**DeleteForwardEntry**。 |
 |ForwardEntryId|String|是|fwd-8vbn3bc8roygjp0gy\*\*\*\*|要删除的DNAT条目ID。 |
 |ForwardTableId|String|是|ftb-8vbx8xu2lqj9qb334\*\*\*\*|DNAT条目所属的DNAT列表ID。 |
-|RegionId|String|是|cn-hangzhou|NAT网关所在的地域。您可以通过调用[DescribeRegions](~~36063~~)接口获取地域ID。 |
+|RegionId|String|是|cn-hangzhou|NAT网关所在的地域ID。您可以通过调用[DescribeRegions](~~36063~~)接口获取地域ID。 |
 
 ## 返回数据
 
@@ -44,7 +44,7 @@ https://vpc.aliyuncs.com/?Action=DeleteForwardEntry
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DeleteForwardEntryResponse>
@@ -52,7 +52,7 @@ https://vpc.aliyuncs.com/?Action=DeleteForwardEntry
 </DeleteForwardEntryResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 { 
