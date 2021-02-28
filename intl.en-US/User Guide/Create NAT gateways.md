@@ -14,8 +14,6 @@ A virtual private cloud \(VPC\) and a vSwitch are created. For more information,
 
 3.  When you purchase a NAT gateway for the first time, you must create a service-linked role for NAT Gateway. In the lower part of the **NAT Gateway \(Pay-As-You-Go\)** page, click **Create** in the Notes on Creating Service-linked Roles section. After a service-linked role is created, you can purchase a NAT gateway.
 
-    ![Create a role](../images/p225001.png)
-
 4.  On the **NAT Gateway \(Pay-As-You-Go\)** page, set the following parameters and click **Buy Now**.
 
     -   **Region and Zone**: Select the region where you want to deploy the NAT gateway.
