@@ -59,8 +59,6 @@ You can configure SNAT for a NAT gateway to allow all ECS instances in a VPC to 
 
 After you create a NAT gateway, you can view the NAT gateway on the **NAT Gateway** page.
 
-![Create a NAT gateway](../images/p224758.png)
-
 ## Step 2: Create and associate an EIP
 
 A NAT gateway functions as expected only when you associate an EIP with the NAT gateway. After you create a NAT gateway, you can associate EIPs with the NAT gateway.
