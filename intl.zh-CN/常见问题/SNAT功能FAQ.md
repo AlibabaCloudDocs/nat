@@ -4,7 +4,7 @@ keyword: [NAT网关, SNAT, 常见问题, 访问公网]
 
 # SNAT功能FAQ
 
-本文介绍SNAT（访问公网服务）功能相关的常见问题。
+本文介绍源网络地址转换SNAT（Source Network Address Translation）功能相关的常见问题。
 
 -   [一个NAT网关支持创建多少条SNAT条目？](#section_1ca_x5e_789)
 -   [一个SNAT条目支持关联多少个EIP？](#section_h4h_468_si4)
@@ -19,7 +19,7 @@ keyword: [NAT网关, SNAT, 常见问题, 访问公网]
 
 一个NAT网关默认支持创建40条SNAT条目。
 
-您可以前往[配额管理页面](https://vpc.console.aliyun.com/quota)自助提升配额。具体操作，请参见[管理配额](/intl.zh-CN/用户指南/通用配置/管理配额.md)。
+您可以前往[配额管理页面](https://vpc.console.aliyun.com/quota)自助提升配额。具体操作，请参见[管理配额](/intl.zh-CN/通用配置/管理配额.md)。
 
 ## 一个SNAT条目支持关联多少个EIP？
 
@@ -35,7 +35,7 @@ SNAT条目支持创建SNAT IP地址池。具体操作，请参见[创建SNAT IP�
 
 ## 创建SNAT条目时，为什么在公网IP地址列表找不到已创建的EIP？
 
-创建SNAT条目前，请确保您已经创建了NAT网关实例并绑定了EIP。具体操作，请参见[创建SNAT条目](/intl.zh-CN/用户指南/SNAT/创建SNAT条目.md)。
+创建SNAT条目前，请确保您已经创建了NAT网关实例并绑定了EIP。具体操作，请参见[创建SNAT实现访问公网服务](/intl.zh-CN/控制台操作指南/创建SNAT实现访问公网服务.md)。
 
 ## ECS实例分配了固定公网IP且创建了SNAT条目，如何实现ECS实例优先通过SNAT条目的公网IP访问互联网？
 
