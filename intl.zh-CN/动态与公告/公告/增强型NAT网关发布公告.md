@@ -31,21 +31,21 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 
 |功能项|增强型NAT网关|普通型NAT网关|相关文档|
 |---|--------|--------|----|
-|同VPC多NAT网关|支持|不支持|[创建NAT网关]()|
-|NAT网关关联交换机|支持|不支持|
-|按小时计费周期|支持|不支持|[t16029.md\#section\_v5g\_sue\_5bj](/intl.zh-CN/购买指南/按量付费.mdsection_v5g_sue_5bj)|
+|同VPC多NAT网关|支持|不支持|[t2020912.md\#]()|
+|NAT网关关联交换机|支持|不支持|无|
+|按小时计费周期|支持|不支持|[按使用量计费](/intl.zh-CN/购买指南/按量付费.mdsection_v5g_sue_5bj)|
 |按天的计费周期|不支持|支持|[按量付费](/intl.zh-CN/购买指南/按量付费.md)|
 |处理TCP、UDP和ICMP分片包|支持|不支持|无|
 |监控指标|22个|4个|[NAT网关监控与运维](/intl.zh-CN/控制台操作指南/NAT网关监控与运维.md)|
-|网关流量监控（TOP ECS）|支持|不支持|[t147949.md\#section\_l14\_d8f\_gsa](/intl.zh-CN/控制台操作指南/NAT网关监控与运维.mdsection_l14_d8f_gsa)|
-|NAT网关绑定多EIP|支持|支持|[绑定弹性公网IP](/intl.zh-CN/控制台操作指南/创建NAT网关实例.md)|
+|网关流量监控（TOP ECS）|支持|不支持|[t147949.md\#section\_m95\_sta\_kek](/intl.zh-CN/控制台操作指南/NAT网关监控与运维.mdsection_m95_sta_kek)|
+|NAT网关绑定多EIP|支持|支持|[绑定弹性公网IP](/intl.zh-CN/控制台操作指南/创建NA网关实例.md)|
 |SNAT功能|支持|支持|[创建SNAT实现访问公网服务](/intl.zh-CN/控制台操作指南/创建SNAT实现访问公网服务.md)|
 |一个SNAT列表创建多条SNAT条目|支持|支持|[创建SNAT实现访问公网服务](/intl.zh-CN/控制台操作指南/创建SNAT实现访问公网服务.md)|
 |一个SNAT列表绑定多个EIP|支持|支持|
 |DNAT功能|支持|支持|[创建DNAT提供公网服务](/intl.zh-CN/控制台操作指南/创建DNAT提供公网服务.md)|
 |DNAT支持端口映射|支持|支持|[创建DNAT提供公网服务](/intl.zh-CN/控制台操作指南/创建DNAT提供公网服务.md)|
 |DNAT支持IP映射|支持|支持|
-|ECS实例通过SNAT访问同一个NAT实例上的DNAT服务|不支持|支持|[ECS实例通过增强型NAT网关的SNAT功能访问同一VPC下的DNAT服务]()|
+|ECS实例通过SNAT访问同一个NAT实例上的DNAT服务|不支持|支持|[ECS实例通过增强型NAT网关SNAT功能访问同一VPC下DNAT服务](/intl.zh-CN/最佳实践/ECS实例通过增强型NAT网关SNAT功能访问同一VPC下DNAT服务.md)|
 
 |限制项|增强型NAT网关|普通型NAT网关|
 |---|--------|--------|
