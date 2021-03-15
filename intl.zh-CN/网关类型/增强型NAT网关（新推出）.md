@@ -28,22 +28,10 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 
     -   新申请的增强型NAT网关如果要接管普通型NAT网关的流量，需要重新配置路由，在配置过程中会导致业务闪断，请注意在业务低峰时间做切换。
     -   当您在增强型NAT实例上同时创建了SNAT和DNAT，VPC内的ECS实例通过该增强型NAT实例的SNAT能力去访问同NAT实例内的DNAT服务时无法联通。如果您需要ECS实例去访问同一个VPC内的DNAT服务，建议您新建一个增强型NAT网关，然后将DNAT和SNAT分别创建在不同的NAT网关实例上。更多信息，请参见[ECS实例通过增强型NAT网关SNAT功能访问同一VPC下DNAT服务](/intl.zh-CN/最佳实践/ECS实例通过增强型NAT网关SNAT功能访问同一VPC下DNAT服务.md)。
--   按使用量计费
-    -   按使用量计费，使用费用更低。
-    -   按使用量计费的NAT网关支持弹性具有超强的突发性能。
-
-        |规格|SNAT最大连接数|SNAT最大新建规格|吞吐量|
-        |--|---------|----------|---|
-        |默认规格|200万|10万|5 Gbps|
-        |[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)[提交工单](https://workorder-intl.console.aliyun.com/#/ticket/createIndex)提交工单最大可提升的额度|1000万|100万|100 Gbps|
-
 
 ## 如何使用增强型NAT网关
 
 增强型NAT网关的使用流程与普通型NAT网关的使用流程一致。但在创建NAT网关时需要选择增强型NAT网关，并指定增强型NAT网关要关联的VPC和交换机。增强型NAT网关创建成功后，系统会为增强型NAT网关分配一个交换机内的空闲私网IP地址。
-
--   增强型NAT网关的创建流程，请参见[购买NAT网关](/intl.zh-CN/购买指南/购买NAT网关.md)。
--   组合购买NAT网关和弹性公网IP可以将创建的EIP自动绑定到创建的NAT网关。具体操作，请参见[组合购买NAT网关和弹性公网IP]()。
 
 增强型NAT网关的创建流程，请参见[购买NAT网关](/intl.zh-CN/购买指南/购买NAT网关.md)。
 
