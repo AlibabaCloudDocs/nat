@@ -46,16 +46,20 @@ NAT gateways are available in different sizes. The size of a NAT gateway determi
 
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
-|Action|String|Yes|ModifyNatGatewaySpec|The operation that you want to perform. Valid value to **ModifyNatGatewaySpec**. |
+|Action|String|Yes|ModifyNatGatewaySpec|The operation that you want to perform. Set the value to **ModifyNatGatewaySpec**. |
 |NatGatewayId|String|Yes|ngw-bp1uewa15k4iy5770\*\*\*\*|The ID of the NAT gateway. |
 |RegionId|String|Yes|cn-hangzhou|The ID of the region where the NAT gateway is deployed. |
 |Spec|String|Yes|Small|The size of the NAT gateway. Valid values:
 
- -   Small: a small-sized NAT gateway.
--   Middle: a middle-sized NAT gateway.
--   Large: a large-sized NAT gateway.
--   XLarge.1: a super large-sized NAT gateway. |
-|ClientToken|String|No|SHA234js121223xxxxx|The client token that is used to ensure the idempotence of the request. You can use the client to generate a value that is unique among different requests. **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. |
+-   **Small**: a small-sized NAT gateway.
+-   **Middle**: a medium-sized NAT gateway.
+-   **Large**: a large-sized NAT gateway.
+-   **XLarge.1**: a super large-sized NAT gateway. |
+|AutoPay|Boolean|No|false|Specifies whether automatic payment is enabled for the instance.
+
+-   **true**: enables automatic payment.
+-   **false**: disables automatic payment. This is the default value. |
+|ClientToken|String|No|SHA234js121223\*\*\*\*|The client token that is used to ensure the idempotence of the request. You can use the client to generate a value that is unique among different requests.**ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. |
 
 ## Response parameters
 
@@ -72,7 +76,7 @@ https://vpc.aliyuncs.com/?Action=ModifyNatGatewaySpec
 &NatGatewayId=ngw-bp1uewa15k4iy5770****
 &RegionId=cn-hangzhou
 &Spec=Small
-&<Common request parameters>
+&<Common request parameters>|
 ```
 
 Sample success responses
@@ -81,7 +85,7 @@ Sample success responses
 
 ```
 <ModifyNatGatewaySpecResponse>
-      <RequestId>DBD4E4A2-786E-4BD2-8EB6-107FFC2B5B7D</RequestId>
+  <RequestId>DBD4E4A2-786E-4BD2-8EB6-107FFC2B5B7D</RequestId>
 </ModifyNatGatewaySpecResponse>
 ```
 
@@ -89,7 +93,7 @@ Sample success responses
 
 ```
 {
-    "RequestId":"DBD4E4A2-786E-4BD2-8EB6-107FFC2B5B7D"
+    "RequestId": "DBD4E4A2-786E-4BD2-8EB6-107FFC2B5B7D"
 }
 ```
 
@@ -97,10 +101,12 @@ Sample success responses
 
 |HttpCode|Error code|Error message|Description|
 |--------|----------|-------------|-----------|
-|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|The error message returned because the specified region ID does not exist. Check whether the region ID is valid.|
+|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|The error message returned because the specified region ID is invalid. Check whether the service is available in the specified region.|
 |404|InvalidNatGatewayId.NotFound|The specified NatGatewayId does not exist in our records.|The error message returned because the specified NAT gateway ID does not exist. Check whether the value of the NatGatewayId parameter is valid.|
-|400|NATGW\_MODIFY\_SPEC\_SAME|The specified Spec is same with now.|The error message returned because the specified gateway size is the same as the current one.|
+|400|NATGW\_MODIFY\_SPEC\_SAME|The specified Spec is same with now.|The error message returned because the specified gateway size is the same as the current gateway size.|
 |400|InvalidParameter.Spec.ValueNotSupported|The specified Spec is not valid.|The error message returned because the specified gateway size is invalid.|
+
+访问[错误中心](https://error-center.aliyun.com/status/product/Vpc)查看更多错误码。
 
 For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Vpc).
 
