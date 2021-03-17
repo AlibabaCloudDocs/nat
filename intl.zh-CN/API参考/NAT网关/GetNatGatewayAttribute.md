@@ -13,7 +13,7 @@
 |NatGatewayId|String|是|ngw-bp1b0lic8uz4r6vf2\*\*\*\*|NAT网关实例ID。 |
 |RegionId|String|是|cn-qingdao|NAT网关所属的地域ID。
 
- 您可以通过调用[DescribeRegions](36063)接口获取地域ID。 |
+ 您可以通过调用[DescribeRegions](~~36063~~)接口获取地域ID。 |
 
 ## 返回数据
 
@@ -204,6 +204,8 @@ http(s)://[Endpoint]/?Action=GetNatGatewayAttribute
 ```
 
 ## 错误码
+
+访问[错误中心](https://error-center.aliyun.com/status/product/Vpc)查看更多错误码。
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Vpc)查看更多错误码。
 
