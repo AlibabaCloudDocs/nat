@@ -20,7 +20,7 @@
 
 您可以通过控制台和API创建增强型NAT网关。
 
--   在控制台创建增强型NAT网关时，您需要为增强型NAT网关指定所属的交换机。详细信息，请参见[创建NA网关实例](/cn.zh-CN/基本功能操作/创建NAT网关实例.md)。
+-   在控制台创建增强型NAT网关时，您需要为增强型NAT网关指定所属的交换机。详细信息，请参见[创建NAT网关实例](/cn.zh-CN/基本功能操作/创建NAT网关实例.md)。
 -   使用API创建增强型NAT网关时，您需要指定**NatType**为**Enhanced**，并为增强型NAT网关指定所属的**VSwitchId**。详细信息，请参见[CreateNatGateway](/cn.zh-CN/API参考/NAT网关/CreateNatGateway.md)。
 
 ## 将普通型NAT网关升级至增强型NAT网关
