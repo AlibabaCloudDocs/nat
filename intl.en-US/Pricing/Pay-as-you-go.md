@@ -44,7 +44,7 @@ The instance fee and CU fee are calculated based on the following formulas:
 
     |Region|Instance unit price \(USD/hour\)|CU unit price \(USD/hour\)|
     |------|--------------------------------|--------------------------|
-    |China \(Hangzhou\)|0.34|0.34|
+    |China \(Hangzhou\)|0.034|0.034|
     |China \(Shanghai\)|
     |China \(Chengdu\)|
     |China \(Shenzhen\)|
@@ -54,7 +54,7 @@ The instance fee and CU fee are calculated based on the following formulas:
     |China \(Zhangjiakou\)|
     |China \(Hohhot\)|
     |China \(Ulanqab\)|
-    |China \(Hong Kong\)|0.43|0.43|
+    |China \(Hong Kong\)|0.043|0.043|
     |UK \(London\)|
     |Japan \(Tokyo\)|
     |Singapore \(Singapore\)|
@@ -98,7 +98,7 @@ The instance fee and CU fee are calculated based on the following formulas:
     |Number of CUs based on CPS|1100÷1000=1.1|32÷1000=**0.032**|0|
     |Number of CUs based on CONNS|20000÷10000=2|8÷10000=0.0008|0|
     |Number of CUs based on data transfer|3.5÷1=**3.5**|0.0056÷1=0.0056|0|
-    |****|***3.5***×0.43=1.505|***0.032***×0.43=0.01376|0|
+    |****|***3.5***×0.43=0.1505|***0.032***×0.43=0.001376|0|
 
 
 ## Overdue payments
