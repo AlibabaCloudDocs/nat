@@ -1,94 +1,118 @@
 ---
-keyword: [NAT gateway, Internet egress, network address translation, provide Internet-facing services, Internet access]
+keyword: [NAT gateway, Internet egress, network address translation, Internet-facing services, Internet access]
 ---
 
 # Pay-as-you-go
 
-You can purchase NAT gateways on a pay-as-you-go basis. If you want to create or delete NAT gateways based on your business requirements, you can purchase pay-as-you-go NAT gateways instead of subscription NAT gateways. This topic describes the billing rules of pay-as-you-go NAT gateways.
+You can purchase NAT gateways that are billed on a pay-as-you-go basis. If you want to create or delete NAT gateways based on your business requirements, you can purchase pay-as-you-go NAT gateways instead of subscription NAT gateways. This topic describes the billing rules of pay-as-you-go NAT gateways.
 
 ## Overview
 
-The pay-as-you-go billing method requires you to pay for resources based on actual usage.
+The pay-as-you-go billing method requires you to pay for the resources that you use.
 
 Pay-as-you-go NAT gateways provide the following features:
 
 -   Pay-as-you-go NAT gateways are billed based on the billing cycle. Bills are generated and fees are deducted from your account after each billing cycle.
--   You can delete NAT gateways at any time. After you delete a NAT gateway, the NAT gateway is no longer billed. For more information, see [Delete a NAT gateway](/intl.en-US/User Guide/Manage NAT gateways.md).
--   The pay-as-you-go billing method supports the pay-by-specification metering method. The pay-by-specification metering method is used to meter and bill the usage of a NAT gateway based on the size of the gateway. You are charged a fixed fee for the NAT gateway after each billing cycle. For more information, see [Pay-by-specification](#section_dzk_6u6_9e9).
+-   You can delete pay-as-you-go NAT gateways at any time. After you delete a NAT gateway, the NAT gateway is no longer billed. For more information, see [Delete a NAT gateway](/intl.en-US/User Guide/Create NAT gateways.md).
+-   [Pay-by-data-transfer](#section_v5g_sue_5bj): You are charged based on the amount of network traffic that a NAT gateway forwards. Fees may vary in each billing cycle.
 
-## Pay-by-specification
+## Pay-by-data-transfer
 
-Fee of a pay-by-specification NAT gateway = Instance fee + Specification fee
+Total amount that you must pay for a pay-by-data-transfer NAT gateway = Instance fee + Capacity unit \(CU\) fee. You are charged and billed on an hourly basis. If you use a NAT gateway for less than 1 hour, the usage duration is rounded up to 1 hour.
 
--   Instance fee = Instance unit price × Usage duration
--   Specification fee = Specification unit price × Usage duration
+The instance fee and CU fee are calculated based on the following formulas:
 
-**Note:** The unit price of a NAT gateway consists of the instance unit price \(50%\) and the specification unit price \(50%\).
+-   Instance fee = Instance unit price \(CNY/hour\) × Usage duration \(hours\)
 
-The usage duration of a NAT gateway is calculated from the time when the gateway is created to the time when the NAT gateway is released. Standard NAT gateways and enhanced NAT gateways that use the pay-by-specification metering method have different billing cycles.
+    Usage duration refers to the time period from when the NAT gateway is purchased to when it is released.
 
--   Standard NAT gateways that use the pay-by-specification metering method are charged daily. Bills are generated on a daily basis. If you use a standard NAT gateway for less than one day, the usage duration is rounded up to one day.
--   Enhanced NAT gateways that use the pay-by-specification metering method are charged hourly. Bills are generated on an hourly basis. If you use an enhanced NAT gateway for less than one hour, the usage duration is rounded up to one hour.
+-   CU fee per hour = CU unit price \(CNY/unit\) × Number of CUs
 
-**Unit price**
+    **Number of CUs consumed per hour by a NAT gateway = Max\(Number of CUs based on new connections per hour, Number of CUs based on concurrent connections per hour, Number of CUs based on data transfer per hour\)**
 
-NAT gateways are available in the following sizes: Small, Middle, Large, and Super Large-1. The size of a NAT gateway determines the SNAT performance, including the maximum number of concurrent connections and the number of new connections per second. However, the size of the NAT gateway does not affect the DNAT performance.
+    New connections, concurrent connections, and data transfer are three determinants to CUs. The following table describes how the number of CUs per hour is calculated based on these determinants.
 
-The size of a NAT gateway determines the unit price of a NAT gateway.The actual prices on the [buy page](https://common-buy-intl.alibabacloud.com/?&commodityCode=nat_gw_intl#/buy) shall prevail.
+    |Metric|Unit|CU coefficient|Calculation of the number of CUs per hour|
+    |------|----|--------------|-----------------------------------------|
+    |Connections per second \(CPS\)|Second|1,000|The system collects all CPS values within a billing cycle and then divides the highest CPS value by the CU coefficient to calculate the number of CUs.|
+    |Concurrent connections \(CONNS\)|Minute|10,000|The system collects all CONNS values within a billing cycle and then divides the highest CONNS value by the CU coefficient to calculate the number of CUs.|
+    |Data transfer \(bytes\)|Hour|1 GB|The system collects the total amount of data transfer including the inbound and outbound traffic within a billing cycle, and then divides the total amount by the CU coefficient to calculate the number of CUs.**Note:** The amount of outbound and inbound network traffic collected by the system equals the amount of network traffic to be processed by a NAT gateway. |
 
-**Note:** If the prices in this table are different from those on the buy page,the actual prices on the [buy page](https://common-buy-intl.alibabacloud.com/?&commodityCode=nat_gw_intl#/buy) shall prevail.
+    The following table describes the instance unit prices and CU prices for pay-by-data-transfer NAT gateways.
 
-You created a small enhanced NAT gateway in UK \(London\) at 08:10:00 \(UTC+8\) on October 18, 2020 and released the gateway at 11:50:00 \(UTC+8\) on October 18, 2020. In this case, the gateway uses the pay-by-specification metering method. You are charged for a usage duration of 4 hours. The total fee of the NAT gateway includes:
+    **Note:** If the prices in this table are different from those on the buy page,the prices on the [buy page](https://common-buy-intl.alibabacloud.com/?&commodityCode=nat_gw_intl#/buy) shall prevail.
 
--   The fee that was charged for the usage from 08:10:00 \(UTC+8\) on October 18, 2020 to 09:00:00 \(UTC+8\) on October 18, 2020.
--   The fee that was charged for the usage from 09:00:00 \(UTC+8\) on October 18, 2020 to 10:00:00 \(UTC+8\) on October 18, 2020.
--   The fee that was charged for the usage from 10:00:00 \(UTC+8\) on October 18, 2020 to 11:00:00 \(UTC+8\) on October 18, 2020.
--   The fee that was charged for the usage from 11:00:00 \(UTC+8\) on October 18, 2020 to 12:00:00 \(UTC+8\) on October 18, 2020.
+    |Region|Instance unit price \(USD/hour\)|CU unit price \(USD/hour\)|
+    |------|--------------------------------|--------------------------|
+    |China \(Hangzhou\)|0.34|0.34|
+    |China \(Shanghai\)|
+    |China \(Chengdu\)|
+    |China \(Shenzhen\)|
+    |China \(Heyuan\)|
+    |China \(Qingdao\)|
+    |China \(Beijing\)|
+    |China \(Zhangjiakou\)|
+    |China \(Hohhot\)|
+    |China \(Ulanqab\)|
+    |China \(Hong Kong\)|0.43|0.43|
+    |UK \(London\)|
+    |Japan \(Tokyo\)|
+    |Singapore \(Singapore\)|
+    |Australia \(Sydney\)|
+    |Germany \(Frankfurt\)|
+    |US \(Silicon Valley\)|
+    |US \(Virginia\)|
+    |Malaysia \(Kuala Lumpur\)|
+    |Indonesia \(Jakarta\)|
+    |India \(Mumbai\)|
+    |UAE \(Dubai\)|
 
-The total fee of the NAT gateway: 0.132 × 4 = USD 0.528.
-
-## Billing after you upgrade or downgrade a NAT gateway
-
-You can change the size of an enhanced NAT gateway that uses the pay-by-specification metering method. If you change the size of an enhanced NAT gateway within a billing cycle, you are charged based on the largest size that you specified for the enhanced NAT gateway.
-
-For example, you created a Small-sized enhanced NAT gateway at 15:00:00 \(UTC+8\) on October 10, 2020. You changed the size of the enhanced NAT gateway to Middle at 16:30:00 \(UTC+8\) on October 10, 2020, and then you released the enhanced NAT gateway at 17:50:00 \(UTC+8\) on October 10, 2020. The total fee of the enhanced NAT gateway includes:
-
--   The fee that was charged for the usage of the Small-sized enhanced NAT gateway from 15:00:00 \(UTC+8\) on October 10, 2020 to 16:00:00 \(UTC+8\) on October 10, 2020.
--   The fee that was charged for the usage of the Middle-sized enhanced NAT gateway from 16:00:00 \(UTC+8\) on October 10, 2020 to 17:00:00 \(UTC+8\) on October 10, 2020.
--   The fee that was charged for the usage of the Middle-sized enhanced NAT gateway from 17:00:00 \(UTC+8\) on October 10, 2020 to 18:00:00 \(UTC+8\) on October 10, 2020.
-
-1.  Log on to the [NAT Gateway console](https://vpc.console.aliyun.com/nat).
-
-2.  In the top navigation bar, select the region where the NAT gateway is deployed.
-
-3.  On the **NAT Gateway** page, find the NAT gateway that you want to manage and choose **![More](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8458039951/p103337.png)** \> **Upgrade** in the **Actions** column.
-
-4.  On the **Upgrade** page, set the parameters and select the Terms of Service check box. Then, click **Buy Now** and complete the payment.
 
 
-## Switch the billing method from pay-as-you-go to subscription
+    You created three enhanced NAT gateways that use the pay-by-data-transfer billing method in the UK \(London\) region at 08:10:00 \(UTC+8\) on July 8, 2020, and released the NAT gateways at 08:50:00 \(UTC+8\) on July 8, 2020. The following table describes the highest CPS value, the highest CONNS value, and the total amount of data transfer of the NAT gateways within the time period from 08:10:00 \(UTC+8\) to 08:50:00 \(UTC+8\).
 
-1.  Log on to the [NAT Gateway console](https://vpc.console.aliyun.com/nat).
+    |Metric|Data collected from NAT Gateway 1|Data collected from NAT Gateway 2|Data collected from NAT Gateway 3|
+    |------|---------------------------------|---------------------------------|---------------------------------|
+    |Highest CPS value \(count/second\)|1100|32|0|
+    |Highest CONNS value \(count/minute\)|20000|8|0|
+    |Total amount of data transfer \(GB/hour\)|3.5|0.0056|0|
 
-2.  In the top navigation bar, select the region where the NAT gateway is deployed.
+    The numbers of CUs based on new connections, concurrent connections, and data transfer, and the CU fee are calculated by using the following formulas:
 
-3.  On the NAT Gateway page, find the NAT gateway that you want to manage and choose **![More](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8458039951/p103337.png)** \> **Convert To PrePay Mode** in the **Actions** column.
+    The number of CUs is calculated based on the following formulas:
 
-4.  On the Convert To PrePay Mode page, select the billing cycle of the NAT gateway and the Terms of Service check box. Then, click **Buy Now** and complete the payment.
+    ```
+    Number of CUs based on CPS = Highest CPS value/CU coefficient
+    Number of CUs based on CONNS = Highest CONNS value/CU coefficient
+    Number of CUs based on data transfer = Total amount of data transfer/CU coefficient
+    ```
+
+    The CU fee is calculated based on the following formula:
+
+    ```
+    CU fee = Max(Number of CUs based on new connections per hour, Number of CUs based on concurrent connections per hour, Number of CUs based on the amount of data transferred per hour) × CU unit price
+    ```
+
+    |Number of CUs|Data collected from NAT Gateway 1|Data collected from NAT Gateway 2|Data collected from NAT Gateway 3|
+    |-------------|---------------------------------|---------------------------------|---------------------------------|
+    |Number of CUs based on CPS|1100÷1000=1.1|32÷1000=**0.032**|0|
+    |Number of CUs based on CONNS|20000÷10000=2|8÷10000=0.0008|0|
+    |Number of CUs based on data transfer|3.5÷1=**3.5**|0.0056÷1=0.0056|0|
+    |****|***3.5***×0.43=1.505|***0.032***×0.43=0.01376|0|
 
 
 ## Overdue payments
 
-If a NAT gateway has an overdue payment, take note of the following rules:
+If a pay-as-you-go NAT gateway has an overdue payment, take note of the following rules:
 
 -   The NAT gateway continues to serve your workloads in the next 14 days from the time when the payment becomes overdue.
--   On the 15th day from the time when the payment becomes overdue, the NAT gateway is suspended. In this case, you cannot manage the NAT gateway.
--   If you do not complete the overdue payment within 15 days after the NAT gateway is suspended, the NAT gateway is automatically deleted. An email notification is sent to you one day before the NAT gateway is deleted. After the NAT gateway is deleted, the configurations and data of the NAT gateway are deleted and cannot be recovered.
+-   The NAT gateway is suspended on the 15th day from the time when the payment becomes overdue. After the NAT gateway is suspended, you cannot manage the NAT gateway.
+-   If you do not pay the outstanding amount within 15 days after the NAT gateway is suspended, the NAT gateway is automatically deleted. An email is sent to you one day before the NAT gateway is deleted. After the NAT gateway is deleted, the configurations and data of the NAT gateway are deleted and cannot be recovered.
 
 ## Top up your account
 
 Before you top up your account, take note of the following rules:
 
--   If you top up the account within 15 days after the payment becomes overdue, your service is not interrupted.
--   If you top up the account within 30 days after the payment becomes overdue, the system automatically completes the overdue payment. After the overdue payment is completed, the NAT gateway immediately starts to provide services.
+-   If you top up the account within 15 days after the payment becomes overdue, your service is not suspended.
+-   If you top up the account within 30 days after the payment becomes overdue, the system automatically pays the outstanding amount. After the system pays the outstanding amount, the NAT gateway immediately starts to provide services.
 
