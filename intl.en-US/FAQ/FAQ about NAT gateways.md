@@ -13,14 +13,14 @@ This topic provides answers to some commonly asked questions about NAT gateways.
 -   [How many EIPs can I associate with a NAT gateway?](#section_9hb_4u4_f2e)
 -   [Can I specify the same EIP in both a Source Network Address Translation \(SNAT\) entry and a Destination Network Address Translation \(DNAT\) entry?](#section_9qf_el8_09i)
 -   [Can Elastic Compute Service \(ECS\) instances use SNAT to access services that use DNAT to provide external access when the same enhanced NAT gateway is used for SNAT and DNAT?](#section_wdq_wze_1yj)
--   [Why is the outbound traffic unable to reach the maximum bandwidth of an EIP after I associate the EIP with a NAT gateway?](#section_i0c_yb8_sw1)
+-   [Why is the outbound traffic unable to reach the bandwidth limit of an EIP after I associate the EIP with a NAT gateway?](#section_i0c_yb8_sw1)
 
 ## Why am I unable to associate elastic IP addresses \(EIPs\) with a NAT gateway in the Virtual Private Cloud \(VPC\) console?
 
-If you have purchased a NAT service plan beforeJanuary 26, 2018, you can only associate the public IP addresses that are provided by the NAT service plan with the NAT gateway. To associate EIPs with the NAT gateway, perform the following operations based on the billing method of your NAT service plan.
+If you purchased a NAT service plan beforeJanuary 26, 2018, you can only associate public IP addresses in the NAT service plan with the NAT gateway to enable Internet access. To associate EIPs with the NAT gateway, perform the following operations based on the billing method of your NAT service plan.
 
 -   If the NAT service plan is charged on a pay-by-bandwidth basis, you can convert the public IP addresses to EIPs in the VPC console. For more information, see [Convert a NAT service plan to an EIP bandwidth plan](/intl.en-US/Bandwidth Package (Archive)/Convert a NAT service plan to an EIP bandwidth plan.md).
--   If the NAT service plan is charged on a pay-by-data-transfer basis, submit a ticket to convert the public IP addresses in the NAT service plan to EIPs. For more information, see [Convert a NAT service plan to an EIP bandwidth plan](/intl.en-US/Bandwidth Package (Archive)/Convert a NAT service plan to an EIP bandwidth plan.md). To submit a ticket, click[submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+-   If the NAT service plan is charged on a pay-by-data-transfer basis, submit a ticket to convert the public IP addresses in the NAT service plan to EIPs. For more information, see [Convert a NAT service plan to an EIP bandwidth plan](/intl.en-US/Bandwidth Package (Archive)/Convert a NAT service plan to an EIP bandwidth plan.md). To submit a ticket,[submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
 
 ## Why are NAT service plans unavailable in the NAT Gateway console?
 
@@ -41,14 +41,14 @@ The number of NAT gateways that can be created in a VPC depends on the type of N
 
 By default, you can associate up to 20 EIPs with a NAT gateway. You can associate up to 10 pay-by-data-transfer EIPs with a NAT gateway.
 
-If you want to increase the quota, go to the [Quota Management](https://vpc.console.aliyun.com/quota) page. For more information, see [Quota management](/intl.en-US/Common Configurations/Quota management.md).
+To increase the quota, go to the [Quota Management](https://vpc.console.aliyun.com/quota) page. For more information, see [Quota management](/intl.en-US/Common Configurations/Quota management.md).
 
 ## Can I specify the same EIP in both a Source Network Address Translation \(SNAT\) entry and a Destination Network Address Translation \(DNAT\) entry?
 
 Whether you can specify an EIP in both a SNAT entry and a DNAT entry depends on the type of NAT gateway.
 
--   Standard NAT gateway: You cannot specify an EIP in both a SNAT entry and a DNAT entry.
--   Enhanced NAT gateway: You can specify an EIP in both a SNAT entry and a DNAT entry when your account is included in the whitelist. To apply for a whitelist,[submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+-   For standard NAT gateways, you cannot specify an EIP in both a SNAT entry and a DNAT entry.
+-   For enhanced NAT gateways, you can specify an EIP in both a SNAT entry and a DNAT entry when your account is included in the whitelist. To apply to be added to a whitelist,[submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
 
 ## Can Elastic Compute Service \(ECS\) instances use SNAT to access services that use DNAT to provide external access when the same enhanced NAT gateway is used for SNAT and DNAT?
 
@@ -56,9 +56,9 @@ No, the ECS instances cannot access the services in this case.
 
 If you created both SNAT and DNAT entries on the enhanced NAT gateway, the ECS instances cannot use SNAT to access services that use DNAT of the same enhanced NAT gateway to provide external access in the same VPC.
 
-If you want the ECS instances to access the services that use DNAT to provide external access in the same VPC, we recommend that you create another enhanced NAT gateway. Then, create DNAT entries and SNAT entries on the two NAT gateways separately.
+If you want the ECS instances to access the services that use DNAT to provide external access in the same VPC, we recommend that you create another enhanced NAT gateway. Then, create DNAT entries on one NAT gateway and create SNAT entries on the other NAT gateway.
 
-## Why is the outbound traffic unable to reach the maximum bandwidth of an EIP after I associate the EIP with a NAT gateway?
+## Why is the outbound traffic unable to reach the bandwidth limit of an EIP after I associate the EIP with a NAT gateway?
 
 The maximum number of concurrent connections that a NAT gateway supports is limited by the number of EIPs that are associated with the NAT gateway. If only one EIP is associated with the NAT gateway, the maximum number of concurrent connections that the NAT gateway supports is 55,000.
 
