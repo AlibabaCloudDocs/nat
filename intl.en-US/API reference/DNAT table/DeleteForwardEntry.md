@@ -9,7 +9,7 @@ DeleteForwardEntry is an asynchronous operation. After you make a request, the I
 -   **Deleting**: indicates that the system is deleting the DNAT entry. You can only query the state of the DNAT entry, but cannot perform other operations.
 -   If no DNAT entry is returned in the response, the DNAT entry is deleted.
 
-**Note:** If a DNAT table contains DNAT entries in the **Pending** state, you cannot delete any DNAT entries in the DNAT table.
+**Note:** If a DNAT table contains DNAT entries in the **Pending** state, you cannot delete DNAT entries in the DNAT table.
 
 ## Debugging
 
@@ -64,12 +64,12 @@ Sample success responses
 
 |HttpCode|Error code|Error message|Description|
 |--------|----------|-------------|-----------|
-|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|The error message returned because the specified region ID does not exist. Check whether the region ID is valid.|
-|400|IncorretForwardEntryStatus|Some Forward entry status blocked this operation..|The error message returned because you are not authorized to perform the specified operation. The error message returned because one or more DNAT entries in the DNAT table are in the Pending or Modifying state.|
+|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|The error message returned because the specified region ID does not exist. Check whether the service is available in the region.|
+|400|IncorretForwardEntryStatus|Some Forward entry status blocked this operation..|The error message returned because you are unauthorized to perform the specified operation. The error message returned because one or more DNAT entries in the DNAT table are in the Pending or Modifying state.|
 |404|InvalidForwardEntryId.NotFound|Specified forward entry ID does not exist|The error message returned because the specified DNAT entry does not exist.|
-|404|InvalidForwardTableId.NotFound|Specified forward table does not exist.|The error message returned because the specified DNAT entry does not exist. Verify the parameter and try again.|
+|404|InvalidForwardTableId.NotFound|Specified forward table does not exist.|The error message returned because the specified DNAT table does not exist. Verify the parameter and try again.|
 |400|IncorretForwardEntryStatus|The Specified forwardEntry is not exist|The error message returned because the specified DNAT entry does not exist.|
-|400|MissingParameter|Missing mandatory parameter|The error message returned because the required parameters are missing. Check whether you have set all the required parameters before you call this operation.|
+|400|MissingParameter|Missing mandatory parameter|The error message returned because the required parameters are not set. Check whether you have set all of the required parameters before you call this operation.|
 
 For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Vpc).
 
