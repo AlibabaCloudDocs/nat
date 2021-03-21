@@ -24,7 +24,7 @@ If you purchased a NAT service plan beforeJanuary 26, 2018, you can only associa
 
 ## Why are NAT service plans unavailable in the NAT Gateway console?
 
-If you did not purchase a NAT service plan beforeJanuary 26, 2018, you must associate an EIP with the NAT gateway before the NAT gateway can access the Internet. For more information, see [Associate an EIP with a NAT gateway]().
+If you did not purchase a NAT service plan beforeJanuary 26, 2018, you must associate an EIP with the NAT gateway before the NAT gateway can access the Internet. For more information, see [Associate an EIP with a NAT gateway](/intl.en-US/User Guide/Create NAT gateways.md).
 
 ## How many NAT gateways can I create with an Alibaba Cloud account?
 
