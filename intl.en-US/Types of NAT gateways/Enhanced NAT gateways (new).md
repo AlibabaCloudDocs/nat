@@ -33,8 +33,7 @@ Both enhanced NAT gateways and standard NAT gateways support basic features such
 
 Enhanced NAT gateways are used in the same way as standard NAT gateways. However, when you create an enhanced NAT gateway, you must specify the gateway type, and the VPC and vSwitch to be associated with the enhanced NAT gateway. After the enhanced NAT gateway is created, the system assigns an idle private IP address from the vSwitch to the enhanced NAT gateway.
 
--   For more information about how to create an enhanced NAT gateway, see [Purchase a NAT gateway](/intl.en-US/Pricing/Purchase a NAT gateway.md).
--   You can purchase a NAT gateway and elastic IP addresses \(EIPs\) as a bundle. After you create a NAT gateway and EIPs, the system automatically associates the EIPs with the NAT gateway. For more information, see [Purchase a NAT gateway and EIPs as a service bundle]().
+For more information about how to create an enhanced NAT gateway, see[Purchase a NAT gateway](/intl.en-US/Pricing/Purchase a NAT gateway.md)。
 
 **Related topics**  
 
