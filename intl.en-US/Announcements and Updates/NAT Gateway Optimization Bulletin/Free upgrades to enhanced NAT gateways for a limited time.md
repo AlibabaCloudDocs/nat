@@ -1,6 +1,6 @@
 # Free upgrades to enhanced NAT gateways for a limited time
 
-Starting from October 1, 2020 until December 31, 2020, you can upgrade standard NAT gateways to enhanced NAT gateways free of charge.
+Alibaba Cloud extended the time period during which you can update standard NAT gateways to enhanced NAT gateways free of charge. The time period for free upgrades is extended from December 31, 2020 to March 30, 2021.
 
 ## Features of enhanced NAT gateways
 
@@ -12,7 +12,7 @@ Enhanced NAT gateways are an upgrade from standard NAT gateways and use a more a
 
 ## Upgrade
 
-Before you upgrade standard NAT gateways to enhanced NAT gateways, take note of the instructions in the following figure.
+Before you upgrade a standard NAT gateway to an enhanced NAT gateway, take note of the instructions in the following figure.
 
 ![Instructions](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/0082659951/p147943.png)
 
