@@ -4,7 +4,7 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 
 # 增强型NAT网关发布公告
 
-阿里云发布增强型NAT网关，增强型NAT网关在普通型NAT网关的技术架构上作了升级，具有更优的弹性和更强的稳定性，帮助您更好的管理公网访问流量。
+阿里云发布增强型NAT网关，增强型NAT网关在普通型NAT网关的技术架构上做了升级，具有更优的弹性和更强的稳定性，帮助您更好的管理公网访问流量。
 
 ## 增强型NAT网关简介
 
@@ -24,14 +24,12 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 
     -   新申请的增强型NAT网关如果要接管普通型NAT网关的流量，需要重新配置路由，在配置过程中会导致业务闪断，请注意在业务低峰时间做切换。
     -   当您在增强型NAT实例上同时创建了SNAT和DNAT，VPC内的ECS实例通过该增强型NAT实例的SNAT能力去访问同NAT实例内的DNAT服务时无法联通。如果您需要ECS实例去访问同一个VPC内的DNAT服务，建议您新建一个增强型NAT网关，然后将DNAT和SNAT分别创建在不同的NAT网关实例上。
--   按使用量计费
-    -   按使用量计费，使用费用更低。
-    -   按使用量计费的NAT网关具有超强的突发性能。
+-   按使用量计费，按使用量计费的NAT网关具有超强的突发性能。
 
-        |规格|SNAT最大连接数|SNAT最大新建规格|吞吐量|
-        |--|---------|----------|---|
-        |默认规格|200万|10万|5 Gbps|
-        |[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)最大可提升的额度|1000万|100万|100 Gbps|
+    |规格|SNAT最大连接数|SNAT最大新建规格|吞吐量|
+    |--|---------|----------|---|
+    |默认规格|200万|10万|5 Gbps|
+    |[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)最大可提升的额度|1000万|100万|100 Gbps|
 
 
 ## 对比增强型与普通型NAT网关
@@ -83,7 +81,7 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 
 增强型NAT网关的使用流程与普通型NAT网关的使用流程一致，但在创建NAT网关时需要选择增强型NAT网关，并指定增强型NAT网关要关联的VPC和交换机。增强型NAT网关创建成功后，系统会为增强型NAT网关分配一个交换机内的空闲私网IP地址。
 
-**说明：** 如果您使用RAM用户创建增强型NAT网关，请先使用阿里云账号进行授权。[授权入口](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunNATAccessingNetworkInterfaceRole%22,%20%22TemplateId%22:%20%22ENIRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fvpc.console.aliyun.com%2Fnat%22,%20%22Service%22:%20%22NAT%22%7D)。
+**说明：** 如果您使用RAM用户创建增强型NAT网关，请先使用阿里云账号进行[授权](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunNATAccessingNetworkInterfaceRole%22,%20%22TemplateId%22:%20%22ENIRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fvpc.console.aliyun.com%2Fnat%22,%20%22Service%22:%20%22NAT%22%7D)。
 
 ![创建增强型NAT网关](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9773424161/p243557.png)
 
