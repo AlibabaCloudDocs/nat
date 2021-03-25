@@ -4,7 +4,7 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 
 # 增强型NAT网关发布公告
 
-阿里云发布增强型NAT网关，增强型NAT网关在普通型NAT网关的技术架构上作了升级，具有更优的弹性和更强的稳定性，帮助您更好的管理公网访问流量。
+阿里云发布增强型NAT网关，增强型NAT网关在普通型NAT网关的技术架构上做了升级，具有更优的弹性和更强的稳定性，帮助您更好的管理公网访问流量。
 
 ## 增强型NAT网关简介
 
@@ -71,9 +71,9 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 
 增强型NAT网关的使用流程与普通型NAT网关的使用流程一致，但在创建NAT网关时需要选择增强型NAT网关，并指定增强型NAT网关要关联的VPC和交换机。增强型NAT网关创建成功后，系统会为增强型NAT网关分配一个交换机内的空闲私网IP地址。
 
-**说明：** 如果您使用RAM用户创建增强型NAT网关，请先使用阿里云账号进行授权。[授权入口](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunNATAccessingNetworkInterfaceRole%22,%20%22TemplateId%22:%20%22ENIRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fvpc.console.aliyun.com%2Fnat%22,%20%22Service%22:%20%22NAT%22%7D)。
+**说明：** 如果您使用RAM用户创建增强型NAT网关，请先使用阿里云账号进行[授权](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunNATAccessingNetworkInterfaceRole%22,%20%22TemplateId%22:%20%22ENIRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fvpc.console.aliyun.com%2Fnat%22,%20%22Service%22:%20%22NAT%22%7D)。
 
-![创建增强型NAT网关](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9773424161/p243557.png)
+![创建增强型NAT网关](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1049366161/p243557.png)
 
 增强型NAT网关的使用流程如下。
 
