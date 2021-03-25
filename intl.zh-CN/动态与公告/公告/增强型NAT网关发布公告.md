@@ -73,7 +73,7 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 
 **说明：** 如果您使用RAM用户创建增强型NAT网关，请先使用阿里云账号进行[授权](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunNATAccessingNetworkInterfaceRole%22,%20%22TemplateId%22:%20%22ENIRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fvpc.console.aliyun.com%2Fnat%22,%20%22Service%22:%20%22NAT%22%7D)。
 
-![创建增强型NAT网关](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1049366161/p243557.png)
+![创建增强型NAT网关](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3408560061/p101531.png)
 
 增强型NAT网关的使用流程如下。
 
