@@ -12,7 +12,7 @@ NAT gateways are enterprise-class gateways that provide the Source Network Addre
 
 ![Diagram](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8604485061/p4440.png)
 
-NAT gateways support two metering methods: pay-by-specification and pay-by-data-transfer. The following tables describe the maximum number of connections and the number of new connections per second that are supported by pay-by-data-transfer NAT gateways and pay-by-specification NAT gateways.
+NAT gateways are billed based on subscription and pay-as-you-go. Subscription NAT gateways support the pay-by-specification metering method. Pay-as-you-go NAT gateways support the pay-by-data-transfer metering method. The following tables describe the maximum number of concurrent connections and the number of new connections per second that are supported when you choose the two metering methods.
 
 -   **Pay-by-specification**
 
@@ -35,20 +35,20 @@ NAT gateways support two metering methods: pay-by-specification and pay-by-data-
     |Highest quota that you can apply for by [submitting a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).|10,000,000|1,000,000|100 Gbps|
 
 
-When you choose a gateway size, pay close attention to the following features and limits:
+When you choose a gateway size, take note of the following features and limits:
 
--   The maximum bandwidth of EIP bandwidth plans and the number of IP addresses that are assigned to the EIP bandwidth plans are not restricted by the size of the NAT gateway.
+-   The bandwidth limit of EIP bandwidth plans and the number of IP addresses that are associated with the EIP bandwidth plans are not limited by the size of the NAT gateway.
 -   Cloud Monitor monitors only the maximum number of SNAT connections for NAT gateways. Cloud Monitor does not monitor the number of new SNAT connections per second.
 -   The timeout period of SNAT connections on NAT gateways is 900 seconds.
 -   To avoid the timeout of SNAT connections that is caused by network congestion or Internet instability, make sure that your applications support automatic reconnection.
 -   NAT gateways do not support packet fragmentation.
--   For the same destination public IP address and port, the number of elastic IP addresses \(EIPs\) that are associated with a NAT gateway determines the maximum number of concurrent connections. Each EIP that is associated with a NAT gateway supports up to 55,000 concurrent connections. If N EIPs are associated with a NAT gateway, the maximum number of concurrent connections that the NAT gateway supports is N × 55,000.
--   For example, you have multiple Elastic Compute Service \(ECS\) instances that are deployed in a virtual private cloud \(VPC\). The ECS instances are not assigned public IP addresses. The ECS instances access the same destination IP address and port over the Internet by using a NAT gateway. The bandwidth provided by the NAT gateway is higher than 2 Gbit/s.To avoid packet loss that is caused by the upper limit of ports for each public IP address, we recommend that you create a SNAT address pool that contains 4 to 8 public IP addresses for the NAT gateway.
+-   For the same destination public IP address and port, the number of elastic IP addresses \(EIPs\) that are associated with a NAT gateway determines the maximum number of concurrent connections. Each EIP that is associated with a NAT gateway supports up to 55,000 concurrent connections. If multiple EIPs are associated with a NAT gateway, the maximum number of concurrent connections that the NAT gateway supports is N × 55,000.
+-   For example, you have multiple Elastic Compute Service \(ECS\) instances that are deployed in a virtual private cloud \(VPC\). The ECS instances are not assigned public IP addresses. The ECS instances access the same destination IP address and port over the Internet by using a NAT gateway. The bandwidth provided by the NAT gateway is higher than 2 Gbit/s.To avoid packet loss that is caused by the upper limit of ports for each public IP address, we recommend that you create a SNAT address pool that contains four to eight public IP addresses for the NAT gateway.
 
 References:
 
--   [Enhanced NAT gateways \(new\)](/intl.en-US/Types of NAT gateways/Enhanced NAT gateways (new).md)
--   [Comparison between enhanced NAT gateways and standard NAT gateways](/intl.en-US/Types of NAT gateways/Comparison between enhanced NAT gateways and standard NAT gateways.md)
+-   [Enhanced NAT gateways \(new\)](/intl.en-US/Enhanced NAT gateway/Enhanced NAT gateways (new).md)
+-   [Comparison between enhanced NAT gateways and standard NAT gateways](/intl.en-US/Enhanced NAT gateway/Comparison between enhanced NAT gateways and standard NAT gateways.md)
 
 ## SNAT
 
@@ -60,9 +60,9 @@ You can create SNAT entries for a vSwitch or an ECS instance:
 
 -   Create a SNAT entry for a vSwitch
 
-    If you create a SNAT entry for a vSwitch, the ECS instances that are attached to the vSwitch can access the Internet by using the SNAT IP in the SNAT entry.
+    If you create a SNAT entry for a vSwitch, the ECS instances that are attached to the vSwitch can access the Internet by using the IP address in the SNAT entry.
 
-    **Note:** For example, if an ECS instance is assigned a static public IP address or an EIP, or configured with a DNAT IP mapping, the ECS instance uses the preceding method to access the Internet, instead of using the SNAT IP in the SNAT entry.
+    **Note:** For example, if an ECS instance is assigned a static public IP address or an EIP, or configured with a DNAT IP mapping, the ECS instance uses the preceding method to access the Internet, instead of using the IP address in the SNAT entry.
 
 -   Create a SNAT entry for an ECS instance
 
@@ -87,7 +87,7 @@ DNAT supports port mapping and IP mapping.
 
 -   Port mapping
 
-    After you configure port mapping on a NAT gateway, the NAT gateway forwards the requests that are destined for a DNAT IP to the specified ECS instance. The requests are forwarded based on the specified source and destination ports and the specified protocols used by the source and destination ports. The following table describes the examples of DNAT entries that are used as port mappings.
+    After you configure port mapping on a NAT gateway, the NAT gateway forwards the requests that are destined for a DNAT IP to the specified ECS instance. The requests are forwarded based on the specified source and destination ports and the specified protocol used by the source and destination ports. The following table describes the examples of DNAT entries that are used as port mappings.
 
     |DNAT entry|Public IP address|External port|Private IP address|Internal port|Protocol|
     |:---------|:----------------|:------------|:-----------------|:------------|:-------|
@@ -115,10 +115,10 @@ References:
 
 -   EIPs
 
-    An EIP is a public IP address that you can purchase and use as an independent resource. You can associate EIPs with the following network instances that are deployed in VPCs: ECS instances, internal-facing SLB instances, and secondary elastic network interfaces \(ENIs\). You can also associate EIPs with NAT gateways and high-availability virtual IP addresses \(HAVIPs\). For more information, see [What is an EIP?](/intl.en-US/.md).
+    An EIP is a public IP address that you can purchase and use as an independent resource. You can associate EIPs with the following network instances that are deployed in VPCs: ECS instances, internal-facing SLB instances, and secondary elastic network interfaces \(ENIs\). You can also associate EIPs with NAT gateways and high-availability virtual IP addresses \(HAVIPs\). For more information, see [What is an EIP?](/intl.en-US/.md)
 
 -   EIP bandwidth plans
 
-    You can use an EIP bandwidth plan as an independent service. EIP bandwidth plans support regional bandwidth sharing and transfer. After you associate EIPs that belong to the same region with an EIP bandwidth plan, the ECS instances, NAT gateways, or SLB instances that are associated with the EIPs can use the bandwidth of the EIP bandwidth plan by using these EIPs. For more information, see [What is an EIP bandwidth plan?](/intl.en-US/.md).
+    You can use an EIP bandwidth plan as an independent service. EIP bandwidth plans support regional bandwidth sharing and transfer. After you associate EIPs that belong to the same region with an EIP bandwidth plan, the ECS instances, NAT gateways, or SLB instances that are assigned the EIPs can use the bandwidth of the EIP bandwidth plan. For more information, see [What is an EIP bandwidth plan?](/intl.en-US/.md)
 
 
