@@ -108,8 +108,6 @@ At present, NAT gateways only support pay-by-data-transfer, and the existing NAT
 
 The unit price of a NAT gateway varies based on the size of the NAT gateway. The following table describes the unit price of each size.
 
-**Note:** If the prices in this table are different from those on the buy page,the prices on the [buy page](https://common-buy-intl.alibabacloud.com/?&commodityCode=nat_gw_intl#/buy) shall prevail.
-
 |Region|Small \(unit price\)|Medium \(unit price\)|Large \(unit price\)|
 |\(USD/hour\)|\(USD/day\)|\(USD/hour\)|\(USD/day\)|\(USD/hour\)|\(USD/day\)|
 |:-----|--------------------|:--------------------|--------------------|
