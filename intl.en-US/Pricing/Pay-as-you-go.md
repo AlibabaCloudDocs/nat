@@ -14,7 +14,6 @@ Pay-as-you-go NAT gateways provide the following features:
 
 -   Pay-as-you-go NAT gateways are billed based on the billing cycle. Bills are generated and fees are deducted from your account after each billing cycle.
 -   You can delete pay-as-you-go NAT gateways at any time. After you delete a NAT gateway, the NAT gateway is no longer billed. For more information, see [Delete a NAT gateway](/intl.en-US/User Guide/Create NAT gateways.md).
--   [Pay-by-data-transfer](#section_v5g_sue_5bj): You are charged based on the amount of network traffic that a NAT gateway forwards. Fees may vary in each billing cycle.
 
 ## Pay-by-data-transfer
 
@@ -100,6 +99,43 @@ The instance fee and CU fee are calculated based on the following formulas:
     |Number of CUs based on data transfer|3.5÷1=**3.5**|0.0056÷1=0.0056|0|
     |****|***3.5***×0.43=0.1505|***0.032***×0.43=0.001376|0|
 
+
+## Pay-by-specification
+
+**Unit price**
+
+At present, NAT gateways only support pay-by-data-transfer, and the existing NAT gateways still have small, medium and large specifications.
+
+The unit price of a NAT gateway varies based on the size of the NAT gateway. The following table describes the unit price of each size.
+
+**Note:** If the prices in this table are different from those on the buy page,the prices on the [buy page](https://common-buy-intl.alibabacloud.com/?&commodityCode=nat_gw_intl#/buy) shall prevail.
+
+|Region|Small \(unit price\)|Medium \(unit price\)|Large \(unit price\)|
+|\(USD/hour\)|\(USD/day\)|\(USD/hour\)|\(USD/day\)|\(USD/hour\)|\(USD/day\)|
+|:-----|--------------------|:--------------------|--------------------|
+|:-----------|-----------|:-----------|-----------|:-----------|-----------|
+|China \(Qingdao\)|0.076|1.829|0.146|3.505|0.287|6.888|
+|China \(Beijing\)|
+|China \(Zhangjiakou\)|
+|China \(Hohhot\)|
+|China \(Ulanqab\)|
+|China \(Hangzhou\)|
+|China \(Shanghai\)|
+|China \(Shenzhen\)|
+|China \(Heyuan\)|
+|China \(Chengdu\)|
+|US \(Virginia\)|0.102|2.448|0.190|4.572|0.375|8.991|
+|China \(Hong Kong\)|
+|Japan \(Tokyo\)|0.122|2.926|0.233|5.608|0.457|10.972|
+|Singapore \(Singapore\)|0.114|2.743|0.222|5.334|0.433|10.363|
+|Indonesia \(Jakarta\)|
+|Australia \(Sydney\)|0.152|3.657|0.293|5.334|0.573|13.716|
+|Malaysia \(Kuala Lumpur\)|0.109|2.606|0.211|5.068|0.410|9.845|
+|India \(Mumbai\)|
+|US \(Silicon Valley\)|0.108|2.591|0.210|5.029|0.401|9.601|
+|UAE \(Dubai\)|0.229|5.486|0.439|10.515|0.860|20.64|
+|Germany \(Frankfurt\)|0.137|3.292|0.262|6.309|0.515|12.344|
+|UK \(London\)|0.132|3.168|0.253|6.072|0.494|11.856|
 
 ## Overdue payments
 
