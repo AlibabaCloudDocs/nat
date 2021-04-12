@@ -24,7 +24,7 @@
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
 |Action|String|是|CreateNatGateway|要执行的操作，取值：**CreateNatGateway**。 |
-|RegionId|String|是|cn-hangzhou|NAT网关所在的地域。
+|RegionId|String|是|cn-hangzhou|NAT网关所在的地域ID。
 
  您可以通过调用[DescribeRegions](~~36063~~)接口获取地域ID。 |
 |VpcId|String|是|vpc-bp1di7uewzmtvfuq8\*\*\*\*|需要创建NAT网关的VPC的ID。 |
@@ -36,10 +36,10 @@
 -   如果您还未创建交换机，请先在支持创建增强型NAT网关的可用区创建交换机，然后再指定增强型NAT网关所属的交换机。
 
  您可以通过[ListEnhanhcedNatGatewayAvailableZones](~~182292~~)接口查询增强型NAT网关的资源可用区，通过[DescribeVSwitches](~~35748~~)接口查询交换机中的可用IP数。 |
-|NatType|String|是|Enhanced|NAT网关的类型，取值：**Enhanced**，增强型NAT网关。增强型NAT网关详情，请参见[增强型NAT网关发布公告](~~163610~~)。 |
+|NatType|String|是|Enhanced|NAT网关的类型，取值：**Enhanced**，增强型NAT网关。更多信息，请参见[增强型NAT网关发布公告](~~163610~~)。 |
 |Name|String|否|fortest|NAT网关的名称。
 
- 名称长度为2~128个字符之间，必须以英文字母或中文开头，不能以`http://`和`https://`开头，可包含数字、点号（.）、下划线（\_）或短划线（-）。
+ 名称长度为2~128个字符之间，必须以英文字母或中文开头，不能以`http://`和`https://`开头，可包含数字、半角句号（.）、下划线（\_）或短划线（-）。
 
  如果没有指定该参数，默认使用网关ID作为名称。 |
 |Description|String|否|testnat|NAT网关的描述。
@@ -50,40 +50,30 @@
 
  -   **Small**（默认值）：小型。
 -   **Middle**：中型。
--   **Large**：大型。
--   **XLarge.1**：超大型-1。 |
-|InstanceChargeType|String|否|PostPaid|NAT网关的付费模式，取值：
+-   **Large**：大型。 |
+|InstanceChargeType|String|否|PostPaid|-   NAT网关的付费模式，取值：
+-   **PostPaid**（默认值）：按量付费。
+-   **PrePaid**：包年包月。
 
- **PostPaid**（默认值）：按量付费。
-
- **PrePaid**：包年包月。
-
- 包年包月和按量付费的详细信息，请参见[包年包月](~~88657~~)和[按量付费](~~88658~~)。 |
+ 更多信息，请参见[包年包月](~~88657~~)和[按量付费](~~88658~~)。 |
 |PricingCycle|String|否|Month|包年包月的计费周期，取值：
 
- **Month**（默认值）：按月付费。
+ -   **Month**（默认值）：按月付费。
+-   **Year**：按年付费。
 
- **Year**：按年付费。
-
- 当**InstanceChargeType**参数的值为**PrePaid**时，该参数必选；当**InstanceChargeType**参数的值为**PostPaid**时，该参数可不填。 |
+当**InstanceChargeType**参数的值为**PrePaid**时，该参数必选；当**InstanceChargeType**参数的值为**PostPaid**时，该参数可不填。 |
 |Duration|String|否|1|购买时长。
 
- 当**PricingCycle**取值**Month**时，**Period**取值范围为**1~9**。
-
- 当**PricingCycle**取值**Year**时，**Period**取值范围为**1~3**。
-
- 如果**InstanceChargeType**参数的值为**PrePaid**时，该参数必选。 |
+ -   当**PricingCycle**取值**Month**时，**Period**取值范围为**1~9**。
+-   当**PricingCycle**取值**Year**时，**Period**取值范围为**1~3**。
+-   如果**InstanceChargeType**参数的值为**PrePaid**时，该参数必选。 |
 |AutoPay|Boolean|否|false|是否自动付费，取值：
 
- **false**：不开启自动付费，生成订单后需要到订单中心完成支付。
-
- **true**：开启自动付费，自动支付订单。
+ -   **false**：不开启自动付费，生成订单后需要到订单中心完成支付。
+-   **true**：开启自动付费，自动支付订单。
 
  当**InstanceChargeType**参数的值为**PrePaid**时，该参数必选；当**InstanceChargeType**参数的值为**PostPaid**时，该参数不填。 |
-|InternetChargeType|String|否|PayBySpec|NAT网关的计费类型，取值：
-
- -   **PayBySpec**：按固定规格计费。
--   **PayByLcu**：按使用量计费。 |
+|InternetChargeType|String|否|PayBySpec|NAT网关的计费类型，取值为**PayByLcu**：按使用量计费。 |
 
 ## 返回数据
 
@@ -107,37 +97,33 @@ https://vpc.aliyuncs.com/?Action=CreateNatGateway
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <CreateNatGatewayResponse>
-      <RequestId>5AF873FB-6669-4AD5-A4DA-478D535C8F0D</RequestId>
-      <SnatTableIds>
-            <SnatTableId>stb-bp1evej8rk6ww1djl****</SnatTableId>
-      </SnatTableIds>
-      <ForwardTableIds>
-            <ForwardTableId>ftb-bp1d09hosgndxs154****</ForwardTableId>
-      </ForwardTableIds>
-      <NatGatewayId>ngw-bp1m842e0dz1t5cos****</NatGatewayId>
+  <RequestId>2315DEB7-5E92-423A-91F7-4C1EC9AD97C3</RequestId>
+  <SnatTableIds>
+        <SnatTableId>stb-SnatTableIds****</SnatTableId>
+  </SnatTableIds>
+  <ForwardTableIds>
+        <ForwardTableId>ftb-11tc6xgmv****</ForwardTableId>
+  </ForwardTableIds>
+  <NatGatewayId>ngw-112za33e4****</NatGatewayId>
 </CreateNatGatewayResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
-	"RequestId": "5AF873FB-6669-4AD5-A4DA-478D535C8F0D",
-	"SnatTableIds": {
-		"SnatTableId": [
-			"stb-bp1evej8rk6ww1djl****"
-		]
-	},
-	"ForwardTableIds": {
-		"ForwardTableId": [
-			"ftb-bp1d09hosgndxs154****"
-		]
-	},
-	"NatGatewayId": "ngw-bp1m842e0dz1t5cos****"
+    "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3",
+    "SnatTableIds": {
+        "SnatTableId": "stb-SnatTableIds****"
+    },
+    "ForwardTableIds": {
+        "ForwardTableId": "ftb-11tc6xgmv****"
+    },
+    "NatGatewayId": "ngw-112za33e4****"
 }
 ```
 
@@ -146,7 +132,7 @@ https://vpc.aliyuncs.com/?Action=CreateNatGateway
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
 |400|InvalidVPCStatus|vpc incorrect status.|该 VPC 状态非法，请您检查 VPC 状态是否输入正确。|
-|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|指定的 RegionId 不存在，请您检查此产品在该地域是否可用。|
+|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|指定的regionid不存在。|
 |400|InvalidNatGatewayName.MalFormed|NatGateway name is not valid.|网关名称不合法。|
 |400|InvalidNatGatewayDescription.MalFormed|NatGateway description is not valid.|网关描述不合法。|
 |400|MissingParameter.BandwidthPackage|only support one BandwidthPackage be created with NatGateway.|必须指定一个共享带宽包。|
