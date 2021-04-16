@@ -39,14 +39,14 @@ The system monitors the process when you upgrade a standard NAT gateway to an en
 
 The configurations of the elastic IP addresses \(EIPs\), SNAT rules, and DNAT rules on the standard NAT gateway remain unchanged during the upgrade. You do not need to modify the configurations after the upgrade is complete.
 
-If the standard NAT gateway that is upgraded to an enhanced NAT gateway is associated with NAT service plans, the public IP addresses provided by the NAT service plans are converted to EIPs. The maximum bandwidth and billing method remain unchanged after the NAT service plans are converted to EIP bandwidth plans. Only NAT service plans are converted to EIP bandwidth plans. The IP addresses, SNAT rules, and DNAT rules remain unchanged. For more information, see [Upgrade notes for standard NAT gateways that are associated with NAT service plans](/intl.en-US/Types of NAT gateways/Upgrade a standard NAT gateway to an enhanced NAT gateway at a scheduled time.md).
+If the standard NAT gateway that is upgraded to an enhanced NAT gateway is associated with NAT service plans, the public IP addresses provided by the NAT service plans are converted to EIPs. The maximum bandwidth and billing method remain unchanged after the NAT service plans are converted to EIP bandwidth plans. Only NAT service plans are converted to EIP bandwidth plans. The IP addresses, SNAT rules, and DNAT rules remain unchanged. For more information, see [Upgrade notes for standard NAT gateways that are associated with NAT service plans](/intl.en-US/Enhanced NAT gateway/Upgrade a standard NAT gateway to an enhanced NAT gateway at a scheduled time.md).
 
 ## When will Alibaba Cloud discontinue standard NAT gateways? Can I continue to use my standard NAT gateways after Alibaba Cloud discontinues standard NAT gateways?
 
 Alibaba Cloud discontinued standard NAT gateways in November 2020. Standard NAT gateways are no longer updated. Enhanced NAT gateways are highly scalable and provide advanced features. To improve how you can manage your services, we recommend that you use the following methods to upgrade your standard NAT gateways:
 
--   [Immediately upgrade a standard NAT gateway to an enhanced NAT gateway](/intl.en-US/Types of NAT gateways/Immediately upgrade a standard NAT gateway to an enhanced NAT gateway.md)
--   [Upgrade a standard NAT gateway to an enhanced NAT gateway at a scheduled time](/intl.en-US/Types of NAT gateways/Upgrade a standard NAT gateway to an enhanced NAT gateway at a scheduled time.md)
+-   [Immediately upgrade a standard NAT gateway to an enhanced NAT gateway](/intl.en-US/Enhanced NAT gateway/Immediately upgrade a standard NAT gateway to an enhanced NAT gateway.md)
+-   [Upgrade a standard NAT gateway to an enhanced NAT gateway at a scheduled time](/intl.en-US/Enhanced NAT gateway/Upgrade a standard NAT gateway to an enhanced NAT gateway at a scheduled time.md)
 
 If you cannot upgrade a standard NAT gateway due to business issues, please contact us.
 
@@ -54,25 +54,25 @@ If you cannot upgrade a standard NAT gateway due to business issues, please cont
 
 You can use the following methods to upgrade a standard NAT gateway:
 
--   Immediately upgrade a standard NAT gateway to an enhanced NAT gateway in the console. For more information, see [Immediately upgrade a standard NAT gateway to an enhanced NAT gateway](/intl.en-US/Types of NAT gateways/Immediately upgrade a standard NAT gateway to an enhanced NAT gateway.md).
--   Create a schedule to upgrade a standard NAT gateway to an enhanced NAT gateway in the console. We recommend that you use this method during off-peak hours. For more information, see [Upgrade a standard NAT gateway to an enhanced NAT gateway at a scheduled time](/intl.en-US/Types of NAT gateways/Upgrade a standard NAT gateway to an enhanced NAT gateway at a scheduled time.md).
+-   Immediately upgrade a standard NAT gateway to an enhanced NAT gateway in the console. For more information, see [Immediately upgrade a standard NAT gateway to an enhanced NAT gateway](/intl.en-US/Enhanced NAT gateway/Immediately upgrade a standard NAT gateway to an enhanced NAT gateway.md).
+-   Create a schedule to upgrade a standard NAT gateway to an enhanced NAT gateway in the console. We recommend that you use this method during off-peak hours. For more information, see [Upgrade a standard NAT gateway to an enhanced NAT gateway at a scheduled time](/intl.en-US/Enhanced NAT gateway/Upgrade a standard NAT gateway to an enhanced NAT gateway at a scheduled time.md).
 
 ## What are the differences between enhanced NAT gateways and standard NAT gateways?
 
 |Feature|Enhanced NAT gateway|Standard NAT gateway|Reference|
 |-------|--------------------|--------------------|---------|
-|Whether a vSwitch must be associated when you create or upgrade a NAT gateway|Yes|No|[Manage NAT gateways](/intl.en-US/User Guide/Manage NAT gateways.md)|
+|Whether a vSwitch must be associated when you create or upgrade a NAT gateway|Yes|No|[Create NAT gateways](/intl.en-US/User Guide/Create NAT gateways.md)|
 |Whether an IP address must be assigned from a vSwitch to a NAT gateway|Yes|No|
 |Associating a vSwitch with a NAT gateway|Supported|Not supported|
-|Deploying multiple NAT gateways for one virtual private cloud \(VPC\)|Supported|Not supported|[t2020912.md\#]()|
+|Deploying multiple NAT gateways for one virtual private cloud \(VPC\)|Supported|Not supported|[Deploy multiple NAT gateways in one VPC]()|
 |Pay-by-data-transfer|Supported|Not supported|[Pay-as-you-go](/intl.en-US/Pricing/Pay-as-you-go.md)|
 |Billing on an hourly basis|Supported|Not supported|
 |Billing on a daily basis|Not supported|Supported|
 |Processing TCP, UDP, and ICMP segments|Supported|Not supported|
-|Monitoring metrics|22|4|[Use Cloud Monitor to monitor NAT gateways](/intl.en-US/User Guide/Use Cloud Monitor to monitor NAT gateways.md)|
-|Network traffic monitoring \(TOP ECS\)|Supported|Not supported|[t147949.md\#section\_l14\_d8f\_gsa](/intl.en-US/User Guide/Use Cloud Monitor to monitor NAT gateways.mdsection_l14_d8f_gsa)|
-|Elastic Compute Service \(ECS\) instances use SNAT to access services that use DNAT to provide external access when the same enhanced NAT gateway is used for SNAT and DNAT|Not supported|Supported|[t1997525.md\#]()|
-|Using an EIP for both SNAT and DNAT|Supported|Not supported|[Associate an EIP with a NAT gateway](/intl.en-US/User Guide/Manage NAT gateways.md)|
+|Monitoring metrics|22|4|[Monitor and maintain NAT gateways](/intl.en-US/User Guide/Monitor and maintain NAT gateways.md)|
+|Network traffic monitoring \(TOP ECS\)|Supported|Not supported|[t147949.md\#section\_l14\_d8f\_gsa](/intl.en-US/User Guide/Monitor and maintain NAT gateways.mdsection_l14_d8f_gsa)|
+|Elastic Compute Service \(ECS\) instances use SNAT to access services that use DNAT to provide external access when the same enhanced NAT gateway is used for SNAT and DNAT|Not supported|Supported|[Use SNAT of enhanced NAT gateways to enable ECS instances to access services that use DNAT to provide external access in the same VPC]()|
+|Using an EIP for both SNAT and DNAT|Supported|Not supported|[Associate an EIP with a NAT gateway](/intl.en-US/User Guide/Create NAT gateways.md)|
 
 ## Do enhanced NAT gateways support multi-zone disaster recovery?
 
