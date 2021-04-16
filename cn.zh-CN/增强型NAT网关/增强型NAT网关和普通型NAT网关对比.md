@@ -33,7 +33,7 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 |限制项|增强型NAT网关|普通型NAT网关|
 |---|--------|--------|
 |一个VPC支持创建的NAT网关的数量|5个（可[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)提升配额）|1个（无法调整）|
-|一个公网IP是否支持同时用于SNAT表和DNAT表|白名单支持。如需使用，请[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)|不支持（无法调整）|
+|一个公网IP是否支持同时用于SNAT表和DNAT表|支持|不支持（无法调整）|
 |一个NAT网关支持添加的DNAT条目的数量|100个（可自助提升配额。具体操作，请参见[管理配额](/cn.zh-CN/通用配置/管理配额.md)）|100个（可自助提升配额。具体操作，请参见[管理配额](/cn.zh-CN/通用配置/管理配额.md)）|
 |一个NAT网关支持添加的SNAT条目的数量|40个（可自助提升配额。具体操作，请参见[管理配额](/cn.zh-CN/通用配置/管理配额.md)）|40个（可自助提升配额。具体操作，请参见[管理配额](/cn.zh-CN/通用配置/管理配额.md)）|
 |一个SNAT条目支持关联的公网IP的数量|64个（无法调整）|64个（无法调整）|
