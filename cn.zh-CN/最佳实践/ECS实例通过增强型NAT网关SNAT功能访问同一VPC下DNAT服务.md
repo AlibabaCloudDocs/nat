@@ -10,7 +10,7 @@ keyword: [增强型NAT网关, 网络访问]
 
 本文以下图场景为例。
 
-![配置场景图](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9261116061/p184529.png)
+![配置场景图](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8422188161/p184529.png)
 
 某公司在华东2（上海）地域创建了VPC，VPC中创建了两个交换机，要求交换机1内的ECS实例可以通过公网访问交换机2内ECS实例部署的应用服务。
 
@@ -21,13 +21,13 @@ keyword: [增强型NAT网关, 网络访问]
 开始前，请确保满足以下条件：
 
 -   您已经注册了阿里云账号。如未注册，请先完成[账号注册](https://account.aliyun.com/register/register.htm)。
--   您已经创建了VPC，并在该VPC中创建了两个交换机（名称分别为VSW1和VSW2）。具体操作，请参见[使用专有网络](/cn.zh-CN/专有网络和交换机/使用专有网络.md)和[使用交换机](/cn.zh-CN/专有网络和交换机/使用交换机.md)。
+-   您已经创建了VPC，并在该VPC中创建了两个交换机（名称分别为VSW1和VSW2）。具体操作，请参见[使用专有网络](/cn.zh-CN/专有网络和交换机/使用专有网络.md)和[创建交换机](/cn.zh-CN/专有网络和交换机/使用交换机.md)。
 -   您已经在交换机VSW1和交换机VSW2内各创建了一个ECS实例（名称分别为ECS1和ECS2），并在ECS2实例中部署了应用服务。具体操作，请参见[使用向导创建实例](/cn.zh-CN/实例/创建实例/使用向导创建实例.md)。
 -   您已经创建了两个弹性公网IP（名称分别为EIP1和EIP2）。具体操作，请参见[申请新EIP](/cn.zh-CN/用户指南/申请EIP/申请新EIP.md)。
 
 ## 配置步骤
 
-![配置步骤](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5222126061/p184940.png)
+![配置步骤](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8422188161/p184940.png)
 
 ## 步骤一：创建增强型NAT网关
 
@@ -56,7 +56,7 @@ keyword: [增强型NAT网关, 网络访问]
     -   **交换机ID**：选择NAT网关实例所属的交换机。
     -   **网关类型**：选择要创建的NAT网关类型。
 
-        本示例选择**增强型**，增强型NAT网关在普通型NAT网关的技术架构上作了升级，具有更优的弹性和更强的稳定性，帮助您更好的管理公网访问流量。更多信息，请参见[增强型NAT网关](/cn.zh-CN/网关类型/增强型NAT网关（新推出）.md)。
+        本示例选择**增强型**，增强型NAT网关在普通型NAT网关的技术架构上作了升级，具有更优的弹性和更强的稳定性，帮助您更好的管理公网访问流量。更多信息，请参见[增强型NAT网关](/cn.zh-CN/增强型NAT网关/增强型NAT网关（新推出）.md)。
 
     -   **名称**：设置NAT网关实例的名称。
 
