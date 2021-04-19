@@ -75,7 +75,7 @@ Perform the following steps to create a NAT gateway:
         -   **Medium**
         -   **Large**
         -   **Super Large-1**
-        The size of a NAT gateway limits the SNAT performance, which includes the maximum number of concurrent connections and the number of new connections per second. However, the gateway size does not affect the DNAT performance. For more information, see [Sizes of NAT gateways]().
+        The size of a NAT gateway limits the SNAT performance, which includes the maximum number of concurrent connections and the number of new connections per second. However, the gateway size does not affect the DNAT performance. For more information, see [Enhanced NAT gateways \(new\)](/intl.en-US/Enhanced NAT gateway/Enhanced NAT gateways (new).md).
 
         **Small** is selected in this example.
 
