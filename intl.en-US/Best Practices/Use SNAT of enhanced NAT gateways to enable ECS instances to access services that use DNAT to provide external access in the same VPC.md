@@ -10,7 +10,7 @@ This topic describes how to use the Source Network Address Translation \(SNAT\) 
 
 The following scenario is used as an example in this topic.
 
-![Architecture diagram](../images/p184529.png)
+![Architecture diagram](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3522188161/p184529.png)
 
 A company creates a VPC and two vSwitches named VSW1 and VSW1 in the VPC in the China \(Shanghai\) region. The ECS instance that is connected to VSW1 needs to access the services deployed on the ECS instance that is connected to VSW2 over the Internet.
 
@@ -27,7 +27,7 @@ Before you start, make sure that the following requirements are met:
 
 ## Procedure
 
-![Procedure](../images/p184940.png)
+![Procedure](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/3522188161/p184940.png)
 
 ## Step 1: Create an enhanced NAT gateway
 
