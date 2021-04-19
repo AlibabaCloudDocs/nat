@@ -4,7 +4,7 @@ This topic describes how to add multiple elastic IP addresses \(EIPs\) to a Sour
 
 ## Prerequisites
 
--   A VPC and a VSwitch are created. For more information, see [t2435.md\#section\_ufw\_rhv\_rdb](/intl.en-US/VPCs and VSwitches/VPC management/Create a VPC.md).
+-   A VPC and a VSwitch are created. For more information, see [t2435.md\#section\_ufw\_rhv\_rdb](/intl.en-US/VPCs and vSwitchs/Work with VPCs.md).
 -   EIPs that you want to add to the SNAT IP address pool are created. For more information, see [Apply for new EIPs](/intl.en-US/User Guide/Create an EIP/Apply for new EIPs.md).
 
 ## Background information
@@ -32,7 +32,7 @@ Perform the following steps to create a NAT gateway:
         -   Check whether the VPC has a custom route entry whose destination CIDR block is 0.0.0.0/0. If the VPC has this custom route entry, delete the custom route entry.
     -   **Specification**: Specify the size of the NAT gateway. The size of a NAT gateway affects the SNAT performance, such as the maximum number of connections and the number of new connections per second. The data throughput is not affected.
 
-        **Note:** The size of a NAT gateway does not limit the number of DNAT connections and the data throughput. For more information, see [Overview](/intl.en-US/User Guide/NAT Gateway Instance/Overview.md).
+        **Note:** The size of a NAT gateway does not limit the number of DNAT connections and the data throughput. For more information, see [Enhanced NAT gateways \(new\)](/intl.en-US/Enhanced NAT gateway/Enhanced NAT gateways (new).md).
 
     -   **Billing Cycle**: Specify the subscription period of the NAT gateway.
 
