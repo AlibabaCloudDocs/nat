@@ -12,9 +12,9 @@ A virtual private cloud \(VPC\) and a vSwitch are created. For more information,
 
 2.  On the **NAT Gateway** page, click **Create NAT Gateway**.
 
-3.  The first time you purchase a NAT gateway, you must create a service-linked role for NAT Gateway. In the lower part of the **NAT Gateway \(Pay-As-You-Go\)** page, click **Create** in the Notes on Creating Service-linked Roles section. After a service-linked role is created, you can purchase a NAT gateway.
+3.  If this is the first time you purchase a NAT gateway, you must create a service-linked role for NAT Gateway. In the lower part of the **NAT Gateway \(Pay-As-You-Go\)** page, click **Create** in the Notes on Creating Service-linked Roles section. After a service-linked role is created, you can purchase a NAT gateway.
 
-4.  On the **NAT Gateway \(Pay-As-You-Go\)** page, set the following parameters and click **Buy Now**.
+4.  On the **NAT Gateway \(Pay-As-You-Go\)** page, set the following parameters and click **Buy Now**:
 
     -   **Region and Zone**: Select the region where you want to deploy the NAT gateway.
     -   **Zone**: Select the zone where you want to deploy the NAT gateway.
@@ -32,7 +32,7 @@ A virtual private cloud \(VPC\) and a vSwitch are created. For more information,
 
     -   **Billing Method**: Select a billing method for the NAT gateway.
 
-        Only the pay-by-specification billing method is supported.
+        Only **Pay By Actual Usage** is supported.
 
     -   **Billing Cycle**:displays the billing cycle of the NAT gateway.
 5.  On the buy page, check the payment amount and click **Activate Now** to complete the payment.
@@ -42,7 +42,7 @@ A virtual private cloud \(VPC\) and a vSwitch are created. For more information,
 
 ## Check the result
 
-After you create a NAT gateway, you can view the NAT gateway on the **NAT Gateway** page.
+After you create a NAT gateway, you can find the NAT gateway on the **NAT Gateway** page.
 
 **Related topics**  
 
