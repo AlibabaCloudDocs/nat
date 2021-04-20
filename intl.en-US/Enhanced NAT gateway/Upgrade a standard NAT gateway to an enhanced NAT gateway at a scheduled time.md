@@ -4,9 +4,9 @@ keyword: [NAT gateway, enhanced, network address translation, Internet-facing se
 
 # Upgrade a standard NAT gateway to an enhanced NAT gateway at a scheduled time
 
-Enhanced NAT gateways are an upgrade from standard NAT gateways and use a more advanced architecture. Compared with standard NAT gateways, enhanced NAT gateways provide higher elasticity and stability. This helps you manage data transfer in a more efficient manner. You can upgrade standard NAT gateways to enhanced NAT gateways at a scheduled time in the Virtual Private Cloud \(VPC\) console. The upgrade is free of charge. The time period for free upgrades is extended from December 31, 2020 to .
+Enhanced NAT gateways are an upgrade from standard NAT gateways and use a more advanced architecture. Compared with standard NAT gateways, enhanced NAT gateways provide higher elasticity and stability. This helps you manage data transfer in a more efficient manner. You can upgrade standard NAT gateways to enhanced NAT gateways at a scheduled time in the Virtual Private Cloud \(VPC\) console. The upgrade is free of charge. The time period for free upgrades is extended from December 31, 2020 to September 30, 2021.
 
-## Upgrade notes
+## Upgrade
 
 Before you upgrade a standard NAT gateway to an enhanced NAT gateway, take note of the instructions in the following figure.
 
@@ -16,7 +16,7 @@ The method that you can use to upgrade a standard NAT gateway varies based on wh
 
 |Whether NAT service plans are associated|How to upgrade|
 |----------------------------------------|--------------|
-|No NAT service plan is associated|-   Immediate upgrade: Select the standard NAT gateway that you want to upgrade and click OK. Then, the standard NAT gateway is immediately upgraded to an enhanced NAT gateway.
+|No NAT service plan is associated|-   Immediate upgrade: Select the standard NAT gateway that you want to upgrade and click OK. The standard NAT gateway is immediately upgraded to an enhanced NAT gateway.
 -   Scheduled upgrade: Set the related parameters for the standard NAT gateway that you want to upgrade and click OK. You can select more than one standard NAT gateway if you use this method. A scheduled upgrade task is generated, and the standard NAT gateway is upgraded in the background at the specified time. |
 |One or more NAT service plans are associated|Scheduled upgrade: Set the related parameters for the standard NAT gateway that you want to upgrade and click OK. You can select more than one standard NAT gateway if you use this method. A scheduled upgrade task is generated, and the standard NAT gateway is upgraded in the background at the specified time. |
 
