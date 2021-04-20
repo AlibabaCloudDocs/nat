@@ -4,7 +4,7 @@ keyword: [NAT gateway, enhanced, network address translation, Internet-facing se
 
 # Upgrade a standard NAT gateway to an enhanced NAT gateway at a scheduled time
 
-Enhanced NAT gateways are upgraded from the technical architecture of standard NAT gateways. Compared with standard NAT gateways, enhanced NAT gateways offer higher elasticity and stability. This improves how you can manage data transfer. You can upgrade standard NAT gateways to enhanced NAT gateways at a scheduled time free of charge in the Virtual Private Cloud \(VPC\) console. The time period for free upgrades is extended from December 31, 2020 to March 30, 2021.
+Enhanced NAT gateways are an upgrade from standard NAT gateways and use a more advanced architecture. Compared with standard NAT gateways, enhanced NAT gateways provide higher elasticity and stability. This helps you manage data transfer in a more efficient manner. You can upgrade standard NAT gateways to enhanced NAT gateways at a scheduled time in the Virtual Private Cloud \(VPC\) console. The upgrade is free of charge. The time period for free upgrades is extended from December 31, 2020 to .
 
 ## Upgrade notes
 
@@ -35,7 +35,7 @@ Before you start, take note of the following information:
     |Service before the upgrade|Service after the upgrade|Remarks|
     |--------------------------|-------------------------|-------|
     |Standard NAT gateways that are associated with NAT service plans|Enhanced NAT gateways|The billing remains unchanged.|
-    |NAT service plans|EIP bandwidth plans and elastic IP addresses \(EIPs\)|Public IP addresses are converted to EIPs. The billing method and maximum bandwidth remain unchanged after the NAT service plans are upgraded to EIP bandwidth plans.|
+    |NAT service plans|EIP bandwidth plans and elastic IP addresses \(EIPs\)|Public IP addresses are converted to EIPs. The billing method and bandwidth limit remain unchanged after the NAT service plans are upgraded to EIP bandwidth plans.|
 
 
 ## Upgrade a standard NAT gateway to an enhanced NAT gateway at a scheduled time
@@ -50,16 +50,16 @@ Before you start, take note of the following information:
 
     ![Upgrade Now](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/6618369951/p146934.png)
 
-4.  In the **Upgrade to Enhanced NAT Gateway** dialog box, click **Reserve Switch**. Then, set the parameters that are described in the following table and click **OK**.
+4.  In the **Upgrade to Enhanced NAT Gateway** dialog box, click **Reserve Switch**. Then, set the following parameters and click **OK**.
 
     ![Scheduled an upgrade](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9698221161/p213058.png)
 
     |Parameter|Description|
     |---------|-----------|
     |**NAT Gateway**|Select the standard NAT gateway that you want to upgrade.|
-    |**Select Switch Time**|Select the time window during which you want to upgrade the standard NAT gateway.**Note:** You can change or cancel an upgrade schedule before the upgrade starts. |
-    |**Contact Information** \(optional\)|Enter your contact information in case an error occurs during the upgrade.|
-    |**Select a VSwitch for the enhanced NAT gateway**|Select a zone and a vSwitch for the enhanced NAT gateway.**Note:** You must specify a vSwitch for the enhanced NAT gateway. After you specify a vSwitch, the system automatically selects an IP address from the CIDR block of the vSwitch to transmit data. Make sure that the CIDR block of the vSwitch has sufficient idle IP addresses. |
+    |**Select Switch Time**|Select the time window during which you want to upgrade the standard NAT gateway. **Note:** You can change or cancel an upgrade schedule before the upgrade starts. |
+    |**Contact Information** \(optional\)|Enter your contact information. If an error occurs during the upgrade, notifications are sent to you.|
+    |**Select a VSwitch for the enhanced NAT gateway**|Select a zone and a vSwitch for the enhanced NAT gateway. **Note:** You must specify a vSwitch for the enhanced NAT gateway. After you specify a vSwitch, the system automatically selects an IP address from the CIDR block of the vSwitch to transmit data. Make sure that the CIDR block of the vSwitch has sufficient idle IP addresses. |
     |**Note on Creating Service-associated Roles**|To perform a scheduled upgrade, the system automatically creates the service-linked role `AliyunServiceRoleForNatgw`.|
 
 5.  In the **Reserved** message, click **OK**.
@@ -75,7 +75,7 @@ You can cancel or change an upgrade schedule before the upgrade starts.
 
 1.  Move the pointer over the ![Message](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9979558161/p213066.png) icon next to **Reserved** in the Status column.
 
-2.  Click **Change Reservation** in the tooltip that appears.
+2.  In the tooltip that appears, click **Change Reservation**.
 
     -   To change an upgrade schedule, change the time window, contact information, and vSwitch in the **Upgrade to Enhanced NAT Gateway** dialog box, and click **OK**.
     -   To cancel an upgrade schedule, click **Cancel Reservation** in the **Upgrade to Enhanced NAT Gateway** dialog box, and click **OK**.
