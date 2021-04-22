@@ -32,7 +32,7 @@
 
     转换后，NAT网关带宽包中的公网IP会转换为EIP。确保EIP的数量不少于NAT网关带宽包中的公网IP数量。您可以在专有网络控制台的[配额管理](https://vpc.console.aliyun.com/quota)页面查看EIP数量。如果EIP数量不足，请在控制台进行申请。
 
-    ![配额管理](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6951400951/p96382.png)
+    ![配额管理](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3649098161/p96382.png)
 
 -   开通按流量计费NAT网关带宽包白名单
 
@@ -64,6 +64,6 @@
 
     **说明：** **natgw\_privilege\_allow\_bind\_eip**权限申请成功后，如果您要将其他EIP绑定到NAT网关，请先退出账号，重新登录NAT网关控制台，再将EIP绑定到NAT网关上。具体操作，请参见[绑定弹性公网IP](/intl.zh-CN/控制台操作指南/创建NAT网关实例.md)。
 
-    ![绑定eip权限](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6951400951/p96400.png)
+    ![绑定eip权限](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3649098161/p96400.png)
 
 
