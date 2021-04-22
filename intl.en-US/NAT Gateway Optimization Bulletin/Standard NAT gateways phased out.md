@@ -4,7 +4,7 @@ Standard NAT gateways of Alibaba Cloud are phased out.
 
 ## Date
 
-Starting November 20, 2020, Alibaba Cloud stops offering standard NAT gateways in all regions. We apologize for any inconvenience that may be caused.
+Starting November 20, 2020, Alibaba Cloud stops offering standard NAT gateways in all regions. We apologize for the inconvenience that may be caused.
 
 ## Impact
 
@@ -24,5 +24,5 @@ You can create an enhanced NAT gateway in the NAT Gateway console. You can also 
 
 ## Upgrade a standard NAT gateway to an enhanced NAT gateway
 
-You can continue to use existing standard NAT gateways. To improve how you manage Internet traffic, we recommend that you upgrade your standard NAT gateways to enhanced NAT gateways. For more information, see [Immediately upgrade a standard NAT gateway to an enhanced NAT gateway](/intl.en-US/Enhanced NAT gateway/Immediately upgrade a standard NAT gateway to an enhanced NAT gateway.md).
+You can continue using existing standard NAT gateways. To improve how you manage Internet traffic, we recommend that you upgrade your standard NAT gateways to enhanced NAT gateways. For more information, see [Immediately upgrade a standard NAT gateway to an enhanced NAT gateway](/intl.en-US/Enhanced NAT gateway/Immediately upgrade a standard NAT gateway to an enhanced NAT gateway.md).
 
