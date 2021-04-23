@@ -174,7 +174,7 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 
 完成以下操作，将EIP与ECS实例解绑。
 
-1. 登录[专有网络管理控制台。](https://vpcnext.console.aliyun.com)
+1. 登录[专有网路管理控制台](https://vpcnext.console.aliyun.com)。
 
    
 
@@ -202,7 +202,7 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 
 完成以下操作，将EIP绑定到弹性网卡。
 
-1. 登录[专有网络管理控制台。](https://vpcnext.console.aliyun.com)
+1. 登录[专有网络管理控制台](https://vpcnext.console.aliyun.com)。
 
    
 
