@@ -34,7 +34,7 @@
 |InternalIp|String|是|192.XX.XX.1|需要进行公网通信的ECS实例的私网IP地址，该私网IP地址需满足以下条件：
 
  -   必须属于NAT网关所在的VPC的网段。
--   必须被一个ECS实例使用且该实例没有绑定EIP时，DNAT条目才生效。如果该**InternalIp**被HAVIP、SLB或RDS等非ECS资源使用，DNAT条目无效，公网流量无法转发到该IP上。 |
+-   必须被一个ECS实例使用且该实例没有绑定EIP时，DNAT条目才生效。 |
 |InternalPort|String|是|80|需要进行端口转发的内部端口，取值范围：**1**~**65535**。 |
 |IpProtocol|String|是|TCP|协议类型，取值：
 
