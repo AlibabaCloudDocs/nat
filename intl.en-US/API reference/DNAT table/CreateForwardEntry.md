@@ -27,31 +27,31 @@ When you call this operation, take note of the following limits:
 |Action|String|Yes|CreateForwardEntry|The operation that you want to perform. Set the value to **CreateForwardEntry**. |
 |ExternalIp|String|Yes|116.XX.XX.28|The public IP address used by the ECS instance to access the Internet. The public IP address must meet the following requirements:
 
- -   If you purchased a NAT bandwidth plan before November 3, 2017, the **ExternalIp** parameter must be a public IP address that is associated with the NAT bandwidth plan.
+-   If you purchased a NAT bandwidth plan before November 3, 2017, the **ExternalIp** parameter must be a public IP address that is associated with the NAT bandwidth plan.
 -   If you did not purchase a NAT bandwidth plan before November 3, 2017, the **ExternalIp** must be an elastic IP address \(EIP\) that is associated with the NAT gateway. |
 |ExternalPort|String|Yes|8080|The public port used for port forwarding. Valid values: **1** to **65535**. |
 |ForwardTableId|String|Yes|ftb-bp1mbjubq34hlcqpa\*\*\*\*|The ID of the DNAT table. |
 |InternalIp|String|Yes|192.XX.XX.1|The private IP address that is mapped to the public IP address in the DNAT entry. The private IP address must meet the following requirements:
 
- -   It must belong to the CIDR block of the virtual private cloud \(VPC\) where the NAT gateway is deployed.
--   The DNAT entry takes effect only when it is used by an ECS instance that is not associated with an EIP. If the private IP address specified by the **InternalIp** parameter is allocated to a non-ECS resource, such as a high-availability virtual IP address \(HAVIP\), Server Load Balancer \(SLB\) instance, or ApsaraDB RDS instance, the DNAT entry does not take effect. Therefore, inbound traffic cannot be forwarded to the private IP address. |
+-   It must belong to the CIDR block of the virtual private cloud \(VPC\) where the NAT gateway is deployed.
+-   The DNAT entry takes effect only when it is used by an ECS instance that is not associated with an EIP. |
 |InternalPort|String|Yes|80|The internal port to which requests are forwarded. Valid values: **1** to **65535**. |
 |IpProtocol|String|Yes|TCP|The protocol type. Valid values:
 
- -   **TCP**: forwards TCP packets.
+-   **TCP**: forwards TCP packets.
 -   **UDP**: forwards UDP packets.
 -   **Any**: forwards packets of all protocols. |
 |RegionId|String|Yes|cn-hangzhou|The ID of the region where the NAT gateway is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. |
 |ForwardEntryName|String|No|ForwardEntry-1|The name of the DNAT entry.
 
- The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. |
-|ClientToken|String|No|0c593ea1-3bea-11e9-b96b-88e9fe6\*\*\*\*|The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. |
+The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. |
+|ClientToken|String|No|0c593ea1-3bea-11e9-b96b-88e9fe6\*\*\*\*|The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.**ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. |
 |PortBreak|Boolean|No|false|Specify whether to remove limits on the port range. Valid values:
 
- -   **true**: removes limits on the port range.
+-   **true**: removes limits on the port range.
 -   **false** \(default\): sets limits on the port range.
 
- **Note:** An SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024, set **Portbreak** to **true**. |
+**Note:** An SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024, set **Portbreak** to **true**. |
 
 ## Response parameters
 
