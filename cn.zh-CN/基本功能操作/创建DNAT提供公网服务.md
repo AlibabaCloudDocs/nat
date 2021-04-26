@@ -30,7 +30,7 @@ NAT网关支持DNAT功能，将NAT网关上的公网IP映射给ECS实例使用�
 
     |配置|说明|
     |:-|:-|
-    |**选择公网IP地址**|选择要提供互联网通信的公网IP。 **说明：** 增强型NAT网关白名单支持将一个公网IP同时用于DNAT条目和SNAT条目。如需使用，请[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)。 |
+    |**选择公网IP地址**|选择要提供互联网通信的公网IP。 **说明：** 增强型NAT网关支持将一个公网IP同时用于DNAT条目和SNAT条目。 |
     |**选择私网IP地址**|选择要通过DNAT规则进行公网通信的ECS实例。您可以通过以下两种方式指定目标ECS实例的私网IP：     -   **通过ECS或弹性网卡进行选择**：从ECS实例或弹性网卡列表中选择ECS实例。
     -   **通过手动输入**：输入目标ECS实例的私网IP。
 
