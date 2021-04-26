@@ -32,11 +32,6 @@ NAT网关提供不同的规格。NAT网关的规格会影响SNAT功能的最大�
 |20万
 
 |1万 |
-|超大型-1
-
-|100万
-
-|5万 |
 
 ## 调试
 
@@ -48,13 +43,12 @@ NAT网关提供不同的规格。NAT网关的规格会影响SNAT功能的最大�
 |--|--|----|---|--|
 |Action|String|是|ModifyNatGatewaySpec|要执行的操作。取值：**ModifyNatGatewaySpec**。 |
 |NatGatewayId|String|是|ngw-bp1uewa15k4iy5770\*\*\*\*|要修改规格的NAT网关的ID。 |
-|RegionId|String|是|cn-hangzhou|NAT网关所属的地域。 |
+|RegionId|String|是|cn-hangzhou|NAT网关所属的地域ID。您可以通过调用[DescribeRegions](~~36063~~)接口获取地域ID。 |
 |Spec|String|是|Small|NAT网关的规格，取值：
 
  -   **Small**：小型。
 -   **Middle**：中型。
--   **Large**：大型。
--   **XLarge.1**：超大型-1。 |
+-   **Large**：大型。 |
 |AutoPay|Boolean|否|false|是否自动付费。
 
  -   **true**：开启自动付费。
@@ -81,7 +75,7 @@ https://vpc.aliyuncs.com/?Action=ModifyNatGatewaySpec
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <ModifyNatGatewaySpecResponse>
@@ -89,7 +83,7 @@ https://vpc.aliyuncs.com/?Action=ModifyNatGatewaySpec
 </ModifyNatGatewaySpecResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
@@ -101,7 +95,7 @@ https://vpc.aliyuncs.com/?Action=ModifyNatGatewaySpec
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
-|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|指定的 RegionId 不存在，请您检查此产品在该地域是否可用。|
+|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|指定的regionid不存在。|
 |404|InvalidNatGatewayId.NotFound|The specified NatGatewayId does not exist in our records.|指定的 NatGatewayId 不存在，请您检查填写的 NatGatewayId 是否正确。|
 |400|NATGW\_MODIFY\_SPEC\_SAME|The specified Spec is same with now.|该规格和当前规格一样。|
 |400|InvalidParameter.Spec.ValueNotSupported|The specified Spec is not valid.|该规格不合法。|
