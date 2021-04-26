@@ -25,8 +25,7 @@
 
  -   **Small**（默认值）：小型。
 -   **Middle**：中型。
--   **Large**：大型。
--   **XLarge.1**：超大型-1。 |
+-   **Large**：大型。 |
 |NatType|String|否|Normal|NAT网关的类型，取值：
 
  -   **Normal**：普通型。
@@ -38,6 +37,13 @@
 
  -   **true**：发送检查请求，不会查询资源状况。检查项包括AccessKey是否有效、RAM用户的授权情况和是否填写了必需参数。如果检查不通过，则返回对应错误。如果检查通过，会返回错误码`DryRunOperation`。
 -   **false**（默认值）：发送正常请求，通过检查后返回2XX HTTP状态码并直接查询资源状况。 |
+|Status|String|否|Available|NAT网关的状态，取值：
+
+ -   **Creating**：创建NAT网关是异步操作，在创建完成之前是**Creating**状态。
+-   **Available**：NAT网关创建完成后的状态，是稳定状态。
+-   **Modifying**：变配NAT网关是异步操作，在变配的过程中是**Modifying**状态。
+-   **Deleting**：删除NAT网关是异步操作，在删除的过程中是**Deleting**状态。
+-   **Converting**：普通型NAT网关转换到增强型NAT网关是异步操作，在转换过程中是**Converting**状态。 |
 
 ## 返回数据
 
@@ -73,7 +79,8 @@
 -   **PayByLcu**：按使用量计费。 |
 |IpLists|Array of IpList| |NAT网关绑定的弹性公网IP。 |
 |IpList| | | |
-|IpAddress|String|116.62.222.xx|弹性公网IP的地址。 |
+|IpAddress|String|116.62.XX.XX|弹性公网IP的地址。 |
+|PrivateIpAddress|String|192.168.XX.XX|私网IP地址。 |
 |SnatEntryEnabled|Boolean|false|已经用于DNAT条目的IP，是否还可用于SNAT条目。
 
  -   **true**：还可用于SNAT条目。
@@ -84,9 +91,13 @@
 
  **说明：** **NatType**取值为**Normal**时，该列表中返回的参数均为空值。 |
 |EniInstanceId|String|10|弹性网卡实例ID。 |
+|EniType|String|Secondary|弹性网卡类型。取值范围：
+
+ -   **Primary**：主网卡
+-   **Secondary**：辅助弹性网卡 |
 |IzNo|String|cn-hangzhou-b|NAT网关所属的可用区。 |
 |MaxBandwidth|Integer|5120|最大带宽值，单位为Mbps。 |
-|PrivateIpAddress|String|192.168.xx.xx|私网IP地址。 |
+|PrivateIpAddress|String|192.168.XX.XX|私网IP地址。 |
 |VswitchId|String|vsw-bp1s2laxhdf9ayjbo\*\*\*\*|NAT网关所属的交换机ID。 |
 |NatType|String|Normal|NAT网关的类型。
 
@@ -99,8 +110,7 @@
 
  -   **Small**：小型。
 -   **Middle**：中型。
--   **Large**：大型。
--   **XLarge.1**：超大型-1。 |
+-   **Large**：大型。 |
 |Status|String|Creating|NAT网关的状态。
 
  -   **Creating**：创建NAT网关是异步操作，在创建完成之前是Creating状态。
@@ -126,7 +136,7 @@ http(s)://vpc.aliyuncs.com/?Action=DescribeNatGateways
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DescribeNatGatewaysResponse>
@@ -136,7 +146,7 @@ http(s)://vpc.aliyuncs.com/?Action=DescribeNatGateways
   <PageNumber>10</PageNumber>
   <NatGateways>
         <NatGateway>
-              <Status>Initiating</Status>
+              <Status>Creating</Status>
               <Description>NAT</Description>
               <ResourceGroupId>rg-bp67acfmxazb4ph****</ResourceGroupId>
               <InstanceChargeType>PostPaid</InstanceChargeType>
@@ -152,28 +162,24 @@ http(s)://vpc.aliyuncs.com/?Action=DescribeNatGateways
               <RegionId>cn-hangzhou</RegionId>
               <Spec>Small</Spec>
               <NatGatewayId>ngw-bp1047e2d4z7kf2ki****</NatGatewayId>
-        </NatGateway>
-        <NatGateway>
               <IpLists>
                     <IpList>
+                          <PrivateIpAddress>192.168.XX.XX</PrivateIpAddress>
                           <SnatEntryEnabled>false</SnatEntryEnabled>
-                          <IpAddress>116.62.222.xx</IpAddress>
+                          <IpAddress>116.62.XX.XX</IpAddress>
                     </IpList>
               </IpLists>
-        </NatGateway>
-        <NatGateway>
-              <SnatTableIds>
-                    <SnatTableId>stb-uf6dalcdu0krz423p****</SnatTableId>
-              </SnatTableIds>
               <ForwardTableIds>
                     <ForwardTableId>ftb-uf6gj3mhsg94qsqst****</ForwardTableId>
               </ForwardTableIds>
-        </NatGateway>
-        <NatGateway>
+              <SnatTableIds>
+                    <SnatTableId>stb-uf6dalcdu0krz423p****</SnatTableId>
+              </SnatTableIds>
               <NatGatewayPrivateInfo>
                     <IzNo>cn-hangzhou-b</IzNo>
-                    <PrivateIpAddress>192.168.xx.xx</PrivateIpAddress>
+                    <PrivateIpAddress>192.168.XX.XX</PrivateIpAddress>
                     <MaxBandwidth>5120</MaxBandwidth>
+                    <EniType>Secondary</EniType>
                     <EniInstanceId>10</EniInstanceId>
                     <VswitchId>vsw-bp1s2laxhdf9ayjbo****</VswitchId>
               </NatGatewayPrivateInfo>
@@ -182,18 +188,18 @@ http(s)://vpc.aliyuncs.com/?Action=DescribeNatGateways
 </DescribeNatGatewaysResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 {
-    "TotalCount": 10,
-    "PageSize": 10,
-    "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF",
-    "PageNumber": 10,
-    "NatGateways": {
-        "NatGateway": [
-            {
-                "Status": "Initiating",
+    "DescribeNatGatewaysResponse": {
+        "TotalCount": 10,
+        "PageSize": 10,
+        "RequestId": "4EC47282-1B74-4534-BD0E-403F3EE64CAF",
+        "PageNumber": 10,
+        "NatGateways": {
+            "NatGateway": {
+                "Status": "Creating",
                 "Description": "NAT",
                 "ResourceGroupId": "rg-bp67acfmxazb4ph****",
                 "InstanceChargeType": "PostPaid",
@@ -208,34 +214,30 @@ http(s)://vpc.aliyuncs.com/?Action=DescribeNatGateways
                 "CreationTime": "2017-06-08T12:20Z",
                 "RegionId": "cn-hangzhou",
                 "Spec": "Small",
-                "NatGatewayId": "ngw-bp1047e2d4z7kf2ki****"
-            },
-            {
+                "NatGatewayId": "ngw-bp1047e2d4z7kf2ki****",
                 "IpLists": {
                     "IpList": {
+                        "PrivateIpAddress": "192.168.XX.XX",
                         "SnatEntryEnabled": false,
-                        "IpAddress": "116.62.222.xx"
+                        "IpAddress": "116.62.XX.XX"
                     }
-                }
-            },
-            {
-                "SnatTableIds": {
-                    "SnatTableId": "stb-uf6dalcdu0krz423p****"
                 },
                 "ForwardTableIds": {
                     "ForwardTableId": "ftb-uf6gj3mhsg94qsqst****"
-                }
-            },
-            {
+                },
+                "SnatTableIds": {
+                    "SnatTableId": "stb-uf6dalcdu0krz423p****"
+                },
                 "NatGatewayPrivateInfo": {
                     "IzNo": "cn-hangzhou-b",
-                    "PrivateIpAddress": "192.168.xx.xx",
+                    "PrivateIpAddress": "192.168.XX.XX",
                     "MaxBandwidth": 5120,
+                    "EniType": "Secondary",
                     "EniInstanceId": 10,
                     "VswitchId": "vsw-bp1s2laxhdf9ayjbo****"
                 }
             }
-        ]
+        }
     }
 }
 ```
@@ -244,7 +246,7 @@ http(s)://vpc.aliyuncs.com/?Action=DescribeNatGateways
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
-|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|指定的 RegionId 不存在，请您检查此产品在该地域是否可用。|
+|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|指定的regionid不存在。|
 
 访问[错误中心](https://error-center.alibabacloud.com/status/product/Vpc)查看更多错误码。
 
