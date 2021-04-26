@@ -79,7 +79,7 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 
 完成以下操作，测试互联网是否可以通过弹性网卡绑定的EIP访问ECS实例。本操作以本地Linux设备远程连接Linux实例为例。
 
-**说明：** 远程连接Linux实例，Linux实例的安全组必须放行SSH（22）端口。更多信息，请参见[添加安全组规则](https://help.aliyun.com/document_detail/25471.htm#concept-sm5-2wz-xdb)
+**说明：** 远程连接Linux实例，Linux实例的安全组必须放行SSH（22）端口。更多信息，请参见[添加安全组规则](/cn.zh-CN/安全/安全组/添加安全组规则.md)。
 
 1.  登录本地Linux设备。
 2.  执行`ssh root@公网IP`命令，然后输入Linux实例的登录密码，查看是否可以远程连接到实例。若界面上出现以下回显信息，表示您已经成功连接到实例。
