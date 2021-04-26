@@ -32,7 +32,7 @@ keyword: [NAT网关, 常见问题, FAQ]
 
 ## 一个VPC支持创建多少个NAT网关实例？
 
-一个专有网络（VPC）支持创建的NAT网关实例的数量与NAT网关的网关类型有关，具体如下：
+一个专有网络VPC（Virtual Private Cloud）支持创建的NAT网关实例的数量与NAT网关的网关类型有关，具体如下：
 
 -   一个VPC支持创建1个普通型NAT网关实例，且无法提升配额。
 -   一个VPC支持创建5个增强型NAT网关实例。如需更多配额，请[提交工单](https://workorder-intl.console.aliyun.com/#/ticket/createIndex)申请。
@@ -48,7 +48,7 @@ keyword: [NAT网关, 常见问题, FAQ]
 一个EIP是否可以同时用于DNAT（提供公网服务）和SNAT（访问公网服务）条目与NAT网关的网关类型有关，具体如下：
 
 -   普通型NAT网关不支持将一个EIP同时用于DNAT条目和SNAT条目。
--   增强型NAT网关白名单支持将一个公网IP同时用于DNAT条目和SNAT条目。如需申请白名单，请[提交工单](https://workorder-intl.console.aliyun.com/#/ticket/createIndex)。
+-   增强型NAT网关支持将一个EIP同时用于DNAT条目和SNAT条目。
 
 ## ECS实例可以通过增强型NAT实例中的SNAT访问同一个NAT实例上的DNAT服务么？
 
