@@ -13,7 +13,7 @@ Queries the information about a specified NAT gateway.
 |NatGatewayId|String|Yes|ngw-bp1b0lic8uz4r6vf2\*\*\*\*|The ID of the NAT gateway. |
 |RegionId|String|Yes|cn-qingdao|The ID of the region where the NAT gateway is deployed.
 
- You can call the [DescribeRegions](~~36063~~) operation to query region IDs. |
+You can call the [DescribeRegions](~~36063~~) operation to query region IDs. |
 
 ## Response parameters
 
@@ -22,39 +22,39 @@ Queries the information about a specified NAT gateway.
 |BillingConfig|Struct| |The billing information. |
 |AutoPay|String|false|Indicates whether automatic payment is enabled. Valid values:
 
- -   **false**: Automatic payment is disabled. After an order is generated, you must go to the order center to complete the payment.
+-   **false**: Automatic payment is disabled. After an order is generated, you must go to the order center to complete the payment.
 -   **true**: Automatic payment is enabled. After an order is generated, the system automatically deducts the fee from your account balance to complete the payment.
 
- This parameter is required when **InstanceChargeType** is set to **PrePaid**. You do not need to configure this parameter if **InstanceChargeType** is set to **PostPaid**. |
+This parameter is required when **InstanceChargeType** is set to **PrePaid**. You do not need to configure this parameter if **InstanceChargeType** is set to **PostPaid**. |
 |InstanceChargeType|String|PostPaid|The billing method of the NAT gateway. Valid values:
 
- -   **PostPaid**: pay-as-you-go.
+-   **PostPaid**: pay-as-you-go.
 -   **PrePaid**: subscription.
 
- **Note:** For the Alibaba Cloud International site, the value is set to **PostPaid**, which indicates the pay-as-you-go billing method. |
+**Note:** For the Alibaba Cloud International site, the value is set to **PostPaid**, which indicates the pay-as-you-go billing method. |
 |InternetChargeType|String|PayBySpec|The metering method of the NAT gateway. Valid values:
 
- -   **PayBySpec**: pay by specification.
+-   **PayBySpec**: pay by specification.
 -   **PayByLcu**: pay by capacity unit \(CU\). |
 |Spec|String|Small|The size of the NAT gateway. Valid values:
 
- -   **Small**: a small-sized NAT gateway.
+-   **Small**: a small-sized NAT gateway.
 -   **Middle**: a medium-sized NAT gateway.
 -   **Large**: a large-sized NAT gateway. |
 |BusinessStatus|String|Normal|The state of the NAT gateway. Valid values:
 
- -   **Normal**: The NAT gateway runs as expected.
+-   **Normal**: The NAT gateway runs as expected.
 -   **FinancialLocked**: The NAT gateway is locked due to overdue payments. |
 |CreationTime|String|2017-06-08T12:20Z|The time when the NAT gateway was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. |
 |DeletionProtectionInfo|Struct| |The information about the deletion protection feature. |
 |Enabled|Boolean|true|Indicates whether the deletion protection feature is enabled. Valid values:
 
- -   **true**: The deletion protection feature is enabled.
+-   **true**: The deletion protection feature is enabled.
 -   **false**: The deletion protection feature is disabled. This is the default value. |
 |Description|String|NAT|The description of the NAT gateway. |
 |EcsMetricEnabled|Boolean|true|Indicates whether the traffic monitoring feature is enabled. Valid values:
 
- -   **true**: The traffic monitoring feature is enabled.
+-   **true**: The traffic monitoring feature is enabled.
 -   **false**: The traffic monitoring feature is disabled. This is the default value. |
 |ExpiredTime|String|2017-08-26T16:00Z|The time when the NAT gateway expires. |
 |ForwardTable|Struct| |The information about DNAT entries. |
@@ -65,7 +65,7 @@ Queries the information about a specified NAT gateway.
 |IpAddress|String|116.xx.xx.33|The EIP. |
 |UsingStatus|String|idle|Indicates the association of the EIP. Valid values:
 
- -   **idle**: The EIP is not specified in a SNAT entry or a DNAT entry.
+-   **idle**: The EIP is not specified in a SNAT entry or a DNAT entry.
 -   **UsedBySnatTable**: The EIP is specified in a SNAT entry.
 -   **UsedByForwardTable**: The EIP is specified in a DNAT entry. |
 |Name|String|abc\*\*\*\*|The name of the NAT gateway. |
@@ -85,7 +85,7 @@ Queries the information about a specified NAT gateway.
 |SnatTableId|String|stb-SnatTableIds\*\*\*\*|The ID of the SNAT table. |
 |Status|String|Available|The state of the NAT gateway. Valid values:
 
- -   **Creating**: The system is creating the NAT gateway. After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the Creating state until the operation is complete.
+-   **Creating**: The system is creating the NAT gateway. After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the Creating state until the operation is complete.
 -   **Available**: The NAT gateway is created. If the operation to create a NAT gateway is successful, the state of the gateway changes from Creating to Available.
 -   **Modifying**: The NAT gateway is being modified. After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the Modifying state until the operation is complete.
 -   **Deleting**: The NAT gateway is being deleted. After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the Deleting state until the operation is complete.
@@ -196,7 +196,7 @@ Sample success responses
 </GetNatGatewayAttributeResponse>
 ```
 
-`JSON`格式
+`JSON` format
 
 ```
 {
@@ -245,7 +245,7 @@ Sample success responses
 }
 ```
 
-## 错误码
+## Error codes
 
-访问[错误中心](https://error-center.alibabacloud.com/status/product/Vpc)查看更多错误码。
+For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Vpc).
 
