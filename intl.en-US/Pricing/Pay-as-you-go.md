@@ -19,23 +19,23 @@ Pay-as-you-go NAT gateways provide the following features:
 
 Total amount that you must pay for a pay-by-data-transfer NAT gateway = Instance fee + Capacity unit \(CU\) fee. You are charged and billed on an hourly basis. If you use a NAT gateway for less than 1 hour, the usage duration is rounded up to 1 hour.
 
-The instance fee and CU fee are calculated based on the following formulas:
+The instance fee and CU fee are calculated by using the following formulas:
 
--   Instance fee = Instance unit price \(CNY/hour\) × Usage duration \(hours\)
+-   Instance fee = Instance unit price \(USD/hour\) × Usage duration \(hours\)
 
     Usage duration refers to the time period from when the NAT gateway is purchased to when it is released.
 
--   CU fee per hour = CU unit price \(CNY/unit\) × Number of CUs
+-   CU fee per hour = CU unit price \(USD/unit\) × Number of CUs
 
     **Number of CUs consumed per hour by a NAT gateway = Max\(Number of CUs based on new connections per hour, Number of CUs based on concurrent connections per hour, Number of CUs based on data transfer per hour\)**
 
-    New connections, concurrent connections, and data transfer are three determinants to CUs. The following table describes how the number of CUs per hour is calculated based on these determinants.
+    New connections, concurrent connections, and data transfer are three metrics to CUs. The following table describes how the number of CUs per hour is calculated based on these metrics.
 
     |Metric|Unit|CU coefficient|Calculation of the number of CUs per hour|
     |------|----|--------------|-----------------------------------------|
     |Connections per second \(CPS\)|Second|1,000|The system collects all CPS values within a billing cycle and then divides the highest CPS value by the CU coefficient to calculate the number of CUs.|
-    |Concurrent connections \(CONNS\)|Minute|10,000|The system collects all CONNS values within a billing cycle and then divides the highest CONNS value by the CU coefficient to calculate the number of CUs.|
-    |Data transfer \(bytes\)|Hour|1 GB|The system collects the total amount of data transfer including the inbound and outbound traffic within a billing cycle, and then divides the total amount by the CU coefficient to calculate the number of CUs.**Note:** The amount of outbound and inbound network traffic collected by the system equals the amount of network traffic to be processed by a NAT gateway. |
+    |Concurrent connections \(CONNS\)|Minutes|10,000|The system collects all CONNS values within a billing cycle and then divides the highest CONNS value by the CU coefficient to calculate the number of CUs.|
+    |Data transfer \(bytes\)|Hour|1 GB|The system collects the total amount of data transfer including the inbound and outbound traffic within a billing cycle. Then, the system divides the total amount by the CU coefficient to calculate the number of CUs. **Note:** The amount of outbound and inbound network traffic collected by the system equals the amount of network traffic to be processed by a NAT gateway. |
 
     The following table describes the instance unit prices and CU prices for pay-by-data-transfer NAT gateways.
 
@@ -68,7 +68,7 @@ The instance fee and CU fee are calculated based on the following formulas:
 
 
 
-    You created three enhanced NAT gateways that use the pay-by-data-transfer billing method in the UK \(London\) region at 08:10:00 \(UTC+8\) on July 8, 2020, and released the NAT gateways at 08:50:00 \(UTC+8\) on July 8, 2020. The following table describes the highest CPS value, the highest CONNS value, and the total amount of data transfer of the NAT gateways within the time period from 08:10:00 \(UTC+8\) to 08:50:00 \(UTC+8\).
+    You created three enhanced NAT gateways that use the pay-by-data-transfer billing method in the UK \(London\) region at 08:10 \(UTC+8\) on July 8, 2020. Then, you released the NAT gateways at 08:50 \(UTC+8\) on July 8, 2020. The following table describes the highest CPS value, the highest CONNS value, and the total amount of data transfer of the NAT gateways within the time period from 08:10 \(UTC+8\) to 08:50 \(UTC+8\).
 
     |Metric|Data collected from NAT Gateway 1|Data collected from NAT Gateway 2|Data collected from NAT Gateway 3|
     |------|---------------------------------|---------------------------------|---------------------------------|
@@ -78,7 +78,7 @@ The instance fee and CU fee are calculated based on the following formulas:
 
     The numbers of CUs based on new connections, concurrent connections, and data transfer, and the CU fee are calculated by using the following formulas:
 
-    The number of CUs is calculated based on the following formulas:
+    The number of CUs is calculated by using the following formulas:
 
     ```
     Number of CUs based on CPS = Highest CPS value/CU coefficient
@@ -86,7 +86,7 @@ The instance fee and CU fee are calculated based on the following formulas:
     Number of CUs based on data transfer = Total amount of data transfer/CU coefficient
     ```
 
-    The CU fee is calculated based on the following formula:
+    The CU fee is calculated by using the following formula:
 
     ```
     CU fee = Max(Number of CUs based on new connections per hour, Number of CUs based on concurrent connections per hour, Number of CUs based on the amount of data transferred per hour) × CU unit price
@@ -97,16 +97,12 @@ The instance fee and CU fee are calculated based on the following formulas:
     |Number of CUs based on CPS|1100÷1000=1.1|32÷1000=**0.032**|0|
     |Number of CUs based on CONNS|20000÷10000=2|8÷10000=0.0008|0|
     |Number of CUs based on data transfer|3.5÷1=**3.5**|0.0056÷1=0.0056|0|
-    |****|***3.5***×0.43=0.1505|***0.032***×0.43=0.001376|0|
+    |**CU fee \(USD\)**|***3.5***×0.043=0.1505|***0.032***×0.043=0.001376|0|
 
 
 ## Pay-by-specification
 
-**Unit price**
-
-At present, NAT gateways only support pay-by-data-transfer, and the existing NAT gateways still have small, medium and large specifications.
-
-The unit price of a NAT gateway varies based on the size of the NAT gateway. The following table describes the unit price of each size.
+NAT gateways support only the pay-by-data-transfer metering method. The pay-by-specification NAT gateways that you purchased are still available in the following sizes: small, medium and large. The unit price of a pay-by-specification NAT gateway varies based on the size of the NAT gateway. The following table describes the unit price of each NAT gateway size.
 
 |Region|Small \(unit price\)|Medium \(unit price\)|Large \(unit price\)|
 |\(USD/hour\)|\(USD/day\)|\(USD/hour\)|\(USD/day\)|\(USD/hour\)|\(USD/day\)|
@@ -143,10 +139,10 @@ If a pay-as-you-go NAT gateway has an overdue payment, take note of the followin
 -   The NAT gateway is suspended on the 15th day from the time when the payment becomes overdue. After the NAT gateway is suspended, you cannot manage the NAT gateway.
 -   If you do not pay the outstanding amount within 15 days after the NAT gateway is suspended, the NAT gateway is automatically deleted. An email is sent to you one day before the NAT gateway is deleted. After the NAT gateway is deleted, the configurations and data of the NAT gateway are deleted and cannot be recovered.
 
-## Top up your account
+## Recharge your account
 
-Before you top up your account, take note of the following rules:
+Before you recharge your account, take note of the following rules:
 
--   If you top up the account within 15 days after the payment becomes overdue, your service is not suspended.
--   If you top up the account within 30 days after the payment becomes overdue, the system automatically pays the outstanding amount. After the system pays the outstanding amount, the NAT gateway immediately starts to provide services.
+-   If you recharge your account within 15 days after the payment becomes overdue, your service is not suspended.
+-   If you recharge your account within 30 days after the payment becomes overdue, the system automatically pays the outstanding amount. After the system pays the outstanding amount, the NAT gateway immediately starts to provide services.
 
