@@ -161,7 +161,7 @@ NAT网关需要绑定公网IP才能正常工作。一个NAT网关最多可绑定
 
 2.  在顶部状态栏处，选择NAT网关的地域。
 
-3.  在**NAT网关**页面，找到目标NAT网关，单击**操作**列下的**![更多操作](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2081359951/p103337.png)** \> **删除**。
+3.  在**NAT网关**页面，找到目标NAT网关，单击**操作**列下的**![更多操作](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2570920261/p103337.png)** \> **删除**。
 
 4.  在**删除网关**对话框，选中**强制删除（删除NAT网关及其包含资源）**，然后单击**确认**。
 
