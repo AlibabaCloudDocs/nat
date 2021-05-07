@@ -14,17 +14,17 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 |NAT网关关联交换机|支持|不支持|无|
 |按小时计费周期|支持|不支持|[按使用量计费](/intl.zh-CN/购买指南/按量付费.md)|
 |处理TCP、UDP和ICMP分片包|支持|不支持|无|
-|监控指标|22个|4个|[NAT网关监控与运维](/intl.zh-CN/控制台操作指南/NAT网关监控与运维.md)|
-|NAT网关绑定多EIP|支持|支持|[绑定弹性公网IP](/intl.zh-CN/控制台操作指南/创建NAT网关实例.md)|
-|SNAT功能|支持|支持|[创建SNAT实现访问公网服务](/intl.zh-CN/控制台操作指南/创建SNAT实现访问公网服务.md)|
+|监控指标|22个|4个|[NAT网关监控与运维](/intl.zh-CN/基本功能操作/NAT网关监控与运维.md)|
+|NAT网关绑定多EIP|支持|支持|[绑定EIP](/intl.zh-CN/基本功能操作/创建NAT网关实例.md)|
+|SNAT功能|支持|支持|[创建SNAT实现访问公网服务](/intl.zh-CN/基本功能操作/创建SNAT实现访问公网服务.md)|
 |一个SNAT列表创建多条SNAT条目|支持|支持|
 |一个SNAT列表绑定多个EIP|支持|支持|
-|DNAT功能|支持|支持|[创建DNAT提供公网服务](/intl.zh-CN/控制台操作指南/创建DNAT提供公网服务.md)|
+|DNAT功能|支持|支持|[创建DNAT提供公网服务](/intl.zh-CN/基本功能操作/创建DNAT提供公网服务.md)|
 |DNAT支持端口映射|支持|支持|
 |DNAT支持IP映射|支持|支持|
 |ECS实例通过SNAT访问同一个NAT实例上的DNAT服务|不支持|支持|[ECS实例通过增强型NAT网关SNAT功能访问同一VPC下DNAT服务](/intl.zh-CN/最佳实践/ECS实例通过增强型NAT网关SNAT功能访问同一VPC下DNAT服务.md)|
-|一个公网IP是否支持同时用于SNAT表和DNAT表|支持|不支持|-   [创建SNAT实现访问公网服务](/intl.zh-CN/控制台操作指南/创建SNAT实现访问公网服务.md)
--   [创建DNAT提供公网服务](/intl.zh-CN/控制台操作指南/创建DNAT提供公网服务.md) |
+|一个公网IP是否支持同时用于SNAT表和DNAT表|支持|不支持|-   [创建SNAT实现访问公网服务](/intl.zh-CN/基本功能操作/创建SNAT实现访问公网服务.md)
+-   [创建DNAT提供公网服务](/intl.zh-CN/基本功能操作/创建DNAT提供公网服务.md) |
 
 ## 限制对比
 
@@ -39,7 +39,7 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 |一个NAT网关支持绑定的EIP的数量|20个（可自助提升配额。具体操作，请参见[管理配额](/intl.zh-CN/通用配置/管理配额.md)）|20个（可自助提升配额。具体操作，请参见[管理配额](/intl.zh-CN/通用配置/管理配额.md)）|
 |一个NAT网关支持绑定的按流量计费EIP的数量|10个（可自助提升配额。具体操作，请参见[管理配额](/intl.zh-CN/通用配置/管理配额.md)）|10个（可自助提升配额。具体操作，请参见[管理配额](/intl.zh-CN/通用配置/管理配额.md)）|
 |NAT网关绑定的按流量计费EIP的最大带宽峰值|200 Mbps（如果EIP已加入到共享带宽中，增强型NAT网关绑定的EIP的最大带宽峰值无限制）|200 Mbps（无法调整）|
-|一个NAT网关实例的最大带宽限制|5 Gbps（如果绑定的EIP或者共享带宽的总带宽大于5 Gbps，请[提交工单](https://workorder-intl.console.aliyun.com/#/ticket/createIndex)提升配额）|NAT网关实例本身没有带宽限制，带宽限制取决于绑定到SNAT或DNAT规则中的EIP及EIP加入的共享带宽的带宽限制 例如：一个NAT网关创建了一个SNAT规则，SNAT规则绑定了5个按流量计费的EIP和2个500 Mbps的按带宽计费EIP，则该NAT网关的带宽限制为5\*200 Mbps+2\*500 Mbps=2000 Mbps，如果这7个EIP加入到同一个共享带宽，共享带宽的带宽限制为1000 Mbps，则NAT网关的带宽限制为1000 Mbps。 |
+|一个NAT网关实例的最大带宽限制|5 Gbps（如果绑定的EIP或者共享带宽的总带宽大于5 Gbps，请[提交工单](https://workorder-intl.console.aliyun.com/#/ticket/createIndex)提升配额）|NAT网关实例本身没有带宽限制，带宽限制取决于绑定到SNAT或DNAT规则中的EIP及EIP加入的共享带宽的带宽限制。 例如：一个NAT网关创建了一个SNAT规则，SNAT规则绑定了5个按流量计费的EIP和2个500 Mbps的按带宽计费EIP，则该NAT网关的带宽限制为5\*200 Mbps+2\*500 Mbps=2000 Mbps，如果这7个EIP加入到同一个共享带宽，共享带宽的带宽限制为1000 Mbps，则NAT网关的带宽限制为1000 Mbps。 |
 |一个EIP的最大并发数为55000|是|是|
 |共享带宽中的单个EIP的峰值限制为200 Mbps|否|是|
 |NAT带宽包用户不能绑定EIP|是|是|
