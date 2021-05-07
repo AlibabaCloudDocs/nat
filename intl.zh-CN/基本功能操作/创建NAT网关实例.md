@@ -1,6 +1,6 @@
 # 创建NAT网关实例
 
-本文介绍如何创建增强型NAT网关实例，为NAT网关添加弹性公网IP和标签，以及当不再需要NAT网关资源时，如何解绑弹性公网IP和删除NAT网关。
+本文介绍如何创建增强型NAT网关实例，为NAT网关添加EIP和标签，以及当不再需要NAT网关资源时，如何解绑EIP和删除NAT网关。
 
 ## 前提条件
 
@@ -30,7 +30,7 @@
     -   **交换机ID**：选择NAT网关实例所属的交换机。
     -   **网关类型**：默认选择为**增强型**。
 
-        增强型NAT网关在普通型NAT网关的技术架构上作了升级，具有更优的弹性和更强的稳定性，帮助您更好的管理公网访问流量。
+        增强型NAT网关在普通型NAT网关的技术架构上作了升级，具有更优的弹性和更强的稳定性，帮助您更好地管理公网访问流量。
 
     -   **计费类型**：选择NAT网关实例的计费类型。
 
@@ -42,7 +42,7 @@
     当出现**恭喜，支付成功！**的提示后，说明您购买成功。
 
 
-## 绑定弹性公网IP
+## 绑定EIP
 
 NAT网关需要绑定公网IP才能正常工作。一个NAT网关最多可绑定20个EIP，其中最多可绑定10个按流量计费的EIP，且每个按流量计费的EIP的最大带宽峰值不能超过200 Mbps。您可以通过配额管理申请更多配额。更多信息，请参见[管理配额](/intl.zh-CN/通用配置/管理配额.md)。
 
@@ -71,9 +71,9 @@ NAT网关需要绑定公网IP才能正常工作。一个NAT网关最多可绑定
     绑定成功后，在NAT网关实例的**弹性公网IP**列将会显示出绑定的公网IP。
 
 
-## 解绑弹性公网IP
+## 解绑EIP
 
-如果您的NAT网关不需要与公网通信，您可以将NAT网关与弹性公网IP（EIP）解绑。
+如果您的NAT网关不需要与公网通信，您可以将NAT网关与EIP解绑。
 
 确保要解绑的EIP没有被任何SNAT或DNAT条目占用。如有占用，请先删除SNAT条目和DNAT条目。具体操作，请参见[移除SNAT条目](/intl.zh-CN/基本功能操作/创建SNAT实现访问公网服务.md)和[删除DNAT条目](/intl.zh-CN/基本功能操作/创建DNAT提供公网服务.md)。
 
@@ -129,8 +129,8 @@ NAT网关需要绑定公网IP才能正常工作。一个NAT网关最多可绑定
 ## 相关文档
 
 -   创建NAT网关实例：[CreateNatGateway](/intl.zh-CN/API参考/NAT网关/CreateNatGateway.md)。
--   绑定弹性公网IP：[AssociateEipAddress](/intl.zh-CN/API参考/弹性公网IP/AssociateEipAddress.md)。
--   解绑弹性公网IP：[UnassociateEipAddress](/intl.zh-CN/API参考/弹性公网IP/UnassociateEipAddress.md)。
+-   绑定EIP：[AssociateEipAddress](/intl.zh-CN/API参考/弹性公网IP/AssociateEipAddress.md)。
+-   解绑EIP：[UnassociateEipAddress](/intl.zh-CN/API参考/弹性公网IP/UnassociateEipAddress.md)。
 -   为NAT网关添加标签：[TagResources](/intl.zh-CN/API参考/标签/TagResources.md)。
 -   编辑NAT网关的基本信息：[ModifyNatGatewayAttribute](/intl.zh-CN/API参考/NAT网关/ModifyNatGatewayAttribute.md)。
 -   删除NAT网关：[DeleteNatGateway](/intl.zh-CN/API参考/NAT网关/DeleteNatGateway.md)
