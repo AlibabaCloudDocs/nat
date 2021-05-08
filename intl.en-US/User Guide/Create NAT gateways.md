@@ -49,7 +49,7 @@ A NAT gateway works as expected only after an EIP is associated with the NAT gat
 -   A NAT gateway and an EIP are created. For more information, see [Purchase a NAT gateway](/intl.en-US/Pricing/Purchase a NAT gateway.md) and [Apply for new EIPs](/intl.en-US/User Guide/Create an EIP/Apply for new EIPs.md).
 -   You did not purchase NAT service plans before 23:59 \(UTC+8\) on January 26, 2018.
 
-    If you purchased a NAT service plan before 23:59 \(UTC+8\) on January 26, 2018, you can associate only public IP addresses in the NAT service plan with the NAT gateway to enable Internet access. For more information about how to associate an EIP with a NAT gateway, see [Why am I unable to associate an EIP with a NAT gateway in the NAT Gateway console?]()
+    If you purchased a NAT service plan before 23:59 \(UTC+8\) on January 26, 2018, you can associate only public IP addresses in the NAT service plan with the NAT gateway to enable Internet access. For more information about how to associate an EIP with a NAT gateway, see [Why am I unable to associate elastic IP addresses \(EIPs\) with a NAT gateway in the Virtual Private Cloud \(VPC\) console?]()
 
 
 1.  Log on to the [NAT Gateway console](https://vpc.console.aliyun.com/nat).
@@ -150,7 +150,7 @@ You can delete NAT gateways that are billed on a pay-as-you-go basis. You cannot
 
 2.  In the top navigation bar, select the region where the NAT gateway is deployed.
 
-3.  On the **NAT Gateway** page, find the NAT gateway that you want to delete and choose **![More](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8458039951/p103337.png)** \> **Delete** in the **Actions** column.
+3.  On the **NAT Gateway** page, find the NAT gateway that you want to delete and choose **![More](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1280730261/p103337.png)** \> **Delete** in the **Actions** column.
 
 4.  In the **Delete Gateway** dialog box, select **Delete \(Delete NAT gateway and resources\)** and click **OK**.
 
