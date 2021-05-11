@@ -10,7 +10,7 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 
 本部署方案将根据以下目标场景，利用增强型NAT产品在同一个VPC内构建独立的公网出入口的网络环境。
 
-![同VPC多NAT网关方案架构图](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1805619061/p206992.png)
+![同VPC多NAT网关方案架构图](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3655259161/p206992.png)
 
 上述场景方案中的交换机对应的场景说明如下：
 
@@ -58,7 +58,7 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 
 ## 部署流程
 
-![同VPC内多NAT网关部署流程](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0805619061/p206994.png)
+![同VPC内多NAT网关部署流程](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3655259161/p206994.png)
 
 ## 步骤一：准备云网络资源
 
@@ -284,7 +284,7 @@ NAT网关的SNAT功能可以为VPC中无公网IP的ECS实例提供访问互联�
 
     经测试，ECS实例可以访问互联网。
 
-    ![测试SNAT](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9601969061/p208573.png)
+    ![测试SNAT](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4655259161/p208573.png)
 
 3.  使用`curl myip.ipip.net`命令探测ECS上绑定的SNAT地址。
 
