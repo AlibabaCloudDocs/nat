@@ -81,7 +81,7 @@ This topic describes how to use Cloud Monitor to monitor NAT gateways. You can u
 
 You can create alert rules to monitor the usage and states of NAT gateways in real time. This ensures the stability of your workloads.
 
-1.  Log on to the[Cloud Monitor console](https://cms-intl.console.aliyun.com).
+1.  Log on to the [Cloud Monitor console](https://cms-intl.console.aliyun.com).
 
 2.  In the left-side navigation pane, choose **Alerts** \> **Alert Rules**.
 
@@ -102,7 +102,7 @@ You can create alert rules to monitor the usage and states of NAT gateways in re
     |**Notification Methods**|Emails and DingTalk ChatBot. |
     |**Auto Scaling**|If you select **Auto Scaling**, the specified scaling rule is triggered when an alert is generated. You must set the **Region**, **ESS Group**, and **ESS Rule** parameters.    -   For more information about how to create a scaling group, see [Create a scaling group](/intl.en-US/Scaling Group/Scaling group/Create a scaling group.md).
     -   For more information about how to create a scaling rule, see [Create a scaling rule](/intl.en-US/Scaling Group/Scaling rule/Create a scaling rule.md). |
-    |**Log Service**|If you select **Log Service**, the alert message is written to Log Service when an alert is generated. You must set the **Region**, **Project**, and **Logstore** parameters.For more information about how to create a project and a Logstore, see [Quick Start](/intl.en-US/.md). |
+    |**Log Service**|If you select **Log Service**, the alert message is written to Log Service when an alert is generated. You must set the **Region**, **Project**, and **Logstore** parameters.For more information about how to create a project and a Logstore, see [Quick start](/intl.en-US/.md). |
     |**Email Remark**|The custom remarks that you want to include in the alert notification email.|
     |**HTTP CallBack**|The callback URL that can be accessed over the Internet. Cloud Monitor sends a POST request to push an alert message to the specified callback URL. Only HTTP requests are supported.|
 
