@@ -29,7 +29,7 @@ Before you create a SNAT entry, make sure that the following requirements are me
 
 -   A NAT gateway is created, and an EIP is associated with the NAT gateway. For more information, see [Create a NAT gateway](/intl.en-US/Pricing/Purchase a NAT gateway.md) and [Associate an EIP with a NAT gateway](/intl.en-US/User Guide/Create NAT gateways.md).
 
-    **Note:** If you purchased a NAT service plan beforeJanuary 26, 2018, make sure that the NAT service plan has idle public IP addresses.
+    **Note:** If you purchased a NAT service plan before January 26, 2018, make sure that the NAT service plan has idle public IP addresses.
 
 -   To create SNAT entries for a vSwitch, make sure that the vSwitch is created in the VPC that is associated with the NAT gateway. For more information, see [Work with vSwitches](/intl.en-US/VPCs and vSwitchs/Work with vSwitches.md).
 -   To create SNAT entries for an ECS instance, make sure that the ECS instance is created in the VPC that is associated with the NAT gateway. For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
