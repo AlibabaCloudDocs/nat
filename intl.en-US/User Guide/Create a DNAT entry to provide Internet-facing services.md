@@ -14,7 +14,7 @@ Before you can create DNAT entries for the ECS instances, you must disassociate 
 
 A NAT gateway is created and assigned an EIP. For more information, see [Create a NAT gateway](/intl.en-US/Pricing/Purchase a NAT gateway.md) and [Associate an EIP with a NAT gateway](/intl.en-US/User Guide/Create NAT gateways.md).
 
-**Note:** If you purchased a NAT service plan beforeJanuary 26, 2018, make sure that the NAT service plan has idle public IP addresses.
+**Note:** If you purchased a NAT service plan before January 26, 2018, make sure that the NAT service plan has idle public IP addresses.
 
 ## Create a DNAT entry
 
