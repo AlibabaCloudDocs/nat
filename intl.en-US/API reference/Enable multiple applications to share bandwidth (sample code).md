@@ -22,7 +22,7 @@ To resolve this problem, you can configure Destination Network Address Translati
 
 Before you start, make sure that the following requirements are met:
 
--   An Alibaba Cloud account is created. If you do not have an Alibaba Cloud account, click[create an Alibaba account](https://account.alibabacloud.com/register/intl_register.htm).
+-   An Alibaba Cloud account is created. If you do not have an Alibaba Cloud account, click [create an Alibaba account](https://account.alibabacloud.com/register/intl_register.htm).
 -   An AccessKey pair is created. If you do not have an AccessKey pair, go to the [Security Management](https://usercenter.console.aliyun.com/?spm=5176.doc52740.2.3.QKZk8w#/manage/ak) page and create an AccessKey pair.
 -   A Python development environment is prepared and Alibaba Cloud SDK for Python is installed. For more information, see [Installation]().
 -   A VPC and a vSwitch are created. For more information, see [CreateVpc](/intl.en-US/API reference/Virtual Private Cloud (VPC)/CreateVpc.md).
