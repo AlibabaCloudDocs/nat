@@ -6,7 +6,7 @@ To better manage your workloads, you can configure Elastic Compute Service (ECS)
 Prerequisites 
 ----------------------------------
 
-Source Network Address Translation (SNAT) is configured for the VPC in which the ECS instances are assigned static public IP addresses. For more information, see [Create a SNAT entry](/intl.en-US/User Guide/SNAT/Create a SNAT entry.md).
+Source Network Address Translation (SNAT) is configured for the VPC in which the ECS instances are assigned static public IP addresses. For more information, see [Create a SNAT entry](/intl.en-US/User Guide/Create a SNAT entry to access the Internet.md).
 
 Background information 
 -------------------------------------------
@@ -49,7 +49,7 @@ To convert a static public IP address that is assigned to a pay-as-you-go ECS in
 
    
 
-2. In the left-side navigation pane, choose **Instances \& Images** **Instances** .
+2. In the left-side navigation pane, choose **Instances \& Images \>** **Instances** .
 
    
 
@@ -57,9 +57,9 @@ To convert a static public IP address that is assigned to a pay-as-you-go ECS in
 
    
 
-4. On the **Instances** page, find the ECS instance that you want to manage. Then, choose **More** **Network and Security Group** **Convert to EIP** in the **Actions** column.
+4. On the **Instances** page, find the ECS instance that you want to manage. Then, choose **More \>** **Network and Security Group \>** **Convert to EIP** in the **Actions** column.
 
-   ![Convert a static public IP address to an EIP](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/2905958951/p88779.png)
+   ![Convert a static public IP address to an EIP](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8815679161/p88779.png)
    
 
 5. In the message that appears, click **OK** .
@@ -83,7 +83,7 @@ To create an ENI for the ECS instance, perform the following steps:
 
    
 
-2. In the left-side navigation pane, choose **Network \& Security** **ENIs** .
+2. In the left-side navigation pane, choose **Network \& Security \>** **ENIs** .
 
    
 
@@ -139,7 +139,7 @@ To associate the ENI with the ECS instance, perform the following steps:
 
    
 
-2. In the left-side navigation pane, choose **Network \& Security** **ENIs** .
+2. In the left-side navigation pane, choose **Network \& Security \>** **ENIs** .
 
    
 
