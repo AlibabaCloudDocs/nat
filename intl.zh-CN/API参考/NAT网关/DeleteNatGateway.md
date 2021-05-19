@@ -19,7 +19,7 @@ DeleteNatGateway接口属于异步接口，即系统会先返回一个请求ID�
 |--|--|----|---|--|
 |Action|String|是|DeleteNatGateway|要执行的操作，取值：**DeleteNatGateway**。 |
 |NatGatewayId|String|是|ngw-bp1uewa15k4iy5770\*\*\*\*|要删除的NAT网关的ID。 |
-|RegionId|String|是|cn-hangzhou|NAT网关所在的地域。您可以通过调用[DescribeRegions](~~36063~~)接口获取地域ID。 |
+|RegionId|String|是|cn-hangzhou|NAT网关所在的地域ID。您可以通过调用[DescribeRegions](~~36063~~)接口获取地域ID。 |
 |Force|Boolean|否|false|是否强制删除NAT网关，取值：
 
  -   **true**：强制删除。当取值为**true**时，说明如下：
@@ -38,7 +38,7 @@ DeleteNatGateway接口属于异步接口，即系统会先返回一个请求ID�
 
 |名称|类型|示例值|描述|
 |--|--|---|--|
-|RequestId|String|4EC47282-1B74-4534-BD0E-403F3EE64CAF|请求ID。 |
+|RequestId|String|0ED8D006-F706-4D23-88ED-E11ED28DCAC0|请求ID。 |
 
 ## 示例
 
@@ -53,7 +53,7 @@ https://vpc.aliyuncs.com/?Action=DeleteNatGateway
 
 正常返回示例
 
-`XML` 格式
+`XML`格式
 
 ```
 <DeleteNatGatewayResponse>
@@ -61,7 +61,7 @@ https://vpc.aliyuncs.com/?Action=DeleteNatGateway
 </DeleteNatGatewayResponse>
 ```
 
-`JSON` 格式
+`JSON`格式
 
 ```
 { 
@@ -73,7 +73,7 @@ https://vpc.aliyuncs.com/?Action=DeleteNatGateway
 
 |HttpCode|错误码|错误信息|描述|
 |--------|---|----|--|
-|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|指定的 RegionId 不存在，请您检查此产品在该地域是否可用。|
+|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|指定的regionid不存在。|
 |404|InvalidNatGatewayId.NotFound|The specified NatGatewayId does not exist in our records.|指定的 NatGatewayId 不存在，请您检查填写的 NatGatewayId 是否正确。|
 |400|DependencyViolation.BandwidthPackages|There are BandwidthPackages on specified NatGateway not deleted.|NAT网关上有尚未删除的带宽包，请删除NAT网关下的所有带宽包后再重新操作。|
 
