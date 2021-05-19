@@ -10,10 +10,10 @@ This topic describes how to use a NAT gateway to enable multiple applications to
 
 The following scenario is used as an example in this topic. A company creates two Elastic Compute Service \(ECS\) instances \(ECS 1 and ECS 2\) and deploys an application on each ECS instance. You want the ECS instances to provide Internet-facing services. The service port is port 80. The amount of bandwidth required by the two ECS instances varies within a day:
 
--   The peak hours of ECS 1 range from 13:00:00 to 18:00:00. During this period of time, the bandwidth that is required by ECS 1 is 1,000 Mbit/s. During the remaining hours of the day, the bandwidth that is required by ECS 1 is 500 Mbit/s.
--   The peak hours of ECS 2 range from 19:00:00 to 23:00:00. During this period of time, the bandwidth that is required by ECS 2 is 1,000 Mbit/s. During the remaining hours of the day, the bandwidth that is required by ECS 2 is 500 Mbit/s.
+-   The peak hours of ECS 1 range from 13:00:00 to 18:00:00. During this period of time, the bandwidth that is required by ECS 1 is 700 Mbit/s. During the remaining hours of the day, the bandwidth that is required by ECS 1 is 300 Mbit/s.
+-   The peak hours of ECS 2 range from 19:00:00 to 23:00:00. During this period of time, the bandwidth that is required by ECS 2 is 700 Mbit/s. During the remaining hours of the day, the bandwidth that is required by ECS 2 is 300 Mbit/s.
 
-If you want to separately purchase bandwidth for the ECS instances, you must purchase two bandwidth plans with a total bandwidth of 2,000 Mbit/s. However, the ECS instances cannot make full use of the bandwidth during off-peak hours. This causes bandwidth resource waste.
+If you want to separately purchase bandwidth for the ECS instances, you must purchase two bandwidth plans with a total bandwidth of 1,000 Mbit/s. However, the ECS instances cannot make full use of the bandwidth during off-peak hours. This causes bandwidth resource waste.
 
 To resolve this problem, you can configure Destination Network Address Translation \(DNAT\) on your NAT gateway and purchase an EIP bandwidth plan.
 
@@ -24,7 +24,6 @@ To resolve this problem, you can configure Destination Network Address Translati
 
 ## Prerequisites
 
--   An Alibaba Cloud account is created. If you do not have an Alibaba Cloud account,[create an Alibaba account](https://account.alibabacloud.com/register/intl_register.htm).
 -   A VPC and a vSwitch are created. For more information, see [Work with VPCs](/intl.en-US/VPCs and vSwitchs/Work with VPCs.md).
 -   ECS instances are created and attached to the vSwitch. Applications are deployed on the ECS instances. For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
 -   Two EIPs are created for a NAT gateway. The EIPs must meet the following requirements:
@@ -64,21 +63,10 @@ To create a NAT gateway, perform the following operations:
         **Note:** This parameter is available only when you create an enhanced NAT gateway.
 
     -   **Gateway Type**: Select the type of NAT gateway that you want to create. By default, **Enhanced** is selected.
-    -   **Specification**: Specify the size of the NAT gateway.
-
-        -   **Small**
-        -   **Medium**
-        -   **Large**
-        The size of a NAT gateway limits the SNAT performance, which includes the maximum number of concurrent connections and the number of new connections per second. However, the gateway size does not affect the DNAT performance. For more information, see [Enhanced NAT gateways \(new\)](/intl.en-US/Enhanced NAT gateway/Enhanced NAT gateways (new).md).
-
-        **Small** is selected in this example.
-
     -   **Billing Method**: Select a billing method for the NAT gateway.
-    -   **Billing Cycle**:displays the billing cycle of the NAT gateway.
+    -   **Billing Cycle**: displays the billing cycle of the NAT gateway.
 
 After you create a NAT gateway, you can find the NAT gateway on the **NAT Gateway** page.
-
-![Instance list](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/0196304061/p170825.png)
 
 ## Step 2: Associate EIPs with the NAT gateway
 
@@ -91,9 +79,6 @@ To associate EIPs with the NAT gateway, perform the following operations:
 2.  In the Associate EIP dialog box, set the following parameters:
 
     -   **Resource Group**: Select the resource group to which the EIPs belong.
-
-        For more information, see [Prerequisites](#section_0zt_20r_jau).
-
     -   **EIPs**: Select the EIPs that you want to associate with the NAT gateway.
 
         In this example, **Select Existing EIPs** is selected. Then, select the two EIPs that are described in the Prerequisites section. For more information, see [Prerequisites](#section_0zt_20r_jau).
@@ -173,7 +158,7 @@ To create DNAT entries for ECS 1 and ECS 2, perform the following operations:
 7.  Click **Confirm**.
 
 
-The following table describes the details about the DNAT entries that are added to ECS 1 and ECS 2.
+The following table describes the details about the DNAT entries that are added for ECS 1 and ECS 2.
 
 |Entry name|EIP|External port|Protocol|Private IP address|Internal port|
 |----------|---|-------------|--------|------------------|-------------|
@@ -249,7 +234,7 @@ You can verify the network connectivity by using a computer to access the applic
 
 1.  Open a browser on a computer that can access the Internet.
 
-2.  Enter one of the EIPs that are associated with the NAT gateway to access the application that runs on an ECS instance.
+2.  Enter one of the EIPs that are associated with the NAT gateway into the address bar of the browser and access the application that runs on an ECS instance.
 
     The results indicate that you can access the applications that are deployed on ECS 1 and ECS 2 over the Internet. In addition, the ECS instances share the bandwidth of the EIP bandwidth plan and can handle traffic spikes.
 
