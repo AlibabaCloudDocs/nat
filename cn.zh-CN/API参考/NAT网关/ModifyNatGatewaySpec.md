@@ -1,8 +1,13 @@
 # ModifyNatGatewaySpec
 
-使用ModifyNatGatewaySpec接口修改NAT网关的规格。
+使用ModifyNatGatewaySpec接口修改预付费NAT网关的规格。
 
 ## API描述
+
+**说明：**
+
+-   ModifyNatGatewaySpec接口不支持预付费NAT网关规格降配，请在控制台执行降配操作。
+-   ModifyNatGatewaySpec接口在执行预付费NAT网关规格升配时，会生成升配订单，请在订单中心进行支付，支付完成后，NAT网关升配即可成功。
 
 ModifyNatGatewaySpec接口属于异步接口，即系统会先返回一个请求ID，但该NAT网关实例的规格并未变配完成，系统后台的变配任务仍在进行。您可以调用[DescribeNatGateways](~~36054~~)查询NAT网关的状态：
 
@@ -44,7 +49,7 @@ NAT网关提供不同的规格。NAT网关的规格会影响SNAT功能的最大�
 |Action|String|是|ModifyNatGatewaySpec|要执行的操作。取值：**ModifyNatGatewaySpec**。 |
 |NatGatewayId|String|是|ngw-bp1uewa15k4iy5770\*\*\*\*|要修改规格的NAT网关的ID。 |
 |RegionId|String|是|cn-hangzhou|NAT网关所属的地域ID。您可以通过调用[DescribeRegions](~~36063~~)接口获取地域ID。 |
-|Spec|String|是|Small|NAT网关的规格，取值：
+|Spec|String|是|Middle|NAT网关的规格，取值：
 
  -   **Small**：小型。
 -   **Middle**：中型。
@@ -53,7 +58,7 @@ NAT网关提供不同的规格。NAT网关的规格会影响SNAT功能的最大�
 
  -   **true**：开启自动付费。
 -   **false**（默认值）：不开启自动付费。 |
-|ClientToken|String|否|SHA234js121223\*\*\*\*|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字符，且不能超过64个字符。 |
+|ClientToken|String|否|123e4567-e89b-12d3-a456-426655\*\*\*\*|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字符，且不能超过64个字符。 |
 
 ## 返回数据
 
@@ -66,10 +71,10 @@ NAT网关提供不同的规格。NAT网关的规格会影响SNAT功能的最大�
 请求示例
 
 ```
-https://vpc.aliyuncs.com/?Action=ModifyNatGatewaySpec
+http(s)://[Endpoint]/?Action=ModifyNatGatewaySpec
 &NatGatewayId=ngw-bp1uewa15k4iy5770****
 &RegionId=cn-hangzhou
-&Spec=Small
+&Spec=Middle
 &<公共请求参数>
 ```
 
