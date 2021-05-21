@@ -4,19 +4,19 @@ To better manage your workloads, you can configure Elastic Compute Service \(ECS
 
 ## Prerequisites
 
-Source Network Address Translation \(SNAT\) entries are configured for the VPC in which the ECS instances are assigned EIPs. For more information, see [t395012.md\#](/intl.en-US/User Guide/SNAT/Create a SNAT entry.md).
+Source Network Address Translation \(SNAT\) entries are configured for the VPC in which the ECS instances are assigned EIPs. For more information, see [Create a SNAT entry to access the Internet](/intl.en-US/User Guide/Create a SNAT entry to access the Internet.md).
 
 ## Background information
 
 NAT gateways support the SNAT feature. SNAT enables ECS instances in a VPC to access the Internet when the ECS instances are not assigned public IP addresses. In a VPC, ECS instances that are assigned EIPs preferably use the EIPs to access the Internet. ECS instances that are not assigned EIPs access the Internet through the SNAT service provided by the NAT gateway. Consequently, the ECS instances in the VPC use different IP addresses to access the Internet, which complicates management operations.
 
-![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/570281/156144622949564_en-US.png)
+![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/1604651261/p49564.png)
 
 You can configure ECS instances in the VPC to use the same EIP to access the Internet by attaching an elastic network interface \(ENI\) to the ECS instances.
 
 In the following example, you can create an ENI for the ECS instance, attach the ENI to the ECS instance, and associate an EIP with the ENI. This way, the ECS instance uses the ENI to receive requests from the Internet and accesses the Internet through the NAT gateway.
 
-![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/570109/156144625849551_en-US.png)
+![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5753651261/p49551.png)
 
 ## Step 1: Create an ENI
 
