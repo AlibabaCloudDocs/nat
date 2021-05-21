@@ -4,19 +4,19 @@
 
 ## 前提条件
 
-绑定了EIP的ECS实例所在的VPC已经配置了SNAT功能。更多信息，请参见[创建SNAT实现访问公网服务](/intl.zh-CN/控制台操作指南/创建SNAT实现访问公网服务.md)。
+绑定了EIP的ECS实例所在的VPC已经配置了SNAT功能。更多信息，请参见[创建SNAT实现访问公网服务](/intl.zh-CN/基本功能操作/创建SNAT实现访问公网服务.md)。
 
 ## 背景信息
 
 NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联网的代理服务。如果VPC内某些ECS实例已经绑定了EIP，这些ECS实例会优先通过绑定的EIP访问互联网，而VPC内的其他ECS实例通过NAT网关的SNAT功能代理访问互联网，造成VPC内ECS实例的公网出口IP不一致，不利于统一管理业务。
 
-![NAT网关](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1734029951/p49564.png)
+![NAT网关](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1504651261/p49564.png)
 
 您可以通过为ECS实例绑定弹性网卡来解决ECS实例公网出口IP不统一的问题。
 
 如下图，您可以为ECS实例单独分配一块弹性网卡，并将EIP绑定到弹性网卡，这样来自互联网的访问流量会经过弹性网卡到达ECS实例，当ECS实例需要访问互联网时会通过NAT网关进行转发。
 
-![NAT网关2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4734029951/p49551.png)
+![NAT网关2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2753651261/p49551.png)
 
 ## 步骤一：创建弹性网卡
 
