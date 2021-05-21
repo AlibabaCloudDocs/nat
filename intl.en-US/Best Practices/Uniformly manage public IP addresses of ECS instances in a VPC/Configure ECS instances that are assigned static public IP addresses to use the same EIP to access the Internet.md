@@ -15,7 +15,7 @@ NAT gateways support the SNAT feature. SNAT enables ECS instances in a VPC to ac
 
 
 
-![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/570109/156144614649546_en-US.png)
+![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5753651261/p49546.png)
 
 You can configure ECS instances in the VPC to use the same EIP to access the Internet by attaching an elastic network interface (ENI) to the ECS instances.
 
@@ -23,7 +23,7 @@ In the following example, you can create an ENI for the ECS instance, convert th
 
 
 
-![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/570109/156144625849551_en-US.png)
+![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5753651261/p49551.png)
 
 Step 1: Convert a static public IP address to an EIP 
 -------------------------------------------------------------------------
