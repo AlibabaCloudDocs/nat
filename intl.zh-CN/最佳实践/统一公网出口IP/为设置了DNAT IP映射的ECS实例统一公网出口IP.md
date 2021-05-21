@@ -4,19 +4,19 @@
 
 ## 前提条件
 
-设置了DNAT IP映射的ECS实例所在的VPC已经配置了SNAT功能。详细信息，请参见[创建SNAT实现访问公网服务](/intl.zh-CN/控制台操作指南/创建SNAT实现访问公网服务.md)。
+设置了DNAT IP映射的ECS实例所在的VPC已经配置了SNAT功能。详细信息，请参见[创建SNAT实现访问公网服务](/intl.zh-CN/基本功能操作/创建SNAT实现访问公网服务.md)。
 
 ## 背景信息
 
 NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联网的代理服务。如果VPC内某些ECS实例已经设置了DNAT IP映射（IP映射即所有端口映射），这些ECS实例会优先通过DNAT条目中的公网IP访问互联网，而VPC内的其他ECS实例通过NAT网关的SNAT功能代理访问互联网，造成VPC内ECS实例的公网出口IP不一致，不利于统一管理业务。
 
-![NAT网关](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4734029951/p49565.png)
+![NAT网关](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7854651261/p49565.png)
 
 您可以通过为ECS实例绑定弹性网卡来解决ECS实例公网出口IP不统一的问题。
 
 如下图，您可以为ECS实例单独分配一块弹性网卡，然后移除NAT网关中的DNAT IP映射条目并创建新的DNAT条目，建立NAT网关上的公网IP与弹性网卡的映射关系，这样来自互联网的访问流量会经过弹性网卡到达ECS实例，当ECS实例需要访问互联网时会通过NAT网关进行转发。
 
-![NAT网关2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4734029951/p49551.png)
+![NAT网关2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2753651261/p49551.png)
 
 ## 步骤一：创建弹性网卡
 
@@ -50,15 +50,15 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 4.  在**网卡列表**页面，找到目标弹性网卡，单击**操作**列下的**绑定实例**。
 5.  在弹出的对话框中，选择要绑定的ECS实例，然后单击**确定**。
 
-## 步骤三：移除DNAT IP映射
+## 步骤三：删除DNAT IP映射
 
-完成以下操作，移除NAT网关中的DNAT IP映射条目。
+完成以下操作，删除NAT网关中的DNAT IP映射条目。
 
 1.  登录[专有网络管理控制台](https://vpcnext.console.aliyun.com)。
 2.  在左侧导航栏，单击**NAT网关**。
 3.  选择NAT网关的地域。
 4.  在NAT网关页面，找到目标NAT网关实例，单击**操作**列下的**设置DNAT**。
-5.  在DNAT表页面，找到目标DNAT条目，单击**操作**列下的**移除**。
+5.  在DNAT管理页签，找到目标DNAT条目，单击**操作**列下的**删除**。
 6.  在弹出的对话框中，单击**确定**。
 
 ## 步骤四：创建DNAT条目
@@ -68,11 +68,11 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 1.  登录[专有网络管理控制台](https://vpcnext.console.aliyun.com)。
 2.  在左侧导航栏，单击**NAT网关**。
 3.  在**NAT网关**页面，找到目标NAT网关实例，单击**操作**列下的**设置DNAT**。
-4.  在**DNAT表**页面，单击**创建DNAT条目**。
-5.  在**创建DNAT条目**对话框，根据以下信息配置DNAT条目，然后单击**确定**。
-    -   **公网IP地址**：选择一个可用的公网IP。用于创建SNAT条目的公网IP不能再用来创建DNAT条目。
-    -   **私网IP地址**：选择弹性网卡实例。
-    -   **端口设置**：选择所有端口。
+4.  在**DNAT管理**页签，单击**创建DNAT条目**。
+5.  在**创建DNAT条目**页面，根据以下信息配置DNAT条目，然后单击**确定创建**。
+    -   **选择公网IP地址**：选择一个可用的公网IP。
+    -   **选择私网IP地址**：通过ECS或弹性网卡进行选择。
+    -   **端口设置**：选择**任意端口**。
     -   **条目名称**：输入DNAT条目的名称。
 
 ## 步骤五：测试网络连通性
