@@ -1,6 +1,6 @@
 # Create NAT gateways
 
-This topic describes how to create and delete enhanced NAT gateways, associate elastic IP addresses \(EIPs\) with NAT gateways, disassociate EIPs from NAT gateways, and add tags to NAT gateways.
+This topic describes how to create enhanced NAT gateways, associate elastic IP addresses \(EIPs\) with NAT gateways, and add tags to NAT gateways. This topic also describes how to disassociate EIPs from NAT gateways and delete NAT gateways.
 
 ## Prerequisites
 
@@ -40,21 +40,21 @@ A virtual private cloud \(VPC\) and a vSwitch are created. For more information,
     When **Order complete.** appears, the purchase is complete.
 
 
-## Associate an EIP with a NAT gateway
+## Associate EIPs
 
-A NAT gateway works as expected only after an EIP is associated with the NAT gateway. You can associate up to 20 EIPs with a NAT gateway. You can associate up to 10 pay-by-data-transfer EIPs with a NAT gateway. The bandwidth limit of the pay-by-data-transfer EIPs is 200 Mbit/s. You can submit a ticket to increase the quota. For more information, see [Quota management](/intl.en-US/Common Configurations/Quota management.md).
+A NAT gateway works as expected only after you associate an EIP with the NAT gateway. You can associate at most 20 EIPs with a NAT gateway. You can associate at most 10 pay-by-data-transfer EIPs with a NAT gateway. The bandwidth limit of the pay-by-data-transfer EIPs is 200 Mbit/s. You can submit a ticket to increase the quota. For more information, see [Quota management](/intl.en-US/Common Configurations/Quota management.md).
 
 
 
 -   A NAT gateway and an EIP are created. For more information, see [Purchase a NAT gateway](/intl.en-US/Pricing/Purchase a NAT gateway.md) and [Apply for new EIPs](/intl.en-US/User Guide/Create an EIP/Apply for new EIPs.md).
--   You did not purchase NAT service plans before 23:59 \(UTC+8\) on January 26, 2018.
+-   You did not purchase NAT service plans before23:59 \(UTC+8\) on January 26, 2018.
 
-    If you purchased a NAT service plan before 23:59 \(UTC+8\) on January 26, 2018, you can associate only public IP addresses in the NAT service plan with the NAT gateway to enable Internet access. For more information about how to associate an EIP with a NAT gateway, see [Why am I unable to associate elastic IP addresses \(EIPs\) with a NAT gateway in the Virtual Private Cloud \(VPC\) console?]()
+    If you purchased a NAT service plan before 23:59 \(UTC+8\) on January 26, 2018, you can associate only public IP addresses in the NAT service plan with the NAT gateway to enable Internet access. For more information about how to associate an EIP with a NAT gateway, see [Why am I unable to associate elastic IP addresses \(EIPs\) with a NAT gateway in the Virtual Private Cloud \(VPC\) console?]().
 
 
 1.  Log on to the [NAT Gateway console](https://vpc.console.aliyun.com/nat).
 
-2.  In the top navigation bar, select the region where the NAT gateway is created.
+2.  In the top navigation bar, select the region where the NAT gateway is deployed.
 
 3.  On the **NAT Gateway** page, find the NAT gateway that you want to manage and click **Associate Now** in the **Elastic IP Address** column.
 
@@ -62,59 +62,28 @@ A NAT gateway works as expected only after an EIP is associated with the NAT gat
 
     |Parameter|Description|
     |---------|-----------|
-    |**Resource Group**|Select the resource group of the EIP.|
-    |**EIPs**|Select the EIP that you want to associate with the NAT gateway.     -   **Select an existing EIP**: Select an existing EIP from the drop-down list.
-    -   **Purchase and Associate EIP**: The system automatically creates an EIP that is billed on a pay-by-data-transfer basis and associates the EIP with the NAT gateway. |
+    |**Resource Group**|Select the resource group to which the EIP belongs.|
+    |**EIPs**|Select the EIP that you want to associate with the NAT gateway.     -   **Select Existing EIPs**: Select an existing EIP from the drop-down list.
+    -   **Purchase EIPs**: The system automatically creates an EIP that is billed on a pay-by-data-transfer basis and associates the EIP with the NAT gateway. |
 
     After you associate an EIP with the NAT gateway, the EIP appears in the **Elastic IP Address** column.
 
 
-## Disassociate an EIP from a NAT gateway
+## Disassociate EIPs
 
-If you do not want the NAT gateway to communicate with the Internet, you can disassociate the EIP from the NAT gateway.
+If you do not want a NAT gateway to communicate with the Internet, you can disassociate the EIP from the NAT gateway.
 
 The EIP is not used in SNAT or DNAT entries. If the EIP is used in a SNAT or DNAT entry, delete the SNAT or DNAT entry. For more information, see [Delete a SNAT entry](/intl.en-US/User Guide/Create a SNAT entry to access the Internet.md) and [Delete a DNAT entry](/intl.en-US/User Guide/Create a DNAT entry to provide Internet-facing services.md).
 
 1.  Log on to the [NAT Gateway console](https://vpc.console.aliyun.com/nat).
 
-2.  In the top navigation bar, select the region where the NAT gateway is created.
+2.  In the top navigation bar, select the region where the NAT gateway is deployed.
 
 3.  On the **NAT Gateway** page, find the NAT gateway that you want to manage and click the EIP in the **Elastic IP Address** column.
 
-4.  On the **Elastic IP Addresses** page, select the EIP that you want to disassociate from the NAT gateway and click **Disassociate** in the **Actions** column.
+4.  On the **Associated EIP** tab, select the EIP that you want to disassociate from the NAT gateway and click **Disassociate** in the **Actions** column.
 
 5.  In the message that appears, click **OK**.
-
-
-## Add tags to NAT gateways
-
-It is difficult to manage a large number of NAT gateways. To manage your NAT gateways by group, you can add tags to them. After you add tags, you can search and filter your NAT gateways by tag.
-
-A tag is a label that you can add to an instance. Each tag consists of a key and a value. Before you add tags, take note of the following limits:
-
--   The key of each tag that is added to each NAT gateway must be unique.
--   When you create tags, you must add the tags to NAT gateways. Otherwise, the tags cannot be created.
--   Tag information is not shared across regions.
-
-    For example, if you are in the China \(Shanghai\) region, you cannot view the tags of instances that are created in the China \(Hangzhou\) region.
-
--   You can modify the key and value of a tag or remove a tag from a NAT gateway at any time. If you delete a NAT gateway, the tags that are added to the NAT gateway are deleted.
--   You can add up to 20 tags to each NAT gateway. You cannot increase the quota.
-
-1.  Log on to the [NAT Gateway console](https://vpc.console.aliyun.com/nat).
-
-2.  In the top navigation bar, select the region where the NAT gateway is created.
-
-3.  On the **NAT Gateway** page, find the NAT gateway to which you want to add tags, move the pointer over the ![The Tag icon](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8508559951/p67422.png) icon in the **Tags** column, and then click **Add**.
-
-4.  In the **Configure Tags** dialog box, set the following parameters and click **OK**.
-
-    |Parameter|Description|
-    |---------|-----------|
-    |**Tag Key**|The key of a tag. You can select or enter a key. The key must be 1 to 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. |
-    |**Tag Value**|The value of a tag. You can select or enter a value. The value must be 1 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. |
-
-5.  Go back to the **NAT Gateway** page and click **Filter by Tag**. In the **Filter by Tag** dialog box, you can specify tag keys and values to filter NAT gateways.
 
 
 ## Modify a NAT gateway
@@ -140,7 +109,7 @@ You can modify the name and description of a NAT gateway.
 
 You can delete NAT gateways that are billed on a pay-as-you-go basis. You cannot delete subscription NAT gateways.
 
-**Note:** On the **Basic Information** tab for the NAT gateway, if **Deletion Protection** is enabled for the NAT gateway, the NAT gateway cannot be deleted. To delete the NAT gateway, disable **Deletion Protection** first.
+**Note:** On the **Basic Information** tab, if **Deletion Protection** is enabled for the NAT gateway, the NAT gateway cannot be deleted. You must disable **Deletion Protection** before you can delete the NAT gateway.
 
 -   No EIP is associated with the NAT gateway. If an EIP is associated with the NAT gateway, disassociate the EIP from the NAT gateway.
 -   The DNAT table is empty. If the DNAT table contains DNAT entries, delete the DNAT entries. For more information, see [Delete a DNAT entry](/intl.en-US/User Guide/Create a DNAT entry to provide Internet-facing services.md).
