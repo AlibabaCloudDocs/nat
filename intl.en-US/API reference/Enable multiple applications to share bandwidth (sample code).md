@@ -1,6 +1,6 @@
 # Enable multiple applications to share bandwidth \(sample code\)
 
-This topic describes how to call the API with Alibaba Cloud SDK for Python to enable multiple applications to share the bandwidth provided by an EIP bandwidth plan. This reduces the costs of Internet data transfer.
+This topic describes how to enable multiple applications to share the bandwidth of an EIP bandwidth plan by calling an API operation through Alibaba Cloud SDK for Python. This reduces the data egress costs.
 
 ## Scenario
 
@@ -22,14 +22,14 @@ To resolve this problem, you can configure Destination Network Address Translati
 
 Before you start, make sure that the following requirements are met:
 
--   An Alibaba Cloud account is created. If you do not have an Alibaba Cloud account, click [create an Alibaba account](https://account.alibabacloud.com/register/intl_register.htm).
+-   An Alibaba Cloud account is created. If you do not have an Alibaba Cloud account, [create an Alibaba account](https://account.alibabacloud.com/register/intl_register.htm).
 -   An AccessKey pair is created. If you do not have an AccessKey pair, go to the [Security Management](https://usercenter.console.aliyun.com/?spm=5176.doc52740.2.3.QKZk8w#/manage/ak) page and create an AccessKey pair.
 -   A Python development environment is prepared and Alibaba Cloud SDK for Python is installed. For more information, see [Installation]().
--   A VPC and a vSwitch are created. For more information, see [CreateVpc](/intl.en-US/API reference/Virtual Private Cloud (VPC)/CreateVpc.md).
--   ECS instances are created and attached to the vSwitch. Applications are deployed on the ECS instances. For more information, see [CreateInstance](/intl.en-US/API Reference/Instances/CreateInstance.md).
--   Two EIPs are created for the NAT gateway. The EIPs must meet the following requirements:
+-   A virtual private cloud \(VPC\) and a vSwitch are created. For more information, see [CreateVpc](/intl.en-US/API reference/Virtual Private Cloud (VPC)/CreateVpc.md).
+-   Elastic Compute Service \(ECS\) instances are created and attached to the vSwitch. Applications are deployed on the ECS instances. For more information, see [CreateInstance](/intl.en-US/API Reference/Instances/CreateInstance.md).
+-   Two elastic IP addresses \(EIPs\) are created for the NAT gateway. The EIPs must meet the following requirements:
 
-    -   The EIPs and the NAT gateway to be associated with the EIPs must be in the same region.
+    -   The EIPs must be in the same region as the NAT gateway with which you want to associate the EIPs.
     -   The EIPs are billed on a pay-as-you-go basis.
     For more information, see [AllocateEipAddress](/intl.en-US/API reference/EIP/AllocateEipAddress.md).
 
@@ -42,12 +42,12 @@ Before you start, make sure that the following requirements are met:
 
 NAT gateways are enterprise-class gateways that provide network address translation services for Internet access. You must create a NAT gateway before you can create DNAT entries.
 
-**Note:** When you create an enhanced NAT gateway, you must specify a vSwitch for the NAT gateway. Then, the system assigns an unused private IP address from the vSwitch to the enhanced NAT gateway.
+**Note:** When you create an enhanced NAT gateway, you must specify a vSwitch for the NAT gateway. Then, the system assigns an idle private IP address from the vSwitch to the NAT gateway.
 
--   To create an enhanced NAT gateway that is attached to an existing vSwitch, make sure that the zone to which the vSwitch belongs supports enhanced NAT gateways. In addition, the vSwitch must have unused public IP addresses.
--   If you do not have a vSwitch in the specified VPC, create a vSwitch in the zone that supports enhanced NAT gateways. Then, specify the vSwitch for the enhanced NAT gateway.
+-   To create an enhanced NAT gateway that is attached to an existing vSwitch, make sure that the zone to which the vSwitch belongs supports enhanced NAT gateways. In addition, the vSwitch must have idle IP addresses.
+-   If you do not have a vSwitch in the specified VPC, create a vSwitch in a zone that supports enhanced NAT gateways. Then, specify the vSwitch for the enhanced NAT gateway.
 
-You can call [ListEnhanhcedNatGatewayAvailableZones](/intl.en-US/API reference/NAT Gateway/ListEnhanhcedNatGatewayAvailableZones.md) to query the zones that support enhanced NAT gateways and call [DescribeVSwitches](/intl.en-US/API reference/VSwitch/DescribeVSwitches.md) to query unused IP addresses in a vSwitch.
+You can call [ListEnhanhcedNatGatewayAvailableZones](/intl.en-US/API reference/NAT Gateway/ListEnhanhcedNatGatewayAvailableZones.md) to query the zones that support enhanced NAT gateways and call [DescribeVSwitches](/intl.en-US/API reference/VSwitch/DescribeVSwitches.md) to query idle IP addresses in a vSwitch.
 
 1.  The following sample code shows how to create a NAT gateway:
 
@@ -77,37 +77,37 @@ You can call [ListEnhanhcedNatGatewayAvailableZones](/intl.en-US/API reference/N
     request.set_Description("test")
     
     # The size of the NAT gateway.
-    # Valid values: Small (default), Middle, Large, and Super Large-1. The parameter is set to Small in this example. Set the parameter based on your business requirements.
+    # Valid values: Small, Medium, and Large. Default value: Small. In this example, the parameter is set to Small. You can select a gateway size to meet your business requirements.
     request.set_Spec("Small")
     
     # The billing method of the NAT gateway.
-    # Valid values: PostPaid (pay-as-you-go) and PrePaid (subscription). The default value is PostPaid.
+    # Valid values: PostPaid and PrePaid. PostPaid: indicates the pay-as-you-go billing method. PrePaid: indicates the subscription billing method. Default value: PostPaid.
     request.set_InstanceChargeType("PrePaid")
     
-    # The billing cycle of subscriptions.
-    # Valid values: Month and Year. The default value is Month.
-    # This parameter is required when InstanceChargeType is set to PrePaid. You do not need to set this parameter when InstanceChargeType is set to PostPaid.
+    # The billing cycle of the subscription NAT gateway.
+    # Valid values: Month and Year. Default value: Month.
+    # If InstanceChargeType is set to PrePaid, this parameter is required. If InstanceChargeType is set to PostPaid, you do not need to set this parameter.
     request.set_PricingCycle("Month")
     
     # The subscription duration.
-    # When PricingCycle is set to Month, Period can be set from 1 to 9. When PricingCycle is set to Year, Period can be set from 1 to 3.
+    # If you set PricingCycle to Month, you can set Period to a value from 1 to 9. If you set PricingCycle to Year, you can set Period to a value from 1 to 3.
     request.set_Duration("1")
     
     # Automatic payment.
-    # Valid values: false and true. false: disables automatic payment. After an order is generated, you must go to the Order Center to complete the payment. true: enables automatic payment. Payments are automatically completed.
+    # Valid values: false and true. false: disables automatic payment. If you set this parameter to false, you must go to the Order Center to complete the payment after an order is generated. true: enables automatic payment. If you set this parameter to true, payments are automatically completed.
     request.set_AutoPay(True)
     
     # The ID of the vSwitch to which the NAT gateway is attached.
-    # When you create an enhanced NAT gateway, you must specify the vSwitch to which the NAT gateway is attached. The system automatically assigns an unused private IP address from the vSwitch to the enhanced NAT gateway.
+    # When you create an enhanced NAT gateway, you must specify the vSwitch to which the NAT gateway is attached. Then, the system automatically assigns an idle private IP address from the vSwitch to the enhanced NAT gateway.
     request.set_VSwitchId("vsw-uf6gnat6e5tk0gnbm****")
     
-    # The type of the NAT gateway.
-    # Valid values: Normal (standard NAT gateways) and Enhanced (enhanced NAT gateways).
-    # Enhanced NAT gateways are upgraded from the technical architecture of standard NAT gateways. Enhanced NAT gateways offer higher elasticity and stability, and enable you to better manage data transfer over the Internet.
+    # The type of NAT gateway.
+    # Valid values: Normal and Enhanced. Normal: indicates a standard NAT gateway. Enhanced: indicates an enhanced NAT gateway.
+    # Enhanced NAT gateways are an upgrade from standard NAT gateways and use a more advanced architecture. Compared with standard NAT gateways, enhanced NAT gateways offer higher elasticity and stability. This improves how you can manage data transfer.
     request.set_NatType("Enhanced")
     
     # The metering method of the NAT gateway.
-    # Valid values: PayBySpec (pay-by-specification) and PayByLcu (pay-by-LCU).
+    # Valid values: PayBySpec and PayByLcu. PayBySpec: indicates the pay-by-specification metering method. PayByLcu: indicates the pay-by-CU metering method.
     request.set_InternetChargeType("PayBySpec")
     
     # Make an API request and print the response.
@@ -132,7 +132,7 @@ You can call [ListEnhanhcedNatGatewayAvailableZones](/intl.en-US/API reference/N
     }
     ```
 
-2.  The following sample code shows how to query details of the NAT gateway:
+2.  The following sample code shows how to query the details about the NAT gateway:
 
     ```
     from aliyunsdkcore.client import AcsClient
@@ -146,7 +146,7 @@ You can call [ListEnhanhcedNatGatewayAvailableZones](/intl.en-US/API reference/N
     # yourRegionId: the region ID.
     client = AcsClient("yourAccessKeyId","yourAccessKeySecret","yourRegionId")
     
-    # Query details about the NAT gateway.
+    # Query the details about the NAT gateway.
     request = DescribeNatGatewaysRequest()
     request.set_accept_format('json')
     
@@ -213,7 +213,7 @@ You can call [ListEnhanhcedNatGatewayAvailableZones](/intl.en-US/API reference/N
 
 ## Step 2: Associate EIPs with the NAT gateway
 
-A NAT gateway functions as expected only after it is associated with one or more EIPs.
+A NAT gateway works as expected only after you associate an EIP with the NAT gateway.
 
 The following sample code shows how to associate EIPs with the NAT gateway:
 
@@ -223,7 +223,7 @@ from aliyunsdkcore.acs_exception.exceptions import ClientException
 from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkvpc.request.v20160428.AssociateEipAddressRequest import AssociateEipAddressRequest
 
-# The IDs of the EIPs that you want to associate with the NAT gateway. This parameter is set to the IDs of EIP 1 and EIP 2 in this example.
+# The IDs of the EIPs that you want to associate with the NAT gateway. In this example, the IDs of EIP 1 and EIP 2 are specified.
 allocationIds = ["eip-uf6pvlaprugu1azc8****", "eip-uf69ls0f3qgv0alk6****"]
 
 # Create an AcsClient instance.
@@ -240,10 +240,10 @@ for i in range(0, 2):
     # The ID of the NAT gateway with which you want to associate EIPs.
     request.set_InstanceId("ngw-uf6htj15rgyp8ivix****")
 
-    # The IDs of the EIPs with which you want to associate EIPs.
+    # The IDs of the EIPs that you want to associate with the NAT gateway.
     request.set_AllocationId(allocationIds[i])
 
-    # The type of the resource with which you want to associate EIPs.
+    # The type of resource with which you want to associate EIPs.
     request.set_InstanceType("NAT")
     
     # Make an API request and print the response.
@@ -266,7 +266,7 @@ The following response is returned:
 
 ## Step 3: Create DNAT entries
 
-A DNAT entry maps the EIP of a NAT gateway to an ECS instance so that the ECS instance can receive requests from the Internet. The following table shows the DNAT entries for ECS 1 and ECS 2 in this example.
+A DNAT entry maps the EIP of a NAT gateway to an ECS instance. This allows the ECS instance to provide Internet-facing services. In this example, configure the DNAT entries that are described in the following table for ECS 1 and ECS 2.
 
 |Entry name|EIP|External port|Protocol|Private IP address|Internal port|
 |----------|---|-------------|--------|------------------|-------------|
@@ -291,26 +291,26 @@ A DNAT entry maps the EIP of a NAT gateway to an ECS instance so that the ECS in
     request = CreateForwardEntryRequest()
     request.set_accept_format('json')
     
-    # The ID of the DNAT table in which you want to create the DNAT entry.
+    # The ID of the DNAT table to which you want to add the DNAT entry.
     request.set_ForwardTableId("ftb-uf6hdobgppflyr2ng****")
     
-    # Specify the EIP for Internet access. This parameter is set to the IP address of EIP 1 in this example.
+    # Specify the EIP that is used to communicate with the Internet. In this example, the IP address of EIP 1 is specified.
     request.set_ExternalIp("101.xx.xx.137")
     
-    # The external port where requests from the Internet are received. Valid values: 1 to 65535. This parameter is set to 80 in this example.
+    # The external port that is used in port forwarding. Valid values: 1 to 65535. In this example, this parameter is set to 80.
     request.set_ExternalPort("80")
     
-    # Specify the private IP address of the ECS instance that wants to receive requests from the Internet. This parameter is set to the private IP address of ECS 1 in this example.
+    # Specify the private IP address of the ECS instance that wants to receive requests from the Internet. In this example, this parameter is set to the private IP address of ECS 1.
     request.set_InternalIp("192.xx.xx.100")
     
-    # The internal port to which the requests received on the external port are forwarded. Valid values: 1 to 65535. This parameter is set to 80 in this example.
+    # The internal port that is used in port forwarding. Valid values: 1 to 65535. In this example, this parameter is set to 80.
     request.set_InternalPort("80")
     
-    # The protocol used by the external and internal ports.
-    # Valid values: TCP, UDP, and Any. TCP: forwards TCP packets. UDP: forwards UDP packets. Any: forwards all packets.
+    # The protocol that is used by the ports.
+    # Valid values: TCP, UDP, and Any. TCP: Only TCP packets are forwarded. UDP: Only UDP packets are forwarded. Any: All packets are forwarded.
     request.set_IpProtocol("TCP")
     
-    # The name of the DNAT entry. The name is set to DNAT 1 in this example.
+    # The name of the DNAT entry. In this example, the name is set to DNAT1.
     request.set_ForwardEntryName("DNAT1")
     
     # Make an API request and print the response.
@@ -347,26 +347,26 @@ A DNAT entry maps the EIP of a NAT gateway to an ECS instance so that the ECS in
     request = CreateForwardEntryRequest()
     request.set_accept_format('json')
     
-    # The ID of the DNAT table in which you want to create the DNAT entry.
+    # The ID of the DNAT table to which you want to add the DNAT entry.
     request.set_ForwardTableId("ftb-uf6hdobgppflyr2ng****")
     
-    # Specify the EIP for Internet access. This parameter is set to the IP address of EIP 1 in this example.
+    # Specify the EIP that is used to communicate with the Internet. In this example, the IP address of EIP 1 is specified.
     request.set_ExternalIp("106.xx.xx.94")
     
-    # The external port where requests from the Internet are received. Valid values: 1 to 65535. This parameter is set to 80 in this example.
+    # The external port that is used in port forwarding. Valid values: 1 to 65535. In this example, this parameter is set to 80.
     request.set_ExternalPort("80")
     
-    # Specify the private IP address of the ECS instance that wants to receive requests from the Internet. This parameter is set to the private IP address of ECS 1 in this example.
+    # Specify the private IP address of the ECS instance that wants to receive requests from the Internet. In this example, this parameter is set to the private IP address of ECS 1.
     request.set_InternalIp("192.xx.xx.101")
     
-    # The internal port to which the requests received on the external port are forwarded. Valid values: 1 to 65535. This parameter is set to 80 in this example.
+    # The internal port that is used in port forwarding. Valid values: 1 to 65535. In this example, this parameter is set to 80.
     request.set_InternalPort("80")
     
-    # The protocol used by the external and internal ports.
-    # Valid values: TCP, UDP, and Any. TCP: forwards TCP packets. UDP: forwards UDP packets. Any: forwards all packets.
+    # The protocol that is used by the ports.
+    # Valid values: TCP, UDP, and Any. TCP: Only TCP packets are forwarded. UDP: Only UDP packets are forwarded. Any: All packets are forwarded.
     request.set_IpProtocol("TCP")
     
-    # The name of the DNAT entry. The name is set to DNAT 2 in this example.
+    # The name of the DNAT entry. In this example, the name is set to DNAT2.
     request.set_ForwardEntryName("DNAT2")
     
     # Make an API request and print the response.
@@ -388,7 +388,7 @@ A DNAT entry maps the EIP of a NAT gateway to an ECS instance so that the ECS in
 
 ## Step 4: Create an EIP bandwidth plan
 
-EIP bandwidth plans support regional bandwidth sharing and transferring. You can use EIP bandwidth plans to reduce bandwidth usage costs.
+EIP bandwidth plans support bandwidth sharing and transfer on a regional scale. You can use EIP bandwidth plans to reduce bandwidth resource costs.
 
 The following sample code shows how to create an EIP bandwidth plan:
 
@@ -408,11 +408,11 @@ client = AcsClient("yourAccessKeyId","yourAccessKeySecret","yourRegionId")
 request = CreateCommonBandwidthPackageRequest()
 request.set_accept_format('json')
 
-# Specify the maximum bandwidth of the EIP bandwidth plan. Valid values: 1000 to 5000. Unit: Mbit/s. This parameter is set to 1500 in this example. You can set the parameter based on your business requirements.
+# Specify the bandwidth limit of the EIP bandwidth plan. Valid values: 1000 to 5000. Unit: Mbit/s. In this example, this parameter is set to 1500. You can set the parameter based on your business requirements.
 request.set_Bandwidth(1500)
 
 # The connection type.
-# Valid values: BGP and BGP_PRO. BGP: represents BGP (Multi-ISP). BGP_PRO: represents BGP (Multi-ISP) Premium.
+# Valid values: BGP and BGP_PRO. BGP: BGP (Multi-ISP). BGP_PRO: BGP (Multi-ISP) Pro.
 request.set_ISP("BGP")
 
 # The name of the EIP bandwidth plan.
@@ -422,7 +422,7 @@ request.set_Name("test")
 request.set_Description("test")
 
 # The billing method of the EIP bandwidth plan.
-# Valid values: PayByBandwidth and PayBy95. PayByBandwidth: The EIP bandwidth plan is charged based on bandwidth usage. PayBy95: The EIP bandwidth plan is charged based on the enhanced 95th percentile bandwidth. The default value is PayByBandwidth.
+# Valid values: PayByBandwidth and PayBy95. PayByBandwidth: The EIP bandwidth plan is charged based on bandwidth usage. PayBy95: The EIP bandwidth plan is charged based on the enhanced 95th percentile bandwidth. Default value: PayByBandwidth.
 request.set_InternetChargeType("PayByBandwidth")
 
 # Make an API request and print the response.
@@ -444,11 +444,11 @@ The following response is returned:
 
 ## Step 5: Associate EIPs with the EIP bandwidth plan
 
-You can associate EIP 1 and EIP 2 with the created EIP bandwidth plan. After the EIPs are associated with the EIP bandwidth plan:
+You can associate EIP 1 and EIP 2 with the EIP bandwidth plan that you created. After you associate the EIPs with the EIP bandwidth plan, the EIPs are subject to the following changes:
 
--   Services attached to the NAT gateway that is associated with the EIPs share the bandwidth of the EIP bandwidth plan.
--   The predefined maximum bandwidths of the EIPs become invalid. The maximum bandwidths of the EIPs equal the maximum bandwidth of the associated EIP bandwidth plan.
--   The predefined billing methods of the EIPs become invalid. The EIPs function as public IP addresses. No fees are charged for data transfer and bandwidth usage of the EIPs.
+-   Services attached to the NAT gateway with which the EIPs are associated share the bandwidth of the EIP bandwidth plan.
+-   The predefined bandwidth limits of the EIPs become invalid. The bandwidth limits of the EIPs equal the bandwidth limit of the associated EIP bandwidth plan.
+-   The predefined billing methods of the EIPs become invalid. The EIPs function as public IP addresses. You are not charged for data transfer and bandwidth usage of the EIPs.
 
 The following sample code shows how to associate EIP 1 and EIP 2 with the EIP bandwidth plan:
 
@@ -458,7 +458,7 @@ from aliyunsdkcore.acs_exception.exceptions import ClientException
 from aliyunsdkcore.acs_exception.exceptions import ServerException
 from aliyunsdkvpc.request.v20160428.AddCommonBandwidthPackageIpRequest import AddCommonBandwidthPackageIpRequest
 
-# Specify the EIPs that you want to associate with the EIP bandwidth plan. This parameter is set to EIP 1 and EIP 2 in this example.
+# Specify the EIPs that you want to associate with the EIP bandwidth plan. In this example, EIP 1 and EIP 2 are specified.
 IpInstanceIds = ["eip-uf6pvlaprugu1azc8****","eip-uf69ls0f3qgv0alk6****"]
 
 # Create an AcsClient instance.
@@ -475,7 +475,7 @@ for i in range(0, 2):
     # The ID of the EIP bandwidth plan.
     request.set_BandwidthPackageId("cbwp-uf6jvfp1wqps1vywa****")
 
-    # The EIPs to be associated with the EIP bandwidth plan.
+    # The EIPs that you want to associate with the EIP bandwidth plan.
     request.set_IpInstanceId(IpInstanceIds[i])
 
     # Make an API request and print the response.
@@ -497,7 +497,7 @@ The following response is returned:
 }
 ```
 
-## Step 6: Test network connectivity
+## Step 6: Verify the network connectivity
 
 You can verify the network connectivity by using a computer to access the applications that are deployed on ECS 1 and ECS 2.
 
@@ -505,12 +505,12 @@ You can verify the network connectivity by using a computer to access the applic
 
 1.  Open a browser on a computer that can access the Internet.
 
-2.  Enter one of the EIPs that are associated with the NAT gateway to access the application that runs on an ECS instance.
+2.  Enter one of the EIPs that are associated with the NAT gateway into the address bar of the browser and access the application that runs on an ECS instance.
 
-    The test results indicate that you can access the applications that are deployed on ECS 1 and ECS 2 over the Internet. It also shows that the ECS instances share the bandwidth of the EIP bandwidth plan and can handle traffic spikes.
+    The results indicate that you can access the applications that are deployed on ECS 1 and ECS 2 over the Internet. In addition, the ECS instances share the bandwidth of the EIP bandwidth plan and can handle traffic spikes.
 
-    ![Test the connectivity to ECS 1](../images/p171126.png "Access the application that run on ECS 1")
+    ![Verify the network connectivity to ECS 1](../images/p171126.png "Access the application that runs on ECS 1")
 
-    ![Test the connectivity to ECS 2](../images/p171125.png "Access the application that run on ECS 2")
+    ![Verify the network connectivity to ECS 2](../images/p171125.png "Access the application that runs on ECS 2")
 
 
