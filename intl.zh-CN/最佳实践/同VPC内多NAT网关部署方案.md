@@ -10,7 +10,7 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 
 本部署方案将根据以下目标场景，利用增强型NAT产品在同一个VPC内构建独立的公网出入口的网络环境。
 
-![同VPC多NAT网关方案架构图](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2914812261/p206992.png)
+![同VPC多NAT网关方案架构图](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6926812261/p206992.png)
 
 上述场景方案中的交换机对应的场景说明如下：
 
