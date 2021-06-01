@@ -14,7 +14,7 @@ To map EIPs that are associated with the NAT gateway to ECS instances in a virtu
 
 Before you start, make sure that the following requirements are met:
 
--   An Alibaba Cloud account is created. If you do not have an Alibaba Cloud account, click[create an Alibaba account](https://account.alibabacloud.com/register/intl_register.htm).
+-   An Alibaba Cloud account is created. If you do not have an Alibaba Cloud account, click [create an Alibaba account](https://account.alibabacloud.com/register/intl_register.htm).
 -   A virtual private cloud \(VPC\) and a vSwitch are created. For more information, see [Work with VPCs](/intl.en-US/VPCs and vSwitchs/Work with VPCs.md).
 -   ECS instances are created and attached to the vSwitch. Applications are deployed on the ECS instances. For more information, see [Create an instance by using the wizard](/intl.en-US/Instance/Create an instance/Create an instance by using the wizard.md).
 
