@@ -45,17 +45,13 @@
 |Description|String|否|testnat|NAT网关的描述。
 
  描述长度为2~256个字符之间，不能以`http://`和`https://`开头。 |
-|ClientToken|String|否|shefffxxddjehfh123|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字符，且不能超过64个字符。 |
-|Spec|String|否|Small|NAT网关的规格，取值：
+|InstanceChargeType|String|否|PostPaid|NAT网关的付费模式，取值：
 
- -   **Small**（默认值）：小型。
--   **Middle**：中型。
--   **Large**：大型。 |
-|InstanceChargeType|String|否|PostPaid|-   NAT网关的付费模式，取值：
--   **PostPaid**（默认值）：按量付费。
+ -   **PostPaid**（默认值）：按量付费。
 -   **PrePaid**：包年包月。
 
  更多信息，请参见[包年包月](~~88657~~)和[按量付费](~~88658~~)。 |
+|InternetChargeType|String|否|PayByLcu|NAT网关的计费类型，取值为**PayByLcu**：按使用量计费。 |
 |PricingCycle|String|否|Month|包年包月的计费周期，取值：
 
  -   **Month**（默认值）：按月付费。
@@ -73,7 +69,12 @@
 -   **true**：开启自动付费，自动支付订单。
 
  当**InstanceChargeType**参数的值为**PrePaid**时，该参数必选；当**InstanceChargeType**参数的值为**PostPaid**时，该参数不填。 |
-|InternetChargeType|String|否|PayBySpec|NAT网关的计费类型，取值为**PayByLcu**：按使用量计费。 |
+|ClientToken|String|否|shefffxxddjehfh123|保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。**ClientToken**只支持ASCII字符，且不能超过64个字符。 |
+|Spec|String|否|Small|NAT网关的规格，仅当**InstanceChargeType**为**PrePaid**时支持按固定规格创建NAT网关，取值：
+
+ -   **Small**（默认值）：小型。
+-   **Middle**：中型。
+-   **Large**：大型。 |
 
 ## 返回数据
 
@@ -116,14 +117,16 @@ https://vpc.aliyuncs.com/?Action=CreateNatGateway
 
 ```
 {
-    "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3",
-    "SnatTableIds": {
-        "SnatTableId": "stb-SnatTableIds****"
-    },
-    "ForwardTableIds": {
-        "ForwardTableId": "ftb-11tc6xgmv****"
-    },
-    "NatGatewayId": "ngw-112za33e4****"
+    "CreateNatGatewayResponse": {
+        "RequestId": "2315DEB7-5E92-423A-91F7-4C1EC9AD97C3",
+        "SnatTableIds": {
+            "SnatTableId": "stb-SnatTableIds****"
+        },
+        "ForwardTableIds": {
+            "ForwardTableId": "ftb-11tc6xgmv****"
+        },
+        "NatGatewayId": "ngw-112za33e4****"
+    }
 }
 ```
 
