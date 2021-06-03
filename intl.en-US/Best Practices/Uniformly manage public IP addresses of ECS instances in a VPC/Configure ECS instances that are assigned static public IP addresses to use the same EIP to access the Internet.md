@@ -6,7 +6,7 @@ To better manage your workloads, you can configure Elastic Compute Service (ECS)
 Prerequisites 
 ----------------------------------
 
-Source Network Address Translation (SNAT) is configured for the VPC of the ECS instances that are assigned static public IP addresses. For more information, see[Configure SNAT to access the Internet](/intl.en-US/User Guide/Configure SNAT to access the Internet.md).
+Source Network Address Translation (SNAT) is configured for the VPC of the ECS instances that are assigned static public IP addresses. For more information, see [Configure SNAT to access the Internet](/intl.en-US/User Guide/Configure SNAT to access the Internet.md).
 
 Background information 
 -------------------------------------------
