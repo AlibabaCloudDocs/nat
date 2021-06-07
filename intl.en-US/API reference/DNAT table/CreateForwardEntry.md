@@ -1,6 +1,6 @@
 # CreateForwardEntry
 
-Adds a Destination Network Address Translation \(DNAT\) entry to a DNAT table.
+Adds DNAT entries to a DNAT table.
 
 ## Description
 
@@ -8,9 +8,9 @@ Each DNAT entry consists of the following elements:**ExternalIp**, **ExternalPor
 
 When you call this operation, take note of the following limits:
 
--   CreateForwardEntry is an asynchronous operation. After you make a request, a DNAT entry ID is returned but the specified DNAT entry is not added. The system adds the entry in the background. You can call the [DescribeForwardTableEntries](~~36053~~) operation to query the state of the DNAT entry.
-    -   When the DNAT entry is in the **Pending** state, the system is adding the DNAT entry. You can only query the state of the DNAT entry, and cannot perform other operations.
-    -   When the DNAT entry is in the **Available** state, the DNAT entry is added.
+-   CreateForwardEntry is an asynchronous operation. After you make a request, a DNAT entry ID is returned but the specified DNAT entry is not added. The system adds the entry in the background. You can call the [DescribeForwardTableEntries](~~36053~~) operation to query the state of a DNAT entry.
+    -   If the DNAT entry is in the **Pending** state, the system is adding the DNAT entry. You can only query the state of the DNAT entry, and cannot perform other operations.
+    -   If the DNAT entry is in the **Available** state, the DNAT entry is added.
 -   All combinations of **ExternalIp**, **ExternalPort**, and**Protocol** used in DNAT entries must be unique. You cannot distribute requests to more than one Elastic Compute Service \(ECS\) instance if these requests are originated from the same source IP address, received on the same port, and use the same protocol.
 -   The combinations of **Protocol**, **InternalIp**, and **InternalPort** used in DNAT entries must be unique.
 -   If one or more DNAT entries in the DNAT table are in the **Pending** or **Modifying** state, you cannot add DNAT entries to the DNAT table.
@@ -25,33 +25,33 @@ When you call this operation, take note of the following limits:
 |Parameter|Type|Required|Example|Description|
 |---------|----|--------|-------|-----------|
 |Action|String|Yes|CreateForwardEntry|The operation that you want to perform. Set the value to **CreateForwardEntry**. |
-|ExternalIp|String|Yes|116.XX.XX.28|The public IP address used by the ECS instance to access the Internet. The public IP address must meet the following requirements:
+|ExternalIp|String|Yes|116.XX.XX.28|The public IP address used by the ECS instance to be accessed over the Internet. The public IP address must meet the following requirements:
 
--   If you purchased a NAT bandwidth plan before November 3, 2017, the **ExternalIp** parameter must be a public IP address that is associated with the NAT bandwidth plan.
--   If you did not purchase a NAT bandwidth plan before November 3, 2017, the **ExternalIp** must be an elastic IP address \(EIP\) that is associated with the NAT gateway. |
-|ExternalPort|String|Yes|8080|The public port used for port forwarding. Valid values: **1** to **65535**. |
+ -   If you have purchased a NAT bandwidth plan before November 3, 2017, the **ExternalIp** parameter must be set to a public IP address that is associated with the NAT bandwidth plan.
+-   If you have not purchased a NAT bandwidth plan before November 3, 2017, the **ExternalIp** parameter must be set to an elastic IP address \(EIP\) that is associated with the NAT gateway. |
+|ExternalPort|String|Yes|8080|The public port used to forward requests. Valid values: **1** to **65535**. |
 |ForwardTableId|String|Yes|ftb-bp1mbjubq34hlcqpa\*\*\*\*|The ID of the DNAT table. |
 |InternalIp|String|Yes|192.XX.XX.1|The private IP address that is mapped to the public IP address in the DNAT entry. The private IP address must meet the following requirements:
 
--   It must belong to the CIDR block of the virtual private cloud \(VPC\) where the NAT gateway is deployed.
--   The DNAT entry takes effect only when it is used by an ECS instance that is not associated with an EIP. |
-|InternalPort|String|Yes|80|The internal port to which requests are forwarded. Valid values: **1** to **65535**. |
-|IpProtocol|String|Yes|TCP|The protocol type. Valid values:
+ -   It must belong to the CIDR block of the virtual private cloud \(VPC\) where the NAT gateway is deployed.
+-   The DNAT entry takes effect only if the private IP address is assigned to an ECS instance and the ECS instance is not associated with an EIP. |
+|InternalPort|String|Yes|80|The private port to forward requests. Valid values: **1** to **65535**. |
+|IpProtocol|String|Yes|TCP|The protocol. Valid values:
 
--   **TCP**: forwards TCP packets.
+ -   **TCP**: forwards TCP packets.
 -   **UDP**: forwards UDP packets.
 -   **Any**: forwards packets of all protocols. |
 |RegionId|String|Yes|cn-hangzhou|The ID of the region where the NAT gateway is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. |
 |ForwardEntryName|String|No|ForwardEntry-1|The name of the DNAT entry.
 
-The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. |
-|ClientToken|String|No|0c593ea1-3bea-11e9-b96b-88e9fe6\*\*\*\*|The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.**ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. |
-|PortBreak|Boolean|No|false|Specify whether to remove limits on the port range. Valid values:
+ The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. |
+|ClientToken|String|No|0c593ea1-3bea-11e9-b96b-88e9fe6\*\*\*\*|The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. **ClientToken** can contain only ASCII characters. It must be 1 to 64 characters in length. |
+|PortBreak|Boolean|No|false|Specifies whether to remove limits on the port range. Valid values:
 
--   **true**: removes limits on the port range.
+ -   **true**: removes limits on the port range.
 -   **false** \(default\): sets limits on the port range.
 
-**Note:** An SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024, set **Portbreak** to **true**. |
+ **Note:** If an SNAT entry and a DNAT entry use the same public IP address, and you want to specify a port number greater than 1024, set **Portbreak** to **true**. |
 
 ## Response parameters
 
@@ -73,7 +73,7 @@ http(s)://[Endpoint]/?Action=CreateForwardEntry
 &InternalPort=80
 &IpProtocol=TCP
 &RegionId=cn-hangzhou
-&<Common Request Parameters>
+&<Common request parameters>
 ```
 
 Sample success responses
@@ -101,8 +101,8 @@ Sample success responses
 |HttpCode|Error code|Error message|Description|
 |--------|----------|-------------|-----------|
 |404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|The error message returned because the specified region ID does not exist.|
-|400|InvalidExternalIp.Malformed|The specified ExternalIp is not a valid IP address.|The error message returned because the specified IP address is invalid.|
-|400|InvalidInternalIp.Malformed|The specified InternalIp is not a valid IP address.|The error message returned because the specified private IP address is invalid.|
+|400|InvalidExternalIp.Malformed|The specified ExternalIp is not a valid IP address.|The error message returned because the specified public IP address is invalid.|
+|400|InvalidInternalIp.Malformed|The specified InternalIp is not a valid IP address.|The error message returned because the specified destination private IP address is invalid.|
 |400|InvalidExternalPort.Malformed|The specified ExternalPort is not a valid port.|The error message returned because the specified public port is invalid.|
 |400|InvalidInternalPort.Malformed|The specified InternalPort is not a valid port.|The error message returned because the specified private port is invalid.|
 |400|Forbidden.DestnationIpOutOfVpcCIDR|The specified Internal Ip is Out of VPC CIDR.|The error message returned because the specified private IP address does not fall within the CIDR block of the VPC. Enter a private IP address that falls within the CIDR block of the VPC.|
