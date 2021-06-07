@@ -1,22 +1,27 @@
 # ModifyNatGatewaySpec
 
-Changes the size of a NAT gateway.
+Upgrades a subscription NAT gateway.
 
 ## Description
 
-ModifyNatGatewaySpec is an asynchronous operation. After you make a request, the ID of the request is returned but the specified NAT gateway is not modified. The system modifies the NAT gateway in the background. You can call the [DescribeNatGateways](~~36054~~) operation to query the state of the NAT gateway:
+**Note:**
+
+-   You cannot call this operation to downgrade a NAT gateway. You can downgrade a NAT gateway only in the console.
+-   When you call this operation to upgrade a subscription NAT gateway, an order is generated. After you complete the payment in the order center, the NAT gateway is upgraded.
+
+ModifyNatGatewaySpec is an asynchronous operation. After you make a request, the ID of the request is returned but the specified NAT gateway is not modified. The system modifies the NAT gateway in the background. You can call the [DescribeNatGateways](~~36054~~) operation to query the state of a NAT gateway.
 
 -   **Modifying**: indicates that the system is modifying the NAT gateway. You can only query the state of the NAT gateway, but cannot perform other operations.
 -   **Available**: indicates that the NAT gateway is modified.
 
-NAT gateways are available in different sizes. The size of a NAT gateway determines the Source Network Address Translation \(SNAT\) performance of the gateway, such as the maximum number of connections and the number of new connections per second. However, the data throughput is not affected. The following table describes the correlations between different sizes of NAT gateways and SNAT performance metrics.
+NAT gateways offer different specifications. The specification of a NAT gateway determines its SNAT performance, such as the maximum number of connections and the number of new connections per second. However, the specification does not affect the data throughput. The following table describes the correlations between different specifications of NAT gateways and SNAT performance metrics.
 
-|Size
+|Specification
 
-|Maximum number of connections
+|Number of maximum connections
 
 |Number of new connections per second |
-|------|-------------------------------|--------------------------------------|
+|---------------|-------------------------------|--------------------------------------|
 |Small
 
 |10,000
@@ -32,11 +37,6 @@ NAT gateways are available in different sizes. The size of a NAT gateway determi
 |200,000
 
 |10,000 |
-|Super Large-1
-
-|1,000,000
-
-|50,000 |
 
 ## Debugging
 
@@ -48,18 +48,17 @@ NAT gateways are available in different sizes. The size of a NAT gateway determi
 |---------|----|--------|-------|-----------|
 |Action|String|Yes|ModifyNatGatewaySpec|The operation that you want to perform. Set the value to **ModifyNatGatewaySpec**. |
 |NatGatewayId|String|Yes|ngw-bp1uewa15k4iy5770\*\*\*\*|The ID of the NAT gateway. |
-|RegionId|String|Yes|cn-hangzhou|The ID of the region where the NAT gateway is deployed. |
-|Spec|String|Yes|Small|The size of the NAT gateway. Valid values:
+|RegionId|String|Yes|cn-hangzhou|The ID of the region where the NAT gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. |
+|Spec|String|Yes|Middle|The specification of the NAT gateway. Valid values:
 
--   **Small**: a small-sized NAT gateway.
--   **Middle**: a medium-sized NAT gateway.
--   **Large**: a large-sized NAT gateway.
--   **XLarge.1**: a super large-sized NAT gateway. |
-|AutoPay|Boolean|No|false|Specifies whether automatic payment is enabled for the instance.
+ -   **Small**: small
+-   **Middle**: middle
+-   **Large**: large |
+|AutoPay|Boolean|No|false|Specifies whether to enable automatic payment. Valid values:
 
--   **true**: enables automatic payment.
+ -   **true**: enables automatic payment.
 -   **false**: disables automatic payment. This is the default value. |
-|ClientToken|String|No|SHA234js121223\*\*\*\*|The client token that is used to ensure the idempotence of the request. You can use the client to generate a value that is unique among different requests.**ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. |
+|ClientToken|String|No|123e4567-e89b-12d3-a456-426655\*\*\*\*|The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. **ClientToken** can contain only ASCII characters. It must be 1 to 64 characters in length. |
 
 ## Response parameters
 
@@ -72,14 +71,14 @@ NAT gateways are available in different sizes. The size of a NAT gateway determi
 Sample requests
 
 ```
-https://vpc.aliyuncs.com/?Action=ModifyNatGatewaySpec
+http(s)://[Endpoint]/?Action=ModifyNatGatewaySpec
 &NatGatewayId=ngw-bp1uewa15k4iy5770****
 &RegionId=cn-hangzhou
-&Spec=Small
-&<Common request parameters>|
+&Spec=Middle
+&<Common request parameters>
 ```
 
-Sample success responses
+Sample success response
 
 `XML` format
 
@@ -101,12 +100,10 @@ Sample success responses
 
 |HttpCode|Error code|Error message|Description|
 |--------|----------|-------------|-----------|
-|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|The error message returned because the specified region ID is invalid. Check whether the service is available in the specified region.|
-|404|InvalidNatGatewayId.NotFound|The specified NatGatewayId does not exist in our records.|The error message returned because the specified NAT gateway ID does not exist. Check whether the value of the NatGatewayId parameter is valid.|
-|400|NATGW\_MODIFY\_SPEC\_SAME|The specified Spec is same with now.|The error message returned because the specified gateway size is the same as the current gateway size.|
-|400|InvalidParameter.Spec.ValueNotSupported|The specified Spec is not valid.|The error message returned because the specified gateway size is invalid.|
-
-访问[错误中心](https://error-center.aliyun.com/status/product/Vpc)查看更多错误码。
+|404|InvalidRegionId.NotFound|The specified RegionId does not exist in our records.|The error message returned because the specified region ID does not exist.|
+|404|InvalidNatGatewayId.NotFound|The specified NatGatewayId does not exist in our records.|The error message returned because the specified NAT gateway ID does not exist. Check whether the NAT gateway ID is valid.|
+|400|NATGW\_MODIFY\_SPEC\_SAME|The specified Spec is same with now.|The error message returned because the specified gateway specification is the same as the current gateway specification.|
+|400|InvalidParameter.Spec.ValueNotSupported|The specified Spec is not valid.|The error message returned because the specified gateway specification is invalid.|
 
 For a list of error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Vpc).
 
