@@ -62,7 +62,7 @@
 
     该权限是自动审批，一分钟后刷新页面查看申请状态。
 
-    **说明：** **natgw\_privilege\_allow\_bind\_eip**权限申请成功后，如果您要将其他EIP绑定到NAT网关，请先退出账号，重新登录NAT网关控制台，再将EIP绑定到NAT网关上。具体操作，请参见[绑定弹性公网IP](/cn.zh-CN/基本功能操作/创建NAT网关实例.md)。
+    **说明：** **natgw\_privilege\_allow\_bind\_eip**权限申请成功后，如果您要将其他EIP绑定到NAT网关，请先退出账号，重新登录NAT网关控制台，再将EIP绑定到NAT网关上。具体操作，请参见[绑定EIP](/cn.zh-CN/基本功能操作/创建NAT网关实例.md)。
 
     ![绑定eip权限](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3649098161/p96400.png)
 
