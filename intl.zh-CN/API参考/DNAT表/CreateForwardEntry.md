@@ -1,20 +1,21 @@
 # CreateForwardEntry
 
-使用CreateForwardEntry在DNAT列表中添加DNAT条目。
+调用CreateForwardEntry接口在DNAT列表中添加DNAT条目。
 
 ## API描述
 
-每条DNAT条目由五部分组成，包括**ExternalIp**、**ExternalPort**、**protocol**、**InternalIp**和**InternalPort**。添加DNAT条目后，NAT网关会将**ExternalIp:ExternalPort**上收到的指定协议的报文转发给**InternalIp:InternalPort**，并将回复消息原路返回。
+每条DNAT条目由五部分组成，包括**ExternalIp**、**ExternalPort**、**IpProtocol**、**InternalIp**和**InternalPort**。添加DNAT条目后，NAT网关会将**ExternalIp:ExternalPort**上收到的指定协议的报文转发给**InternalIp:InternalPort**，并将回复消息原路返回。
 
 调用本接口添加DNAT条目时，请注意：
 
 -   CreateForwardEntry接口属于异步接口，即系统会先返回一个DNAT条目ID，但该DNAT条目并未添加完成，系统后台的添加任务仍在进行。您可以调用[DescribeForwardTableEntries](~~36053~~)查询DNAT条目的状态：
     -   当DNAT条目处于**Pending**状态时，表示DNAT条目正在添加中，在该状态下，您只能执行查询操作，不能执行其他操作。
     -   当DNAT条目处于**Available**状态时，表示DNAT条目添加完成。
--   所有DNAT条目的**ExternalIp**、**ExternalPort**和**Protocol**三个字段组成的组合必须互不重复，即不允许将同一个源IP、同一个端口、同一个协议的消息转发到多个目标ECS实例。
--   所有DNAT条目的**Protocol**、**InternalIp**和**InternalPort**三个字段组成的组合也必须互不重复。
+-   所有DNAT条目的**ExternalIp**、**ExternalPort**和**IpProtocol**三个字段组成的组合必须互不重复，即不允许将同一个源IP、同一个端口、同一个协议的消息转发到多个目标ECS实例。
+-   所有DNAT条目的**IpProtocol**、**InternalIp**和**InternalPort**三个字段组成的组合也必须互不重复。
 -   当DNAT表中有DNAT条目的状态处于**Pending**或**Modifying**状态时，无法添加DNAT条目。
 -   一个DNAT表最多可添加100条DNAT条目。
+-   DNAT条目中配置了IP映射方式的EIP不能再被其他DNAT条目或SNAT条目使用。
 
 ## 调试
 
@@ -25,13 +26,13 @@
 |名称|类型|是否必选|示例值|描述|
 |--|--|----|---|--|
 |Action|String|是|CreateForwardEntry|要执行的操作，取值：**CreateForwardEntry**。 |
-|ExternalIp|String|是|116.XX.XX.28|提供公网访问的公网IP地址，该公网IP需满足以下条件：
+|ExternalIp|String|是|116.28.XX.XX|提供公网访问的公网IP地址，该公网IP需满足以下条件：
 
  -   对于2017年11月03日之前账户下存在NAT带宽包的用户，**ExternalIp**必须是该NAT网关的NAT带宽包中的公网IP地址。
 -   对于2017年11月03日之前账户下不存在NAT带宽包的用户，**ExternalIp**必须是绑定了该NAT网关的弹性公网IP。 |
 |ExternalPort|String|是|8080|需要进行端口转发的外部端口，取值范围：**1**~**65535**。 |
 |ForwardTableId|String|是|ftb-bp1mbjubq34hlcqpa\*\*\*\*|DNAT列表的ID。 |
-|InternalIp|String|是|192.XX.XX.1|需要进行公网通信的ECS实例的私网IP地址，该私网IP地址需满足以下条件：
+|InternalIp|String|是|192.168.XX.XX|需要进行公网通信的ECS实例的私网IP地址，该私网IP地址需满足以下条件：
 
  -   必须属于NAT网关所在的VPC的网段。
 -   必须被一个ECS实例使用且该实例没有绑定EIP时，DNAT条目才生效。 |
@@ -40,7 +41,7 @@
 
  -   **TCP**：转发TCP协议的报文。
 -   **UDP**：转发UDP协议的报文。
--   **Any**：转发所有协议的报文。 |
+-   **Any**：转发所有协议的报文。如果**IpProtocol** 配置为**Any**，则**ExternalPort**和**InternalPort**也必须配置为**Any**，实现DNAT IP映射。 |
 |RegionId|String|是|cn-hangzhou|NAT网关所在的地域ID。您可以通过调用[DescribeRegions](~~36063~~)接口获取地域ID。 |
 |ForwardEntryName|String|否|ForwardEntry-1|DNAT规则的名称。
 
@@ -66,10 +67,10 @@
 
 ```
 http(s)://[Endpoint]/?Action=CreateForwardEntry
-&ExternalIp=116.XX.XX.28
+&ExternalIp=116.28.XX.XX
 &ExternalPort=8080
 &ForwardTableId=ftb-bp1mbjubq34hlcqpa****
-&InternalIp=192.XX.XX.1
+&InternalIp=192.168.XX.XX
 &InternalPort=80
 &IpProtocol=TCP
 &RegionId=cn-hangzhou
