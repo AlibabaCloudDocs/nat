@@ -6,7 +6,7 @@
 前提条件 
 -------------------------
 
-分配了固定公网IP的ECS实例所在的VPC已经配置了SNAT功能。详细信息，请参见[创建SNAT实现访问公网服务](/cn.zh-CN/基本功能操作/创建SNAT实现访问公网服务.md)。
+分配了固定公网IP的ECS实例所在的VPC已经配置了SNAT功能。更多信息，请参见[创建SNAT实现访问公网服务](/cn.zh-CN/基本功能操作/创建SNAT实现访问公网服务.md)。
 
 背景信息 
 -------------------------
@@ -76,7 +76,7 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 步骤二：创建弹性网卡 
 -------------------------------
 
-完成以下操作，为ECS实例创建弹性网卡。
+
 
 1. 登录[云服务器ECS管理控制台](https://ecs.console.aliyun.com/#/home)。
 
@@ -111,11 +111,11 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 
      
    
-   * **主私网IP** （可选）：输入弹性网卡的主私网IPv4地址。此IPv4地址必须属于交换机的CIDR网段中的空闲地址。如果您没有指定，创建弹性网卡时将自动为您分配一个空闲的私网IPv4地址。
+   * **主私网IP** （可选）：输入弹性网卡的主私网IPv4地址。此IPv4地址必须属于交换机的CIDR网段中的空闲地址。如果您没有指定，创建弹性网卡时将自动为您分配一个空闲的私网IPv4地址。本文不指定主私网IP。
 
      
    
-   * **辅助私网IP** （可选）：单击相应选项进行设置。
+   * **辅助私网IP** （可选）：单击相应选项进行设置。本文选择不设置。
 
      
    
@@ -123,28 +123,18 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 
      
    
-   * **描述** （可选）：输入对弹性网卡的描述。
-
-     
-   
-   * **资源组** （可选）：选择一个资源组。
-
-     
-   
-   * **标签** （可选）：选择已有标签键或输入新键。
-
-     
-   
 
    
 
 
 
+
+更多参数信息，请参见[创建弹性网卡](/cn.zh-CN/网络/弹性网卡/创建弹性网卡.md)。
 
 步骤三：将弹性网卡绑定到ECS实例 
 --------------------------------------
 
-完成以下操作，将弹性网卡绑定到ECS实例。
+
 
 1. 登录[云服务器ECS管理控制台](https://ecs.console.aliyun.com/#/home)。
 
@@ -172,7 +162,7 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 步骤四：将EIP与ECS实例解绑 
 -------------------------------------
 
-完成以下操作，将EIP与ECS实例解绑。
+
 
 1. 登录[专有网路管理控制台](https://vpcnext.console.aliyun.com)。
 
@@ -182,11 +172,11 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 
    
 
-3. 选择弹性公网IP的地域。
+3. 选择EIP的地域。
 
    
 
-4. 在 **弹性公网IP** 页面，找到目标弹性公网IP，单击 **操作** 列下的 **解绑绑定** 。
+4. 在 **弹性公网IP** 页面，找到目标EIP，单击 **操作** 列下的 **解绑绑定** 。
 
    
 
@@ -200,7 +190,7 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 步骤五：将EIP绑定到弹性网卡 
 ------------------------------------
 
-完成以下操作，将EIP绑定到弹性网卡。
+
 
 1. 登录[专有网络管理控制台](https://vpcnext.console.aliyun.com)。
 
@@ -210,11 +200,11 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 
    
 
-3. 选择弹性公网IP的地域。
+3. 选择EIP的地域。
 
    
 
-4. 在 **弹性公网IP** 页面，找到目标弹性公网IP，单击 **操作** 列下的 **绑定资源** 。
+4. 在 **弹性公网IP** 页面，找到目标EIP，单击 **操作** 列下的 **绑定资源** 。
 
    
 
@@ -224,11 +214,11 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 
      
    
-   * **资源组** （可选）：选择该弹性公网IP所属的资源组。
+   * **资源组** （可选）：选择该EIP所属的资源组。本文选择默认资源组。
 
      
    
-   * **绑定模式** （可选）：选择弹性公网IP绑定模式。
+   * **绑定模式** （可选）：选择EIP绑定模式。 本文选择 **普通模式** 。
 
      
    
@@ -242,31 +232,112 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 
 
 
-步骤六：测试网络连通性 
+步骤六：配置网卡路由 
+-------------------------------
+
+1. 登录[ECS管理控制台](https://ecs.console.aliyun.com)。
+
+   
+
+2. 在左侧导航栏，选择 **网络与安全** **\>** **弹性网卡** 。
+
+   
+
+3. 查看ECS实例的弹性网卡信息如下图所示。![网卡](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3661434261/p285986.png)
+
+   
+
+4. 远程登录ECS实例，更多信息，请参见[ECS实例连接方式概述](t9618.html#concept-tmr-pgx-wdb)。
+
+   
+
+5. 执行`ip a`命令查看弹性网卡信息。![网卡信息](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3661434261/p285988.png)
+
+   经过查看，得到ECS实例弹性网卡的信息如下：
+
+   eth0：主网卡，私网地址：192.168.3.10
+
+   eth1：辅助弹性网卡，私网地址：192.168.3.11 公网地址：118.190.XX.XX
+   
+
+6. 按您的需要规划路由表里每块网卡的默认路由 **metric** 值。 
+
+   执行以下命令，查看 **Gateway** 和 **metric** 值。
+
+   `route -n`
+
+   查询结果如下所示：![metric](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7465064261/p285993.png)
+   **说明**
+
+   本文以一块辅助弹性网卡为例，查看到辅助弹性网卡的 **metric** 值大于主网卡的 **metric** 值，路由优先级低于主网卡，不需要执行重新规划网卡的 **metric** 值，保持默认配置即可。如有多块辅助弹性网卡，请根据实际情况配置，具体操作，请参见[配置网卡路由](/cn.zh-CN/网络/弹性网卡/配置弹性网卡.md)。
+
+   
+
+7. 创建路由表。
+
+   1. 执行以下命令创建路由表。
+
+      `ip -4 routeadd default via 192.168.3.13 dev eth1 table 101`
+      **说明**
+
+      建议路由表名称和网卡的默认路由 **metric** 取值保持一致，如本例中的101。
+      
+   
+   2. 执行以下命令检查路由表是否创建成功。
+
+      `ip routelist table 101`
+
+      查询结果如下所示：
+
+      ![路由](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7465064261/p286028.png)
+      
+   
+
+   
+
+8. 配置策略路由。
+
+   1. 执行以下命令创建策略路由。
+
+      `ip -4 ruleadd from 192.168.3.71 lookup 101`
+      
+   
+   2. 执行以下命令查看路由规则。
+
+      `ip rule list`
+
+      查询结果如下所示：![策略路由](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7465064261/p286031.png)
+      
+   
+
+   
+
+
+
+
+步骤七：测试网络连通性 
 --------------------------------
 
-完成以下操作，测试互联网是否可以通过弹性网卡绑定的EIP访问ECS实例。本操作以本地Linux设备远程连接Linux实例为例。 
+完成以下操作，测试互联网是否可以通过弹性网卡绑定的EIP访问ECS实例。本操作以本地Linux设备远程连接ECS实例为例。 
 
 
 **说明**
 
-远程连接Linux实例，Linux实例的安全组必须放行SSH（22）端口。详细信息，请参见[添加安全组规则](/cn.zh-CN/安全/安全组/添加安全组规则.md)。
+远程连接ECS实例，请确认ECS实例的安全组已放行SSH（22）端口。更多信息，请参见[添加安全组规则](/cn.zh-CN/安全/安全组/添加安全组规则.md)。
 
 1. 登录本地Linux设备。
 
    
 
-2. 执行`ssh root@公网IP`命令，然后输入Linux实例的登录密码，查看是否可以远程连接到实例。 
+2. 执行`ssh root@公网IP`命令，然后输入ECS实例的登录密码，查看是否可以远程连接到实例。 
 
-   若界面上出现`Welcome to Alibaba Cl``oud Elastic Compute Service!`时，表示您已经成功连接到实例。
-
-   ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4734029951/p49595.png)
+   若界面上出现`Welcome to Alibaba Cl``oud Elastic Compute Service!`时，表示您已经成功连接到实例。![验证](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/8465064261/p286037.png)
    
 
 
 
 
-完成以下操作，测试ECS实例是否可以通过NAT网关的SNAT功能主动访问互联网。本操作以在linux实例上查看公网出口IP为例。 
+完成以下操作，测试ECS实例是否可以通过NAT网关的SNAT功能主动访问互联网。本操作以在ECS实例上查看公网出口IP为例。 
 
 
 
@@ -276,9 +347,7 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
 
 2. 执行`curl https://myip.ipip.net`查看公网出口IP。 
 
-   若公网出口IP与NAT网关SNAT条目中的IP一致，即ECS实例优先通过NAT网关的SNAT功能主动访问互联网。
-
-   ![](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4734029951/p49596.png)
+   若公网出口IP与NAT网关SNAT条目中的IP一致，即ECS实例优先通过NAT网关的SNAT功能主动访问互联网。![验证2](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3986434261/p286038.png)
    
 
 
