@@ -124,7 +124,7 @@ NAT网关提供SNAT功能，为VPC内无公网IP的ECS实例提供访问互联�
     1.  执行以下命令创建策略路由。
 
         ```
-        ip -4 rule add from 192.168.3.71 lookup 101
+        ip -4 rule add from 192.168.3.11 lookup 101
         ```
 
     2.  执行以下命令查看路由规则。
