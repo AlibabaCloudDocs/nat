@@ -61,7 +61,7 @@ keyword: [NAT网关, 增强型, 网络地址转换, 提供公网服务, 访问�
 
 
 -   您已经创建了增强型NAT网关实例，具体操作，请参见[购买NAT网关](/cn.zh-CN/购买指南/购买NAT网关.md)。
--   您已经[提交工单](https://selfservice.console.aliyun.com/ticket/category/natgw/today)申请查看网关流量监控的权限。
+-   您已经[提交公测申请](https://page.aliyun.com/form/act1446782856/index.htm?accounttraceid=b2f38981ecd24d9a925fbedbe01a1b0bbjhs)查看网关流量监控的权限。
 
 1.  登录[NAT网关管理控制台](https://vpc.console.aliyun.com/nat)。
 
