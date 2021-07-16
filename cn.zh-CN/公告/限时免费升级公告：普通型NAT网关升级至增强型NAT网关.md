@@ -20,11 +20,7 @@ NAT网关延长了将普通型NAT网关免费升级至增强型NAT网关的时�
 
 ## 联系我们
 
-如果您对NAT网关产品有任何疑问，请打开钉钉扫描下方二维码加入钉钉群咨询。
+如您有任何NAT网关升级相关问题，请您使用钉钉扫描下方的二维码或者搜索钉钉群号35128151加入钉钉群进行反馈咨询。
 
-群名：NAT网关客户交流群
-
-群号：34756416
-
-![用户群二维码](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4082659951/p161032.png)
+![NAT网关带宽包钉群](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4446285261/p293192.png)
 
