@@ -18,3 +18,9 @@ NAT网关延长了将普通型NAT网关免费升级至增强型NAT网关的时�
 
 升级操作，请参见[自助升级普通型NAT网关为增强型NAT网关](/intl.zh-CN/增强型NAT网关/自助升级普通型NAT网关为增强型NAT网关.md)。
 
+## 联系我们
+
+如您有任何NAT网关升级相关问题，请您使用钉钉扫描下方的二维码或者搜索钉钉群号35128151加入钉钉群进行反馈咨询。
+
+![NAT网关带宽包钉群](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/4446285261/p293192.png)
+
