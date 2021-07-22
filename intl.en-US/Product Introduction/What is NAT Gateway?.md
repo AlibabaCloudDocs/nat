@@ -4,7 +4,7 @@ keyword: [NAT Gateway, Internet access, SNAT, DNAT]
 
 # What is NAT Gateway?
 
-NAT gateways are enterprise-class gateways that provide the Source Network Address Translation \(SNAT\) and Destination Network Address Translation \(DNAT\) features. Each NAT gateway provides a throughput capacity of up to 10 Gbit/s. NAT gateways also support cross-zone disaster recovery.
+NAT gateways are enterprise-class gateways that provide the Source Network Address Translation \(SNAT\) and Destination Network Address Translation \(DNAT\) features. Each NAT gateway provides a throughput capacity of up to 100 Gbit/s. NAT gateways also support cross-zone disaster recovery.
 
 ![Diagram](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8604485061/p4440.png)
 
